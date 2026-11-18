@@ -1,0 +1,15 @@
+{
+  "counts": {
+    "tests": 24,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "command": "\"F:\\Sem 7\\CB4103\\PROJECT\\.venv\\Scripts\\python.exe\" -m pytest -q -ra --junitxml=results/pytest.xml",
+  "exit_code": 0,
+  "elapsed_seconds": 1.1111363999953028,
+  "summary": "24 passed in 0.72s",
+  "source_digest": "011d7fc14a38801b347de5e29397b75997654f28128d6f5a8432e0eb4582b08d",
+  "output_file": "results/pytest.log",
+  "completed_utc": "2026-11-15T02:35:16.289448+00:00"
+}

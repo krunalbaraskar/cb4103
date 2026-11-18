@@ -1,0 +1,17 @@
+{
+  "actual_cache_subset_frames": 128,
+  "actual_cache_subset_molecules": 24,
+  "fft_direct_max_abs_error": {
+    "smor": 2.220446049250313e-16,
+    "connected_self": 1.1102230246251565e-16,
+    "cor": 1.1102230246251565e-16,
+    "collective_self": 2.220446049250313e-16,
+    "collective_cross": 3.3306690738754696e-16,
+    "uncentered_collective": 3.3306690738754696e-16
+  },
+  "explicit_pair_subset_frames": 32,
+  "explicit_pair_subset_molecules": 8,
+  "explicit_ordered_cross_pair_max_abs_error": 4.440892098500626e-16,
+  "tolerance": 1e-10,
+  "overall_pass": true
+}

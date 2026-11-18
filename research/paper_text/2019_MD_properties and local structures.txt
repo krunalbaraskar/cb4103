@@ -1,0 +1,805 @@
+--- PAGE 1 ---
+Molecular dynamics simulations of the thermodynamic properties and
+local structures on molten alkali carbonate Na2CO3
+Lichan Du a, Wenjun Xie a, Jing Ding a, Jianfeng Lu a, XiaoLan Wei b, Weilong Wang a,⇑
+a School of Materials Science and Engineering, Sun Yat-Sen University, Guangzhou 510006, China
+b School of Chemistry and Chemical Engineering, South China University of Technology, Guangzhou 510640, China
+article info
+Article history:
+Received 13 April 2017
+Received in revised form 18 October 2018
+Accepted 8 November 2018
+Available online 15 November 2018
+Keywords:
+Molecular dynamics simulation
+Molten alkali carbonates
+Thermodynamic properties
+Local structures
+abstract
+Molten carbonate salts as phase change materials have received particular attention for high-
+temperature thermal energy storage and heat transfer applications due to desirable thermal characteris-
+tics such as wide operating temperature range, low causticity and excellent thermal stability. In this
+study, molecular dynamics (MD) simulations were performed on molten alkali carbonate Na2CO3 based
+on an effective pair potential model, a Born-Mayer type combined with a Coulomb term. The temperature
+dependences of thermodynamic properties including the density, thermal expansion coefﬁcient, speciﬁc
+heat capacity, shear viscosity, thermal conductivity and ion self-diffusion coefﬁcient were simulated in
+detail from 1150 to 1500 K, which was all difﬁcult to achieve from experiments on account of high-
+temperature extreme conditions. The simulation results were in satisfactory agreement with experimen-
+tal data available with high calculation accuracies. In particular, both the equilibrium molecular dynam-
+ics (EMD) and non-equilibrium molecular dynamics (NEMD) simulations were tried to calculate the shear
+viscosity and thermal conductivity, and the NEMD method turned out to be more suitable for molten
+alkali carbonate salts with higher calculation accuracies of 15.11% and 22.48% for shear viscosity and
+thermal conductivity separately. Moreover, the radial distribution functions (RDF) and coordination
+number curves of the molten salt were characterized to explore the temperature dependences of macro-
+scopic properties from microscopic view, and the results suggested that the changes of thermodynamic
+properties with temperature were induced by the distance changes between Na2CO3 particles. Besides, it
+could be concluded that the structure of CO3 2/C0 was inferred reasonably to be ortho-triangular pyramid
+from the comprehensive analysis of local structures including the angular distribution functions (ADF).
+/C211 2018 Elsevier Ltd. All rights reserved.
+1. Introduction
+With the rapid development of global economy, enormous
+energy consumption has brought about serious energy shortage
+and environment pollution. Renewable energy, such as solar
+energy, has been receiving extensive attentions worldwide [1,2].
+Developing efﬁcient energy storage and heat transfer technology
+for concentrating solar energy is required urgently due to its
+intermittence and instability [3–6]. Molten salts have been studied
+extensively for thermal energy storage and heat transfer applica-
+tions due to desirable thermal characteristics such as wide operat-
+ing temperature range, low vapor pressure, moderate heat
+capacity, low viscosity and excellent thermal stability [7–10].
+Generally, the molten salts include chlorides, ﬂuorides, carbonates
+and nitrates, among which nitrate salts have been employed
+widely as thermal energy storage media for concentrating solar
+power plants because of their low melting point and high thermal
+stability below 773 K [11–15]. However, molten nitrate salts are
+limited to low and medium temperature thermal energy storage
+applications, and no longer adequate to meet the demand for
+higher heating temperature in industry. Therefore, a novel molten
+salt with low melting, high operating temperature and excellent
+thermal stability is desired worldwide [16–18].
+Molten carbonate salts have received particular attentions for
+high-temperature thermal energy storage and heat transfer appli-
+cations owing to their excellent characteristics of wide working
+temperature range, low causticity, low unit cost and excellent
+thermal stability up to 1273 K [16,17]. However, it’s because of
+the high working temperature of molten carbonate salts that rele-
+vant properties such as shear viscosity and thermal conductivity
+are difﬁcult, if not impossible, to be obtained accurately due to
+the limitation of extreme test conditions, which are of great signif-
+icance for evaluating their potential in practical applications.
+https://doi.org/10.1016/j.ijheatmasstransfer.2018.11.044
+0017-9310//C211 2018 Elsevier Ltd. All rights reserved.
+⇑ Corresponding author.
+E-mail address: wwlong@mail.sysu.edu.cn (W. Wang).
+International Journal of Heat and Mass Transfer 131 (2019) 41–51
+Contents lists available at ScienceDirect
+International Journal of Heat and Mass Transfer
+journal homepage: www.elsevier.com/locate/ijhmt
+
+
+--- PAGE 2 ---
+Fortunately, computer simulations can be a complementary tool
+for predicting the macroscopic and microscopic properties of ionic
+crystal materials, among which molecular dynamics (MD) simula-
+tion has proved its value for the study of thermodynamic proper-
+ties and local structures of molten salts [19]. Dixon and Sangster
+[20–22] simulated the radial distribution functions (RDF), velocity
+autocorrelation functions (ACF) and mean square displacements
+(MSD) of a series of pure molten alkali halides (RbF, RbCl, RbBr,
+RbI, CsF, CsCl, CsBr and CsI) by MD simulations using the Born-
+Mayer-Huggins potential model, and veriﬁed the suitability of
+the model for molten alkali halides. Galamba et al. [23–26] calcu-
+lated the shear viscosity and thermal conductivity of pure molten
+NaCl and KCl through the equilibrium molecular dynamics (EMD)
+and non-equilibrium molecular dynamics (NEMD) simulations
+within the framework of the Born-Mayer-Huggins ionic potential,
+and the simulation results of the two molecular dynamics simula-
+tion methods were all much overestimated but in agreement with
+experimental data in terms of the development trend with temper-
+ature. Besides, the NEMD simulation behaved better than the EMD
+simulation. Wang et al. [27,28] performed MD simulations on a
+series of molten alkali halides (LiCl, NaCl, KCl, RbCl, CsCl, LiCl-
+NaCl, LiCl-KCl and NaCl-KCl) with the veriﬁed Born-Mayer-
+Huggins pair potential. The systematic properties such as the den-
+sity, shear viscosity, thermal conductivity, ion self-diffusion coefﬁ-
+cient, the RDF and angular distribution functions (ADF) were all
+presented in detail, and the effects of temperature and cation size
+on the thermodynamic properties and local structures were dis-
+cussed. Tissen and Janssen [29] reported the MD simulations on
+molten carbonates Li2CO3,Na2CO3, and K2CO3 in the NVT ensemble
+at 1200 K. A signiﬁcant change in structure of the melt was
+observed on going from Li2CO3 to K2CO3, and rotation of the
+CO3 2/C0 was substantially easier in K2CO3 than in Li2CO3. Also, the cal-
+culated RDF, velocity ACF and MSD were in good agreement with
+the experimental data available. However, of all the previous MD
+simulations, most investigations focused on the molten alkali
+halides, but few studies worked on molten carbonate salts, espe-
+cially the macroscopic properties combined with microscopic
+structures.
+In this paper, thermodynamic properties and local structures of
+molten alkali carbonate Na2CO3 in liquid state were systematically
+reported by means of MD simulations with an effective pair poten-
+tial model, a Born-Mayer type combined with a Coulomb term.
+Thermodynamic properties including the density, thermal expan-
+sion coefﬁcient, speciﬁc heat capacity, shear viscosity, thermal con-
+ductivity and ion self-diffusion coefﬁcient were calculated from
+1150 to 1500 K, and their temperature dependences were also
+investigated in detail. It should be emphasized that the shear vis-
+cosity and thermal conductivity were simulated through the
+EMD and NEMD simulations in this study, and the better one of
+the two molecular dynamics simulation methods was determined
+for the MD simulations on molten alkali carbonates in terms of cal-
+culation accuracy. Moreover, the RDF and coordination number
+curves of the molten salt were characterized to analyse the tem-
+perature dependences of macroscopic properties from microscopic
+view. Besides, the ADF was simulated to study the structure of
+CO3 2/C0 combined with the RDF and coordination number
+simulations.
+2. Molecular dynamics simulations
+2.1. Interaction potential
+The effective pair potential used in MD simulations was a Born-
+Mayer type combined with a Coulomb term. This form of potential
+model is initially developed for applications on molten alkali
+halides [30,31] and has been successfully used in molten alkali car-
+bonates [29]. The interionic potential is described as follows,
+Urij
+/C0/C1
+¼ zizje2
+rij
+þ b1þ zi
+ni
+þ zj
+nj
+/C18/C19
+exp a ri þ rj /C0 rij
+/C0/C1/C2/C3
+ð1Þ
+where rij is the distance between the centres of two particles i and j,
+e is the electronic charge unit, zi is the valence of ion i, ni is the num-
+ber of electrons in the outer shell of the ion, ri is the effective radius
+of the ion, a is the softness parameter and b is a pre-exponential
+term, where a and b are constants, and they are 3.45 Å/C01 and
+4.865 kcal/C1mol/C01, respectively. The parameters used for the poten-
+tial model in this study were collected in Table 1, which were
+obtained by Janssen and Tissen [32].
+2.2. Simulation details
+All the MD simulations on molten alkali carbonate Na2CO3 are
+performed using the open source molecular simulation package
+LAMMPS from 1150 to 1500 K. The MD simulations reported here
+are performed on a simulation system consisting of 9216 atoms,
+and the numbers of Na, C and O are distributed as the proportion
+of 2:1:3. The initial crystal cell is generated by parameters of solid
+state at 800 K provided by Swainson, Dove and Harris [33], and
+then expands to the simulation box by supercell method. The peri-
+odic boundary conditions are adopted to keep the number of par-
+ticles constant in simulation system and eliminate the boundary
+effect. The cut-off distance of short-range interactions is set to be
+20 Å, which is almost equal to half of the smallest side length of
+the simulation box after relaxation. While the long-range interac-
+tion calculations are computed in K-space using the PPPM solver
+[34] to eliminate the truncation errors, and the accuracy of calcu-
+lated forces is 1.0 /C2 10/C06. The initial velocities are randomly
+assigned and obeyed the Gaussian distribution. The Verlet algo-
+rithm is used to solve Newton’s equations of motion with a time
+step of 1.0 fs.
+In the MD simulations, the simulation system is ﬁrst heated to
+1500 K and then cools to desired temperatures from 1150 to
+1500 K with an interval of 50 K. After that, the system is sufﬁ-
+ciently equilibrated in the NPT ensemble for 2 million time steps
+at corresponding temperature with the atmospheric pressure,
+and the temperature and stress damping parameters are set to
+be 100 and 500 fs separately. Subsequently, the system is in NVT
+ensemble lasting for at least 5 million timesteps, even up to 15 mil-
+lion timesteps, to ensure good statistics for the computation of
+desired properties and structures such as the shear viscosity and
+thermal conductivity.
+2.3. Evaluated properties
+2.3.1. Density and thermal expansion coefﬁcient
+In the initial NPT equilibration simulations, the density of mol-
+ten alkali carbonate Na2CO3 is determined as follows,
+q ¼ NM nNAV ð2Þ
+Table 1
+Parameters of molten alkali carbonate Na2CO3 for the potential model in MD
+simulations.
+Atom z (e) n r (Å)
+Na 1.00 8.00 1.07
+C 1.54 2.46 1.10
+O /C01.18 7.18 1.33
+42 L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51
+
+--- PAGE 3 ---
+where N is the total number of atoms in simulation system, M is the
+molar mass of Na2CO3, n is the atomic number of one Na2CO3 par-
+ticle, NA is the Avogadro’s constant, and V is the volume of the sim-
+ulation box at corresponding equilibrated temperature.
+The thermal expansion coefﬁcient, one of important thermal
+properties for molten salts in practical applications, depends on
+the volume changes with temperature, and it is evaluated by the
+following formula,
+b ¼ 1 V @V @T /C18/C19 P ¼/C01 q @q @T /C18/C19 P ð3Þ
+where V is the volume of the simulation box at corresponding equi-
+librated temperature T, q is the density at the same temperature,
+and the subscript P presents the constant-pressure.
+2.3.2. Speciﬁc heat capacity
+The speciﬁc heat capacity depends on the enthalpy changes
+with temperature under the constant-pressure condition, and the
+speciﬁc heat capacity of molten alkali carbonate Na2CO3 in this
+study can be calculated as follows,
+CP ¼ @H @T /C18/C19 P ð4Þ
+where H is the speciﬁc enthalpy of the simulation system at corre-
+sponding equilibrated temperature T, and the subscript P presents
+the constant-pressure.
+2.3.3. Shear viscosity
+Two MD simulation methods are tried to evaluate the shear vis-
+cosity of molten alkali carbonate Na2CO3 in this paper, including
+the EMD and NEMD simulations. In the EMD simulations, the shear
+viscosity is calculated through the time-integration of the stress
+tensor ACF. The Green-Kubo formula [35,36] used in EMD simula-
+tions for shear viscosity is given as follows,
+g ¼ 1 3kBTV Z 1 0 rab 0ðÞrab tðÞ /C10/C11 dt ð5Þ
+where the angle bracket </C1/C1/C1> denotes the ensemble average in full
+thermal equilibrium, kB is the Boltzmann const, V is the system vol-
+ume at corresponding equilibrated temperature T, and rab is the
+off-diagonal Cartesian component of the stress tensor (rxy, rxz and
+ryz).
+For the NEMD method, the simulation system is placed between
+two plates according to the Couette Principle (shown in Fig. 1). The
+distance between the two plates is small compared to the linear
+scale of the plate surface, and the plate can be considered to be inﬁ-
+nite. The equation for parallel ﬂow is as follows
+d
+2
+u
+dz
+2 ¼ 1 g dp dx ð6Þ
+For the above two points, the following formula is obtained.
+u ¼ 1 g dp dx z2 2 þ Az þ B /C18/C19 ð7Þ
+where A and B are integral constants, which needs to be determined
+by the boundary conditions of the ﬂuid.
+The pressure gradient is not 0 along the ﬂow direction. That is,
+the ﬂow is caused by two factors: the pressure gradient and the
+upper plate drag. The boundary conditions are as below.
+y ¼ 0; u ¼ 0y ¼ h; u ¼ U ð8Þ
+The integral constant can be determined.
+B ¼ 0; A ¼ gU hðdp=dxÞ /C0 h 2 ð9Þ
+This is the velocity distribution.
+u
+U ¼ h
+2
+2gU
+dp
+dx
+z
+h
+z
+h /C0 1
+/C16/C17
+þ z h ð10Þ
+After quoting the dimension-pressure parameter, the velocity dis-
+tribution is as follows.
+uðzÞ
+U ¼ P z h 1 /C0 z h /C16/C17 þ z h ; P ¼/C0h 2 2gU dp dx ð11Þ
+Assuming that the ﬂow is only caused by the pressure gradient
+in the ﬂow direction, the lower plate is stationary, and the upper
+plate moves to the right at a constant speed. That is, dp/dx = 0,
+P = 0, the velocity distribution is as follows.
+uðzÞ
+U ¼ z h ð12Þ
+The speed of the system will be linearly distributed from bot-
+tom to top due to the viscosity of the ﬂuid. This is the shear stress.
+s ¼ g @u @z ¼ g U h ð13Þ
+While in the simulation process, the simulation box is divided
+into 20 bins averagely in z direction. A constant engineering strain
+rate is imposed on the 20th bin to generate an x-velocity gradient
+in z direction. The ﬁnal result is that the x-velocity versus distance
+in z direction is linear when the simulation system was fully equi-
+librated, and the derived shear viscosity is reliable at this equilib-
+rium state. The formula for calculating the shear viscosity by the
+NEMD method is described as follows,
+g ¼ sxz
+hdtx=dzi ð14Þ
+where sxz is the sheer stress, and hdtx=dzi is the average x-velocity
+gradient in z direction at equilibrium state.
+2.3.4. Thermal conductivity
+The thermal conductivity of molten alkali carbonate Na2CO3 is
+also evaluated through the EMD and NEMD simulations in this
+paper. In the EMD simulations, the thermal conductivity is calcu-
+lated through the time-integration of the heat ﬂux ACF. The
+Green-Kubo formalism used in EMD simulations for thermal con-
+ductivity is given as follows,
+k ¼ V
+3kBT2
+Z 1
+0
+hJ 0ðÞJtðÞidt ð15Þ
+where the angle bracket </C1/C1/C1> denotes the ensemble average in full
+thermal equilibrium, kB is the Boltzmann const, V is the system
+Fig. 1. Flow between two parallel plates.
+L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51 43
+
+--- PAGE 4 ---
+volume at corresponding equilibrated temperature T, J is the Carte-
+sian component of the heat ﬂux in x, y and z direction (Jx, Jy and Jz).
+While in the NEMD simulations, the simulation box is divided
+into 20 bins averagely in z direction. The 1th bin is deﬁned as
+the cold side, and the 11th bin as the hot bin. An appropriate tem-
+perature gradient generated by a proper temperature difference
+between the 1th bin and the 11th bin is imposed on the simulation
+system, and then the ensemble average of the effect, a resulting
+heat ﬂux, is measured. When the simulation system is fully equili-
+brated, the temperature versus distance in z direction is linear, and
+the derived thermal conductivity is reliable. The thermal conduc-
+tivity can be obtained as follows,
+k ¼/C0 Jz
+2LxLyhdT=dzi ð16Þ
+where Jz is the heat ﬂux in z direction, Lx and Ly are the two side
+lengths of the simulation box in x and y direction, and hdT=dzi is
+the average temperature gradient in z direction at equilibrium state.
+2.3.5. Ion self-diffusion coefﬁcient
+The ion self-diffusion coefﬁcient is investigated to study the ion
+transport properties of molten alkali carbonate Na2CO3. The ion
+self-diffusion coefﬁcient can be either determined through the
+time-integration of the velocity ACF or calculated from the time-
+dependent MSD according to the Einstein equation, and the time-
+dependent MSD method is employed to calculate the ion self-
+diffusion coefﬁcient in this paper. The corresponding calculation
+formulas are expressed as follows,
+D ¼ 1 6 d dt hjri tðÞ/C0ri 0ðÞj2ið17Þ
+MtðÞ¼hjri tðÞ/C0ri 0ðÞj2ið18Þ
+where the angle brackets </C1/C1/C1> denote the ensemble average, and ri
+is the position of ion i.
+2.3.6. Radial distribution functions and coordination number curves
+The RDF is used for describing the local structures of molten
+alkali carbonate Na2CO3 from microscopic view, which is deﬁned
+as follows,
+gabðrÞ¼ 1 4pr2qb dNab rðÞ dr /C20/C21 ð19Þ
+where qb is the ideal number density of b-type ion around a-type
+ion, and Nab(r) is the number of b-type ion inside a spherical cavity
+with a radius of r centred on a-type ion.
+While the coordination number Nab, one another important
+parameter to characterize the local structures, is the number of
+b-type ion inside a spherical cavity with a radius of rmin centred
+on a-type ion, where rmin is the position of the ﬁrst peak valley
+of the RDF. It can be calculated from the RDF through the following
+formula as follows,
+Nab rðÞ¼4pqb
+Z r
+0
+gab rðÞr2dr ð20Þ
+2.3.7. Angular distribution functions
+For further analysis of the local structures, the ADF of molten
+alkali carbonate Na2CO3 is also characterized since the RDF and
+coordination number could only describe the probability of
+atoms pairing, containing no orientation information among
+atoms. The ADF can be calculated according to the position coor-
+dinates of atoms in simulation system at corresponding equili-
+brated temperature, and the corresponding formulas are
+expressed as follows,
+hjik ¼ arccos
+r2 ij þ r2 ik /C0 r2 jk
+2rijrik
+ !
+ð21Þ
+P hðÞ¼1 N dn hðÞ dh /C2 100% ð22Þ
+where r is the distance between two atoms, n(h) is the number of
+the angle j-i-k at angle range between h and h + Dh within a sphere
+of radius rmin, and N is the total number of the angle j-i-k in the
+sphere, where rmin is the position of the ﬁrst peak valley determined
+by corresponding RDF.
+3. Results and discussion
+3.1. Thermodynamic properties
+3.1.1. Density and thermal expansion coefﬁcient
+The density of molten alkali carbonate Na2CO3 calculated from
+the initial NPT equilibration simulations from 1150 to 1500 K is
+shown in Fig. 2. The simulated density shows negative temperature
+dependence and it is linear, which was in satisfactory agreement
+with the available experimental data [37]. Moreover, the simula-
+tion results are only 5.71% smaller than the experiment value.
+The ﬁtting formula of density from the MD simulation results is
+expressed as follows (R2 = 1.00),
+q ¼ 2:35695 /C0 4:38666 /C2 10/C04T ðgcm/C03Þð23Þ
+The thermal expansion coefﬁcient depending on the density
+changes with temperature as shown in Eq. (3) is calculated in
+Fig. 3 since the value of q and /C0 dq dT
+/C16/C17
+has all been given in Eq.
+(15). The calculated thermal expansion coefﬁcient increases linearly
+with temperature, and the ﬁtting formula is given in Eq. (16)
+(R2 = 1.00). The evaluated value of the thermal expansion coefﬁcient
+at 1236.4 K was 2.42 /C2 10/C04 K/C01, which is 3.79% larger than the
+experiment value of 2.33 /C2 10/C04 K/C01 measured by Ward and Janz
+[38]. Both the thermal expansion coefﬁcient and density calculation
+results are all in good agreement with experimental data available,
+indicating that the evaluated properties from the MD simulations
+were reliable the molten alkali carbonate.
+b ¼ 1:66419 þ 6:09925 /C2 10/C04T ð10/C04 /C1 K/C01Þð24Þ
+Fig. 2. The density of liquid molten Na2CO3.
+44 L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51
+
+--- PAGE 5 ---
+3.1.2. Speciﬁc heat capacity
+The speciﬁc heat capacity of molten alkali carbonate Na2CO3
+determined by the system’s speciﬁc enthalpy with temperature is
+shown in Fig. 4. It could be seen from the ﬁgure that, the speciﬁc
+enthalpy increased linearly with temperature, and the slope,
+namely the speciﬁc heat capacity, is computed to be 1.66 J/C1g/C01/C1K/C01.
+Compared with the experimental data measured by Janz et al. [39],
+the simulation results are in close agreement with the experimen-
+tal data with an error of 3.80%.
+3.1.3. Shear viscosity
+The shear viscosity of molten alkali carbonate Na2CO3 is evalu-
+ated using the EMD and NEMD simulations as described in Sec-
+tion 2.3.3, and the reasonable method is selected, which is
+determined in terms of calculation accuracy.
+In the EMD simulations, the shear viscosity is calculated
+through the time-integration of the stress tensor ACF which can
+be obtained from the resulting correlation proﬁle. The normalized
+stress tensor ACF of liquid molten Na2CO3 at different tempera-
+tures is plotted in Fig. 5, and the calculated shear viscosity by the
+Green-Kubo formula is given in Fig. 6. It can be found that the sim-
+ulated shear viscosity decreases with temperature increasing,
+which is in agreement with the experimental data proposed by
+Janz and Saegusa [40]. Compared with the available experimental
+data, the simulation error of shear viscosity is evaluated to be
+21.79%.
+While in the NEMD simulations, the shear viscosity is
+determined by imposing a constant engineering strain rate on
+Fig. 3. The thermal expansion coefﬁcient of liquid molten Na2CO3.
+Fig. 4. The speciﬁc heat capacity of liquid molten Na2CO3.
+Fig. 5. The normalized stress tensor ACF of liquid molten Na2CO3.
+Fig. 6. The shear viscosity of liquid molten Na2CO3 from the EMD simulations.
+Fig. 7. The velocity gradient of liquid molten Na2CO3.
+L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51 45
+
+--- PAGE 6 ---
+the simulation system. The resulting x-velocity gradient in z direc-
+tion of liquid molten Na2CO3 at different temperatures is shown in
+Fig. 7. It can be seen that the x-velocity is strongly linear, indicating
+the reliability and accuracy of the simulated shear viscosity by
+using this method. Fig. 8 is the simulated shear viscosity from
+1150 to 1450 K, and the shear viscosity decreases with tempera-
+ture increasing, which is in agreement with both the EMD simula-
+tion results and experimental data above. By comparison, the
+NEMD simulation results are more accurate experimental data,
+and the simulation error of the NEMD method is evaluated as
+low as 15.11%. The ﬁtting formula of simulated shear viscosity
+from the NEMD simulations is given as follows (R2 = 1.00).
+g ¼ 13:22440 /C0 0:01394T þ 3:92752 /C2 10/C06T2 ðmPa /C1 sÞð25Þ
+3.1.4. Thermal conductivity
+The thermal conductivity of molten alkali carbonate Na2CO3 is
+evaluated using the EMD and NEMD simulations as described in
+Section 2.3.4, and the simulation results of two methods are com-
+pared with experimental ones in terms of calculation accuracy.
+In the EMD simulations, the thermal conductivity is calculated
+through the time-integration of the heat ﬂux ACF which can be
+obtained from the resulting correlation proﬁle, and the normalized
+heat ﬂux ACF of liquid molten Na2CO3 at different temperatures is
+plotted in Fig. 9. The calculated thermal conductivity by the Green-
+Kubo formula is given in Fig. 10. It can be seen that the simulated
+thermal conductivity decreases with temperature increasing,
+which is in agreement with the experimental data obtained by
+Otsubo et al. [41]. Compared with the available experimental data,
+the simulation error of thermal conductivity is evaluated as high as
+48.33%.
+While in the NEMD simulations, the thermal conductivity is
+determined by imposing a proper temperature difference on the
+simulation system. The resulting temperature gradient in z direc-
+tion of liquid molten Na2CO3 at different temperatures is shown
+in Fig. 11, from which the temperature is strongly linear, indicating
+the reliability and accuracy of the simulated thermal conductivity
+by using this method. Fig. 12 is the simulated thermal conductivity
+from 1150 to 1500 K. The results show that the thermal conductiv-
+ity decreases with temperature increasing, which has a good agree-
+ment with both the EMD simulation results and experimental data
+above. By comparison, the NEMD simulation is more reasonable for
+calculating thermal conductivity, and the simulation error of the
+NEMD method is evaluated as high as22.48%. In addition, the ﬁt-
+ting formula of simulated thermal conductivity from the NEMD
+simulations is given as follows (R2 = 0.99),
+k ¼ 1:00016 /C0 2:22056 /C2 10/C04T ðW /C1 m/C01 /C1 K/C01Þð26Þ
+Fig. 8. The shear viscosity of liquid molten Na2CO3 from the NEMD simulations.
+Fig. 9. The normalized heat ﬂux ACF of liquid molten Na2CO3.
+Fig. 10. The thermal conductivity of liquid molten Na2CO3 from the EMD
+simulations.
+Fig. 11. The temperature gradient of liquid molten Na2CO3.
+46 L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51
+
+--- PAGE 7 ---
+Compared to the EMD method, the NEMD method offers two
+signiﬁcant advantages [42]. Firstly, there is a small temperature
+gradient in the NEMD method. Even the temperature and the den-
+sity vary much over the system, the NEMD method is in the area of
+linear response, as Figs. 7 and 11 shows. But for the EMD method,
+the system may no longer be in the area of linear response. Sec-
+ondly, the convergence of the NEMD method is better than EMD.
+Green-Kubo route is difﬁcult to converge heat ﬂux vector J(t) and
+its autocorrelation function when using EMD method, and it does
+not converge until 0.8 ps in this case.
+3.1.5. Ion transport properties
+The ion self-diffusion coefﬁcient is investigated to study the ion
+transport properties, and the ion self-diffusion coefﬁcient of mol-
+ten alkali carbonate Na2CO3 is calculated from the time-
+dependent MSD according to the Einstein equation as described
+in Section 2.3.5. Fig. 13 shows the MSD of Na+ and CO3 2/C0 in liquid
+molten Na2CO3 from 1150 to 1500 K. As shown in the ﬁgure, the
+MSD curves are not linear until the characteristic time is past,
+and the characteristic time are approximately 0.5 and 1.0 ps for
+Fig. 12. The thermal conductivity of liquid molten Na2CO3 from the NEMD
+simulations.
+Fig. 13. The MSD of liquid molten Na2CO3: (a) Na+; (b) CO3 2/C0.
+Fig. 14. The ion self-diffusion coefﬁcient of liquid molten Na2CO3: (a) Na+; (b) CO3 2/C0.
+L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51 47
+
+--- PAGE 8 ---
+Na+ and CO3 2/C0 separately. Moreover, the slope of the MSD after the
+characteristic time increases with temperature increasing, and the
+slope of Na+ is overall larger than that of CO3 2/C0. Fig. 14 is the ion
+self-diffusion coefﬁcient of liquid molten Na2CO3. It can be
+observed obviously that the simulated ion self-diffusion coefﬁ-
+cients increases linearly with temperature, and the self-diffusion
+coefﬁcients of Na+ are higher than that of CO3 2/C0 at same tempera-
+tures, which are all consistent with the experimental data mea-
+sured by Spedding and Mills [43]. What’s more, the MD
+simulation results in this paper are obviously much closer to the
+experimental values than that work simulated by Tissen and Jans-
+sen [29], which further veriﬁed the accuracy and reliability of the
+MD simulation work conducted in this paper. The ﬁtting formulas
+of the simulated self-diffusion coefﬁcients for Na+ and CO3 2/C0 are
+expressed separately as follows (R2 = 0.99 for Na+, and R2 = 0.96
+for CO3 2/C0),
+DNaþ ¼/C013:90838 þ 0:01583T ð10/C09 /C1 m2 /C1 s/C01Þð27Þ
+Fig. 15. The RDF and coordination number of liquid molten Na2CO3: (a) C-Na; (b) Na-Na; (c) Na-O; (d) C-C; (e) C-O; (f) O-O.
+48 L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51
+
+--- PAGE 9 ---
+DCO2/C0 3 ¼/C09:51940 þ 0:00996T ð10/C09 /C1 m2 /C1 s/C01Þð28Þ
+3.2. Local structures
+3.2.1. Radial distribution functions and coordination number curves
+In order to ﬁnd the temperature dependences of thermody-
+namic properties of molten alkali carbonate Na2CO3 in liquid state
+from the microscopic view, MD simulations on local structures
+were performed from 1150 to 1450 K, with the results of the RDF
+and coordination number curves within the cut-off distance of
+short-range interactions. In addition, the local structures in solid
+state were also simulated at 300 K to discover structure changes
+with temperature in liquid state.
+Fig. 15 shows the RDF and coordination number changes of the
+pairs C-Na, Na-Na, Na-O, C-C, C-O and O-O with temperature for
+describing the local structures. As shown in the ﬁgure, the RDF
+curves in liquid state all tends rapidly to be unity after the second
+neighbour peak, indicating the short-range order and long-range
+disorder as expected in liquid state. The RDF of unlike-atom pair
+C-Na is shown in Fig. 15(a), and the position rmax of the ﬁrst neigh-
+bour peak almost has no change with temperature in liquid state,
+meaning that the distance between Na+ and CO3 2/C0 remains the
+same. While in Fig. 15(b) and (d), the two ﬁrst neighbour peaks
+for the like-atom of pairs Na-Na and C-C shifts to right with tem-
+perature in the RDF curves, which indicates that the distances
+between cations Na+ and anions CO3 2/C0 all increases when the tem-
+perature is increasing. In terms of the coordination number of liq-
+uid molten Na2CO3, the coordination numbers of the pairs
+decreases sharply from solid to liquid state and changes slightly
+in liquid state with temperature. It is concluded that, the increas-
+ing distance between Na2CO3 particles with temperature increases
+the molar volume and diminishes the ability of resistance to shear
+deformation and heat transfer by vibration between ions, which
+accounts for the temperature dependences of thermodynamic
+properties such as shear viscosity and thermal conductivity of liq-
+uid molten alkali carbonate Na2CO3 from the microscopic view.
+In addition, as shown in Fig. 15(e) and (f) for the pairs C-O and
+O-O, the positions rmax of the two ﬁrst neighbour peaks have
+almost no change and the width of the two ﬁrst neighbour peaks
+all increases with temperature in the RDF curves, which indicates
+that both the covalent bond C-O stretching vibration and the
+out-of-plane bending vibration based on C atom of CO3 2/C0 become
+strong with temperature, meaning that the bond energy in the
+covalent bond C-O and the kinetic energy in CO3 2/C0 increases with
+temperature. Besides, the coordination numbers N(rmin) of the
+pairs C-O and O-O are determined to be 3.00 and 2.00 separately
+from the coordination number curves in Fig. 15(e) and (f). Since
+the distance between atoms C and O is evaluated as 1.17 Å and
+the distance between atoms O and O is 1.00 Å from the RDF anal-
+Table 2
+Characteristic parameters of local structures for molten alkali carbonate Na2CO3.
+Parameters T (K) C-Na Na-Na Na-O C-C C-O O-O
+rmax (Å) 300 2.94 2.82 2.19 5.36 1.17 1.00
+1150 2.96 2.91 2.15 5.43 1.17 1.00
+1250 2.96 2.92 2.15 5.44 1.17 1.00
+1350 2.96 2.93 2.15 5.45 1.17 1.00
+1450 2.96 2.94 2.15 5.46 1.17 1.00
+rmin (Å) 300 4.10 3.99 – 6.38 1.28 2.02
+1150 4.10 4.26 – 6.63 1.36 2.24
+1250 4.10 4.30 – 6.66 1.37 2.26
+1350 4.10 4.35 – 6.70 1.38 2.28
+1450 4.10 4.40 – 6.73 1.39 2.29
+N (rmin) 300 7.86 7.03 – 13.77 3.00 2.00
+1150 6.86 7.08 – 12.66 3.00 2.00
+1250 6.78 7.12 – 12.62 3.00 2.00
+1350 6.63 7.14 – 12.38 3.00 2.00
+1450 6.49 7.16 – 12.11 3.00 2.00
+Fig. 16. The ADF of liquid molten Na2CO3: (a) Na-C-Na; (b) O-O-O.
+L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51 49
+
+--- PAGE 10 ---
+ysis, it can be concluded that the atom C is three-coordinated by
+atom O, and the structure of CO3 2/C0 is inferred reasonably to be
+ortho-triangular pyramid from the geometry analysis based on
+the characteristic parameters in CO3 2/C0. The detailed data about
+characteristic parameters of local structures for molten alkali car-
+bonate Na2CO3 are all listed in Table 2.
+3.2.2. Angular distribution functions
+For further analysis of the local structures, the ADF of molten
+alkali carbonate Na2CO3 in liquid state is characterized to study
+the structure of Na2CO3 particle combined with the RDF and coor-
+dination number simulations in Section 3.2.1. Fig. 16 shows the
+Na-C-Na and O-C-O ADF of liquid molten Na2CO3 in liquid state
+along with the solid state at 300 K, and the large angle range indi-
+cates that the angle changes within a certain angle range. As shown
+in Fig. 16(a), the Na-C-Na angle distributes between 30/C176 and 180/C176
+whether in solid state or in liquid state, and there are two peaks
+at about 55/C176 and 100/C176 in the Na-C-Na ADF curves. While the O-C-
+O angle distribution in liquid state is extended to 5-130/C176 from 18
+to 115/C176 in solid liquid, which indicates that the O-C-O angle in liq-
+uid state changes much more ﬁercely than that in solid state.
+Moreover, there is only one main peak in the O-C-O ADF curves
+in liquid state and the O-C-O angle mainly distributed at 50/C176, being
+approximately equal to 50.60/C176 obtained from geometry analysis
+above in Section 3.2.1. It can be concluded that there are two typ-
+ical structures of Na2CO3 particle in liquid molten Na2CO3 as
+shown in Fig. 17 regarding the comprehensive analysis on the
+RDF, coordination number and ADF simulations of Na+ and CO3 2/C0.
+4. Conclusions
+In this paper, thermodynamic properties and local structures of
+molten alkali carbonate Na2CO3 from 1150 to 1500 K were simu-
+lated by means of MD simulations with an effective pair potential
+model, a Born-Mayer type combined with a Coulomb term. The
+simulated thermodynamic properties including the density, ther-
+mal expansion coefﬁcient, speciﬁc heat capacity, shear viscosity,
+thermal conductivity and ion self-diffusion coefﬁcient were all in
+satisfactory agreement with the experimental data available. In
+particular, compared with the EMD simulations, the NEMD simula-
+tion method turned out to be more efﬁcient for calculating the
+shear viscosity and thermal conductivity of molten alkali carbonate
+Na2CO3 in terms of calculation accuracy, and the simulation errors
+of shear viscosity and thermal conductivity were 15.11% and
+22.48%, respectively. From the MD simulation results of local struc-
+tures, the increasing distance between Na2CO3 particles with tem-
+perature increased the molar volume and diminished the ability of
+resistance to shear deformation and heat transfer by vibration
+between ions, accounting for the temperature dependences of
+thermodynamic properties of liquid molten alkali carbonate Na2-
+CO3 from microscopic view. Moreover, the atom C was three-
+coordinated by atom O, and the structure of CO3 2/C0 was inferred rea-
+sonably to be ortho-triangular pyramid. The accuracy and reliabil-
+ity of MD simulation method are veriﬁed for study of local
+structures and thermodynamic properties on molten alkali carbon-
+ates, and this method can be used in future work on other molten
+carbonate salts and their mixtures.
+Conﬂict of interest
+The authors declared that they have no conﬂicts of interest to
+this work.
+Acknowledgements
+This work was supported by the funding of Nature Science
+Foundation of China (U1707603), Nature Science Foundation of
+China (U1507113), Science and Technology Planning Project of
+Guang Dong Province (2015A010106006), Nature Science Founda-
+tion of Guangdong (2016A030313362).
+References
+[1] O. Mahian, A. Kianifar, S.Z. Heris, D. Wen, A.Z. Sahin, S. Wongwises, Nanoﬂuids
+effects on the evaporation rate in a solar still equipped with a heat exchanger,
+Nano Energy 36 (2017) 134–155.
+[2] O. Mahian, A. Kianifar, S.A. Kalogirou, I. Pop, S. Wongwises, A review of the
+applications of nanoﬂuids in solar energy, Int. J. Heat Mass Transfer 57 (2013)
+582–594.
+[3] Q. Peng, J. Ding, X.L. Wei, J.P. Yang, X.X. Yang, Research progress in application
+of molten nitrate salt in energy utilization, Mod. Chem. Ind. 29 (2009) 17–24.
+[4] Y. Lu, G.W. Peng, Z.P. Wang, K.Z. Wang, R.B. Ma, A review on research for
+molten salt as a phase change material, Mater. Rev. 25 (2011) 38–42.
+[5] M. Aneke, M. Wang, Energy storage technologies and real life applications–a
+state of the art review, Appl. Energy 179 (2016) 350–377.
+[6] G.S. Wei, L.J. Xing, X.Z. Du, Y.P. Yang, Research status and selection of phase
+change thermal Energy storage materials for CSP systems, Proc. CSEE 34 (2014)
+325–335.
+[7] X.Y. Shen, J. Ding, Q. Peng, J.P. Yang, Application of high temperature molten
+salt to solar thermal power, Guangdong Chem. Ind. 34 (2007) 49–52.
+[8] Y.T. Wu, N. Ren, C.F. Ma, Research and application of molten salts for sensible
+heat storage, Energy Storage Sci. Technol. 2 (2013) 586–592.
+Fig. 17. Typical structures of liquid molten Na2CO3.
+50 L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51
+
+--- PAGE 11 ---
+[9] K. Vignarooban, X. Xu, A. Arvay, K. Hsu, A.M. Kannan, Heat transfer ﬂuids for
+concentrating solar power systems–a review, Appl. Energy 146 (2015) 383–396.
+[10] J.P. da Cunha, P. Eames, Thermal energy storage for low and medium
+temperature applications using phase change materials–a review, Appl.
+Energy 177 (2016) 227–238.
+[11] Q. Peng, J. Ding, X.L. Wei, J.P. Yang, X.X. Yang, The preparation and properties of
+multi-component molten salts, Appl. Energy 87 (2010) 2812–2817.
+[12] Q. Peng, X.X. Yang, J. Ding, X.L. Wei, J.P. Yang, Design of new molten salt
+thermal energy storage material for solar thermal power plant, Appl. Energy
+112 (2013) 682–689.
+[13] A.G. Fernández, S. Ushak, H. Galleguillos, F.J. Pérez, Development of new
+molten salts with LiNO3 and Ca(NO3)2 for energy storage in CSP plants, Appl.
+Energy 119 (2014) 131–140.
+[14] V.M.B. Nunes, C.S. Queirós, M.J.V. Lourenço, F.J.V. Santos, C.N. de Castro, Molten
+salts as engineering ﬂuids–a review: part I. Molten alkali nitrates, Appl. Energy
+183 (2016) 603–611.
+[15] Q. Peng, X.X. Yang, J. Ding, X.L. Wei, J.P. Yang, Experimental study and
+mechanism analysis for high-temperature thermal stability of ternary nitrate
+salt, CIESC J. 64 (2013) 1507–1512.
+[16] M. Liao, X.L. Wei, J. Ding, B.H. Hu, Q. Peng, Preparation and experimental
+investigation for LNK carbonate molten salts, Acta Energy Sol. Sin. 31 (2010)
+863–867.
+[17] L.X. Sang, M. Cai, N. Ren, Y.T. Wu, Study on modiﬁcation of ternary carbonates
+with additives, Energy Procedia 69 (2015) 1023–1028.
+[18] T. Wang, D. Mantha, R.G. Reddy, Novel low melting point quaternary eutectic
+system for solar thermal energy storage, Appl. Energy 102 (2013) 1422–1429.
+[19] F. Lantelme, P. Turq, B. Quentrec, J.W. Lewis, Application of the molecular
+dynamics method to a liquid system with long range forces (Molten NaCl),
+Mol. Phys. 28 (1974) 1537–1549.
+[20] M. Dixon, M.J.L. Sangster, A comparison of the structure and some dynamical
+properties of molten rubidium halides, J. Phys. C: Solid State Phys. 9 (1976)
+3381–3390.
+[21] M. Dixon, M.J.L. Sangstee, Molten rubidium chloride a molecular dynamics
+study, Phil. Mag. 35 (1977) 1049–1061.
+[22] M. Dixon, M.J.L. Sangster, Computer simulation study of the structural
+properties of molten caesium halides, J. Phys. C: Solid State Phys. 10 (1977)
+3015–3022.
+[23] N. Galamba, C.A. Nieto de Castro, J.F. Ely, Molecular dynamics simulation of the
+shear viscosity of molten alkali halides, J. Phys. Chem. B 108 (2004) 3658–3662.
+[24] N. Galamba, C.A.N. de Castro, J.F. Ely, Thermal conductivity of molten alkali
+halides from equilibrium molecular dynamics simulations, J. Chem. Phys. 120
+(2004) 8676–8682.
+[25] N. Galamba, C.A.N. de Castro, J.F. Ely, Shear viscosity of molten alkali halides
+from equilibrium and nonequilibrium molecular-dynamics simulations, J.
+Chem. Phys. 122 (2005) 224501.
+[26] N. Galamba, C.A.N. de Castro, J.F. Ely, Equilibrium and nonequilibrium
+molecular dynamics simulations of the thermal conductivity of molten alkali
+halides, J. Chem. Phys. 126 (2007) 204511.
+[27] J. Wang, Z. Sun, G.M. Lu, J.G. Yu, Molecular dynamics simulations of the local
+structures and transport coefﬁcients of molten alkali chlorides, J. Phys. Chem.
+B 118 (2014) 10196–10206.
+[28] J. Wang, J. Wu, Z. Sun, J.G. Yu, Molecular dynamics study of the transport
+properties and local structures of molten binary systems (Li, Na)Cl, (Li, K)Cl
+and (Na, K)Cl, J. Mol. Liq. 209 (2015) 498–507.
+[29] J.T.W.M. Tissen, G.J.M. Janssen, Molecular-dynamics simulation of molten
+alkali carbonates, Mol. Phys. 71 (1990) 413–426.
+[30] F.G. Fumi, M.P. Tosi, Ionic sizes and born repulsive parameters in the NaCl-type
+alkali halides—I: the Huggins-Mayer and Pauling forms, J. Phys. Chem. Solids
+25 (1964) 31–43.
+[31] M.P. Tosi, F.G. Fumi, Ionic sizes and born repulsive parameters in the NaCl-type
+alkali halides—II: the generalized Huggins-Mayer form, J. Phys. Chem. Solids
+25 (1964) 45–52.
+[32] G.J.M. Janssen, J. Tissen, Pair potentials from ab initio calculations for use in
+MD simulations of molten alkali carbonates, Mol. Simulat. 5 (1990) 83–98.
+[33] I.P. Swainson, M.T. Dove, M.J. Harris, Neutron powder diffraction study of the
+ferroelastic phase transition and lattice melting in sodium carbonate, Na2CO3,
+J. Phys. Condens. Matter 7 (1995) 4395–4417.
+[34] R.W. Hockney, J.W. Eastwood, Computer Simulation using Particles, Adam
+Hilger, New York, 1989.
+[35] G.A. Fernandez, J. Vrabec, H. Hasse, A molecular simulation study of shear and
+bulk viscosity and thermal conductivity of simple real ﬂuids, Fluid Phase
+Equilibr. 221 (2004) 157–163.
+[36] S.H. Lee, Molecular dynamics simulation study of the transport properties of
+liquid argon: the Green-Kubo formula revisited, B Korean Chem. Soc. 28 (2007)
+1371–1374.
+[37] G.J. Janz, M.R. Lorenz, Molten carbonate electrolytes: physical properties,
+structure, and mechanism of electrical conductance, J. Electrochem. Soc. 108
+(1961) 1052–1058.
+[38] G.J. Janz, Molten Salts Handbook, Elsevier, 2013, p. 250.
+[39] G.J. Janz, E. Neuenschwander, F.J. Kelly, High-temperature heat content and
+related properties for Li2CO3,Na2CO3,K2CO3, and the ternary eutectic mixture,
+Trans. Faraday Soc. 59 (1963) 841–845.
+[40] G.J. Janz, F. Saegusa, Molten carbonates as electrolytes: viscosity and transport
+properties, J Electrochem Soc. 110 (1963) 452–456.
+[41] S. Otsubo, Y. Nagasaka, A. Nagashima, Experimental study on the forced
+rayleigh scattering method using CO2 laser (3rd Report, Measurement of
+molten single carbonates and their binary and ternary mixtures), B H/T Jpn.
+Soc. Mech. Eng. 64 (1998) 806–813.
+[42] F. Müllerplathe, A simple nonequilibrium molecular dynamics method for
+calculating the thermal conductivity, J. Chem. Phys. 106 (14) (1998) 6082–
+6085.
+[43] P.L. Spedding, R. Mills, Trace-ion diffusion in molten alkali carbonates, J.
+Electrochem. Soc. 112 (1965) 594–599.
+L. Du et al. / International Journal of Heat and Mass Transfer 131 (2019) 41–51 51

@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {"type": "string", "enum": ["complete", "incomplete", "blocked"]},
+    "summary": {"type": "string"},
+    "completed_deliverables": {"type": "array", "items": {"type": "string"}},
+    "remaining_work": {"type": "array", "items": {"type": "string"}},
+    "validation": {"type": "string"},
+    "needs_user_input": {"type": "boolean"}
+  },
+  "required": ["status", "summary", "completed_deliverables", "remaining_work", "validation", "needs_user_input"],
+  "additionalProperties": false
+}

@@ -1,0 +1,110 @@
+{
+  "file": "dumpr.lammpstrj",
+  "size_bytes": 7817235449,
+  "size_GiB": 7.280367844738066,
+  "inspection_scope": "Three initial frames, one frame near each quarter byte offset, and final frame. No full-file integrity scan.",
+  "sampled_steps": [
+    0,
+    10,
+    20,
+    25010,
+    50010,
+    75010,
+    100000
+  ],
+  "initial_step_intervals": [
+    10,
+    10
+  ],
+  "first_step": 0,
+  "last_step": 100000,
+  "expected_frames_if_uniform_and_complete": 10001,
+  "sampled_atom_counts": [
+    8232,
+    8232,
+    8232,
+    8232,
+    8232,
+    8232,
+    8232
+  ],
+  "sampled_unique_atom_ids": [
+    8232,
+    8232,
+    8232,
+    8232,
+    8232,
+    8232,
+    8232
+  ],
+  "first_frame_molecule_count": 2744,
+  "first_frame_molecule_sizes": {
+    "3": 2744
+  },
+  "first_frame_type_counts": {
+    "2": 2744,
+    "1": 5488
+  },
+  "first_frame_molecule_type_patterns": {
+    "1,1,2": 2744
+  },
+  "box_header": "ITEM: BOX BOUNDS pp pp pp",
+  "first_frame_bounds": [
+    [
+      2.7408619096518514,
+      46.25913809035197
+    ],
+    [
+      2.7408619096518514,
+      46.25913809035197
+    ],
+    [
+      2.7408619096518514,
+      46.25913809035197
+    ]
+  ],
+  "first_frame_box_lengths": [
+    43.51827618070011,
+    43.51827618070011,
+    43.51827618070011
+  ],
+  "sampled_bounds_identical": true,
+  "columns": [
+    "id",
+    "mol",
+    "type",
+    "x",
+    "y",
+    "z",
+    "vx",
+    "vy",
+    "vz",
+    "fx",
+    "fy",
+    "fz"
+  ],
+  "geometry_if_type2_is_O_type1_is_H": {
+    "bond_min_in_dump_length_units": 0.9998885137854098,
+    "bond_max_in_dump_length_units": 1.0001257170976061,
+    "bond_mean_in_dump_length_units": 1.0000005030375794,
+    "angle_mean_degrees": 109.46992135400254,
+    "angle_min_degrees": 109.45952334358613,
+    "angle_max_degrees": 109.48227348811007
+  },
+  "not_encoded_or_not_verified": [
+    "LAMMPS unit style",
+    "integration timestep",
+    "water force field",
+    "partial charges and virtual sites",
+    "temperature",
+    "thermostat and ensemble",
+    "electrostatics and dielectric boundary condition",
+    "equilibration cutoff",
+    "complete frame count and cadence",
+    "full-file integrity",
+    "phase and spatial homogeneity",
+    "dump group and atoms excluded from the dump"
+  ],
+  "inference": "2744 three-site molecules with two type-1 and one type-2 atoms each are consistent with water; chemistry and unit mapping require simulation metadata.",
+  "geometry_model_note": "If lengths are angstroms, first-frame bond lengths near 1.0 and angle near 109.47 degrees are consistent with SPC/SPC/E geometry, but do not establish charge parameters or force-field identity."
+}

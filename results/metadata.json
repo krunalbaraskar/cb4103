@@ -1,0 +1,147 @@
+{
+  "source": {
+    "path": "F:\\Sem 7\\CB4103\\PROJECT\\dumpr.lammpstrj",
+    "size_bytes": 7817235449,
+    "mtime_ns": 1794652714326446300
+  },
+  "config": {
+    "trajectory": "dumpr.lammpstrj",
+    "cache": "cache",
+    "expected_frames": 10001,
+    "expected_atoms": 8232,
+    "expected_molecules": 2744,
+    "expected_first_step": 0,
+    "expected_last_step": 100000,
+    "expected_cadence": 10,
+    "hydrogen_type": 1,
+    "central_type": 2,
+    "bond_range": [
+      0.8,
+      1.2
+    ],
+    "angle_range_degrees": [
+      95,
+      120
+    ],
+    "spatial_bins": 24,
+    "molecule_batch": 64,
+    "max_lag_frames": 1000,
+    "blocks": 4,
+    "cutoff_steps": [
+      1000,
+      2500,
+      5000,
+      7500,
+      10000
+    ],
+    "fit_window_steps": [
+      100,
+      2500
+    ],
+    "discard_frames": 0,
+    "assumption": "type-2 center and two type-1 satellites form water-like molecules; identical constant dipoles follow normalized MIC bond-vector sum",
+    "integration_timestep": null,
+    "unit_style": null,
+    "temperature": null,
+    "water_model": null,
+    "dump_group_is_full_system": null
+  },
+  "frames": 10001,
+  "molecules": 2744,
+  "atoms": 8232,
+  "columns": [
+    "id",
+    "mol",
+    "type",
+    "x",
+    "y",
+    "z",
+    "vx",
+    "vy",
+    "vz",
+    "fx",
+    "fy",
+    "fz"
+  ],
+  "source_content_fingerprint": "77e78879e761fad07649afba2b04f73f238c5158e6523c49194f81dccfae9888",
+  "fingerprint_convention": "SHA256 of concatenated 64-byte ASCII SHA256 hashes of each complete raw frame in order; frame_sha256.npy stores individual hashes",
+  "first_step": 0,
+  "last_step": 100000,
+  "cadence": 10,
+  "complete_eof": true,
+  "all_frames_headers_membership_finite_geometry_cadence_validated": true,
+  "cache_dtype": "float32",
+  "accumulation_dtype": "float64",
+  "unit_of_lag": "simulation steps",
+  "geometry_columns": [
+    "bond_min",
+    "bond_max",
+    "bond_mean",
+    "bond_std",
+    "angle_min_deg",
+    "angle_max_deg",
+    "angle_mean_deg",
+    "angle_std_deg",
+    "bisector_magnitude_mean",
+    "bisector_magnitude_std",
+    "mic_molecule_fraction",
+    "bisector_magnitude_min",
+    "bisector_magnitude_max"
+  ],
+  "geometry": {
+    "bond_min": 0.9998390470470719,
+    "bond_max": 1.000158737401214,
+    "bond_mean": 1.0000001808177914,
+    "angle_min_degrees": 109.45584966916691,
+    "angle_max_degrees": 109.48449341074995,
+    "angle_mean_degrees": 109.46997918380214,
+    "bisector_magnitude_min": 1.1544352991831088,
+    "bisector_magnitude_max": 1.1550038787813617,
+    "mean_mic_molecule_fraction": 0.061006800194616115
+  },
+  "box_lengths_min": [
+    43.51827618070011,
+    43.51827618070011,
+    43.51827618070011
+  ],
+  "box_lengths_max": [
+    43.51827618070011,
+    43.51827618070011,
+    43.51827618070011
+  ],
+  "assumptions": [
+    "type-2 center and two type-1 satellites form water-like molecules; identical constant dipoles follow normalized MIC bond-vector sum",
+    "Geometric orientation proxy, not proven physical dipoles or force-field provenance"
+  ],
+  "unknown_metadata": {
+    "water_model": null,
+    "integration_timestep": null,
+    "unit_style": null,
+    "temperature": null,
+    "ensemble": null,
+    "charges": null,
+    "electrostatics": null,
+    "dump_group_is_full_system": null,
+    "equilibration_cutoff": null
+  },
+  "resources": {
+    "disk_free_bytes": 15213821952,
+    "ram_total_bytes": 16366567424,
+    "ram_available_bytes": 4338024448
+  },
+  "python": "3.12.16 (main, Nov 11 2026, 00:20:04) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19044-SP0",
+  "completed_utc": "2026-11-15T02:25:29.703769+00:00",
+  "elapsed_conversion_this_pass_seconds": 301.70308019999356,
+  "software_versions": {
+    "corsmor": "1.0.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "pytest": "9.2.0",
+    "reportlab": "5.1.0",
+    "python-pptx": "1.0.2",
+    "pymupdf": "2.1",
+    "psutil": "7.2.2"
+  }
+}

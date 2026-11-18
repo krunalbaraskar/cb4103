@@ -1,0 +1,130 @@
+{
+  "overall_pass": true,
+  "checks": {
+    "pytest_passed_no_skips": true,
+    "full_data_integrity_and_eof": true,
+    "source_unchanged_since_scan": true,
+    "all_frame_fingerprints_present": true,
+    "frame_fingerprint_aggregate": true,
+    "full_cache_shape_dtype": true,
+    "actual_frame_cadence_and_range": true,
+    "csv_finite_all_columns": true,
+    "csv_origin_counts": true,
+    "lag_axis_actual_cadence": true,
+    "ordinary_smor_zero_lag": true,
+    "connected_and_collective_zero_lag": true,
+    "full_decomposition_all_lags": true,
+    "factor_and_initial_amplitudes": true,
+    "actual_cache_direct_and_explicit_pairs": true,
+    "unit_vector_norms": true,
+    "all_spatial_count_totals": true,
+    "physical_unknowns_preserved": true,
+    "unresolved_full_times_not_invented": true,
+    "required_sensitivity_analysis": true,
+    "required_artifacts": true,
+    "eight_real_figure_families": true,
+    "figures_readable_dimensions": true,
+    "report_pages_nonempty": true,
+    "editable_powerpoint_with_notes": true,
+    "slide_layout_no_text_overflow": true,
+    "report_measured_factor_matches_summary": true,
+    "source_compiles": true
+  },
+  "commands": [
+    {
+      "counts": {
+        "tests": 24,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "command": "\"F:\\Sem 7\\CB4103\\PROJECT\\.venv\\Scripts\\python.exe\" -m pytest -q -ra --junitxml=results/pytest.xml",
+      "exit_code": 0,
+      "elapsed_seconds": 1.1111363999953028,
+      "summary": "24 passed in 0.72s",
+      "source_digest": "011d7fc14a38801b347de5e29397b75997654f28128d6f5a8432e0eb4582b08d",
+      "output_file": "results/pytest.log",
+      "completed_utc": "2026-11-15T02:35:16.289448+00:00"
+    },
+    {
+      "command": "\"F:\\Sem 7\\CB4103\\PROJECT\\.venv\\Scripts\\python.exe\" -m compileall -q src tests",
+      "exit_code": 0,
+      "output_file": "results/compile.log"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m corsmor.cli convert --config config/analysis.json",
+      "exit_code": 0,
+      "output_file": "results/conversion.log",
+      "complete_frames": 10001
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m corsmor.cli analyze --config config/analysis.json",
+      "exit_code": 0,
+      "output_file": "results/analysis.log",
+      "actual_checks": "results/numerical_checks.json"
+    }
+  ],
+  "numerical_checks": {
+    "actual_cache_subset_frames": 128,
+    "actual_cache_subset_molecules": 24,
+    "fft_direct_max_abs_error": {
+      "smor": 2.220446049250313e-16,
+      "connected_self": 1.1102230246251565e-16,
+      "cor": 1.1102230246251565e-16,
+      "collective_self": 2.220446049250313e-16,
+      "collective_cross": 3.3306690738754696e-16,
+      "uncentered_collective": 3.3306690738754696e-16
+    },
+    "explicit_pair_subset_frames": 32,
+    "explicit_pair_subset_molecules": 8,
+    "explicit_ordered_cross_pair_max_abs_error": 4.440892098500626e-16,
+    "tolerance": 1e-10,
+    "overall_pass": true
+  },
+  "test_summary": "24 passed in 0.72s",
+  "source_digest": "011d7fc14a38801b347de5e29397b75997654f28128d6f5a8432e0eb4582b08d",
+  "physical_metadata_established": false,
+  "physical_full_relaxation_converged": false,
+  "material_scientific_limitations": [
+    "Force field, unit style, integration timestep, charges, temperature, ensemble and dump-group completeness are unavailable.",
+    "Normalized bisectors are identical-dipole geometric proxies; nearly rigid geometry does not prove physical charge-site provenance.",
+    "All lags, fitted scales and truncated integrals are in simulation steps; no ps conversion or dielectric constant is justified.",
+    "Full relaxation integrals are not certified converged. Fits describe specified windows and correlated residuals have no IID confidence interval.",
+    "Four temporal blocks give variation, not a calibrated confidence interval. Collective signal has one summed vector per frame.",
+    "Molecular and collective finite-sample mean subtraction can bias long-lag correlations; alternative centering and segments are shown.",
+    "Spatial profiles and orientation traces cannot establish temperature/energy equilibration without simulation logs.",
+    "Finite-cell factor B(0)/A(0) uses molecular time-mean centering and is not automatically a macroscopic Kirkwood factor.",
+    "Trajectory may be a selected atom group; no bulk-water, droplet, substrate or hydrate identity is established."
+  ],
+  "artifact_inspection": {
+    "report_pages": 9,
+    "planned_content_pages": 9,
+    "report_page_text_lengths": [
+      2148,
+      1853,
+      2343,
+      1363,
+      1329,
+      1736,
+      1432,
+      2945,
+      2813
+    ],
+    "representative_report_previews": [
+      "reports\\previews\\report_page_01.png",
+      "reports\\previews\\report_page_03.png",
+      "reports\\previews\\report_page_05.png",
+      "reports\\previews\\report_page_06.png",
+      "reports\\previews\\report_page_09.png"
+    ],
+    "slides": 14,
+    "slide_text_overflows": [],
+    "editable_text_shapes": 130,
+    "slide_layout_preview_pages": 14,
+    "slide_preview_file": "reports/presentation_layout_preview.pdf",
+    "native_powerpoint_render_available": false,
+    "presentation_preview_note": "Companion PDF renders the same editable slide text/image geometry; it is a layout preview, not a native PowerPoint rendering."
+  },
+  "validation_meaning": "Numerical implementation, complete input audit and required artifacts passed; physical provenance and relaxation convergence are independently unresolved.",
+  "completed_utc": "2026-11-15T02:35:16.441994+00:00"
+}

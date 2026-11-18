@@ -1,0 +1,623 @@
+--- PAGE 1 ---
+Journal of Physics: Condensed
+Matter
+     
+PAPER
+HTR+: a novel algorithm for identifying type and
+polycrystal of gas hydrates
+To cite this article: Qiao Shi et al 2024 J. Phys.: Condens. Matter 36 365901
+ 
+View the article online for updates and enhancements.
+You may also like
+Innovative multi-site
+photoplethysmography measurement and
+analysis demonstrating increased arterial
+stiffness in paediatric heart transplant
+recipients
+Emma J Sharkey, Costanzo Di Maria,
+Annette Klinge et al.
+-
+Sources of income from HTR areas in
+Boalemo: no single policy for improving
+welfare of the communities
+A P Suka, Surati, D R Kurniasari et al.
+-
+A PC-based high temperature gas reactor
+simulator for Indonesian conceptual HTR
+reactor basic training
+Syarip and L C C Po
+-
+This content was downloaded from IP address 14.139.194.113 on 12/07/2024 at 09:47
+
+--- PAGE 2 ---
+Journal of Physics: Condensed Matter
+J. Phys.: Condens. Matter 36 (2024) 365901 (8pp) https://doi.org/10.1088/1361-648X/ad52df
+HTR+: a novel algorithm for identifying
+type and polycrystal of gas hydrates
+Qiao Shi1, Ziyan Lin1,3, Yongxiao Qu1, Jianyang Wu1,2,∗ and Zhisen Zhang1,∗
+1 Department of Physics, Research Institute for Biomimetics and Soft Matter, Jiujiang Research Institute
+and Fujian Provincial Key Laboratory for Soft Functional Materials Research, Xiamen University,
+Xiamen 361005, People’s Republic of China
+2 NTNU Nanomechanical Lab, Norwegian University of Science and Technology (NTNU), Trondheim
+7491, Norway
+E-mail: jianyang@xmu.edu.cn and zhangzs@xmu.edu.cn
+Received 22 February 2024, revised 25 April 2024
+Accepted for publication 31 May 2024
+Published 10 June 2024
+Abstract
+In this work, the hierarchical topology ring (HTR+) algorithm, an extension of the HTR
+algorithm, was developed for identifying gas hydrate types, cage structures, and grain
+boundaries (GBs) within polycrystalline structures. Utilizing molecular dynamics trajectories of
+polycrystalline hydrates, the accuracy of the HTR+ algorithm is validated in identifying sI, sII
+and sH hydrate types, hydrate grains, and GBs in multi-hydrate polycrystals, as well as clathrate
+cages at GBs. Additionally, during the hydrate nucleation and growth processes, clathrate cages,
+hydrate type, hydrate grains and ice structures are accurately recognized. Significantly, this
+algorithm demonstrates high efficiency, particularly for large hydrate systems. HTR+ algorithm
+emerges a powerful tool for identifying micro/mesoscopic structures of gas hydrates, enabling
+an in-depth understanding of the formation mechanisms and properties of gas hydrates.
+Supplementary material for this article is available online
+Keywords: gas hydrates, molecular dynamic, structural recognition algorithm, polycrystals,
+grain boundary
+1. Introduction
+Gashydratesaresolidstructurescomposedofwatermolecules
+forming clathrate cages through hydrogen (H–) bonding with
+guest molecules trapped inside. They commonly occur in
+harsh environments like seafloor sediments, arctic regions,
+and permafrost [1–3]. Their formation is promoted by high
+pressure and low temperature conditions [4–6]. Gas hydrates
+exhibit three common structures: sI, sII, and sH [7]. In natural
+settings, the most prevalent form of clathrate hydrate is struc-
+tural I (sI), with methane hydrate being the most significant
+within this category [7]. Given methane’s importance as nat-
+3 Z Lin contributed equally to this manuscript.
+∗
+Authors to whom any correspondence should be addressed.
+ural gas resource, natural gas hydrates play a crucial role in
+energy technology [8–10], environmental issues, and climate
+concerns[11–15].Furthermore,Gashydratesbeingassociated
+with important fields such as greenhouse gas storage [16–19],
+energy gas storage [20], and antifreeze proteins [21–23].
+Studiesonthethermodynamic,kinetic,andmechanicalstabil-
+ity of gas hydrates drawing attention from academia, industry,
+and government.
+Gas hydrates, forming in both natural and laboratory set-
+tings,exhibitice-basedcompoundswithpolycrystallinestruc-
+ture due to multiple nucleation sites, necessitating a com-
+prehensive understanding of this structural arrangement [24].
+However,duetothelackofnanoscalevisualizationtechniques
+for gas hydrate samples, the microstructures underlying poly-
+crystalline gas hydrates remain poorly unknown yet. While
+progress has been made in comprehending the impact of grain
+1 © 2024 IOP Publishing Ltd
+
+--- PAGE 3 ---
+J. Phys.: Condens. Matter 36 (2024) 365901 Q Shi et al
+size on nanoscale polycrystalline hydrates, research on the
+influence of hydrate grain types, size variations, and grain
+boundary (GB) structures on the behavior of polycrystalline
+gas hydrates is lacking. Consequently, molecular dynamics
+(MD) simulations have become indispensable for investigat-
+ing the formation mechanisms, thermodynamic and mechan-
+ical properties of hydrates at the nanoscale [8, 25–31]. In MD
+simulations, the identification of the microstructures of water-
+based structures such as clathrate cages is critical for under-
+standing the fundamental properties.
+As a result, several algorithms for identifying clathrate
+cages have been proposed. For instance, Guo et al intro-
+duced the face saturated incomplete cage analysis (FSICA)
+algorithm [32, 33] Nguyen and Molinero [34] developed the
+CHILL+ algorithm. Mahmoudinobar and Dias proposed the
+GRADE algorithm [35]. Hao et al presented the iterative
+cup overlap (ICO) algorithm [36]. Lauricella et al devised a
+method for identifying cage-like structures by searching for
+water molecules centered on guest molecules [31]. Recently,
+the hierarchical topology ring (HTR) algorithm [37] was
+developed by Liu et al which has the following advant-
+ages compared with other hydrate identification algorithms;
+(1) unlike other algorithms that are difficult to handle large
+systems, the HTR algorithm can efficiently process large
+data sets by slicing the hydrate system and identifying the
+cages within these segments. The detailed process of identi-
+fying rings and cages through an optimized hierarchical topo-
+logy method is the key to their high accuracy and effi-
+ciency. This approach significantly improves the perform-
+ance of the algorithm in systems with a large number of
+water molecules, maintaining high accuracy without consum-
+ing a large amount of computational resources. (2) HTR is
+the only algorithm that can identify all types of intact cages,
+including topological isomers, and this comprehensive iden-
+tification capability is essential for detailed hydrate structure
+analysis.
+Thesealgorithms,however,canonlyidentifyclathratecage
+structures or cage clusters; they are not capable of identify
+hydrate types. Given that gas hydrates are polycrystalline
+nature, the identification of hydrate types and GBs is cru-
+cial for studying hydrate nucleation and growth, structural
+transformations, evolution of GBs, structural destabilizations,
+and dissociations of polycrystalline gas hydrates [38–41].
+Therefore, it is vital to develop an algorithm for hydrate type
+and polycrystalline hydrate identifications.
+In this study, we developed the HTR-based polymorphic
+hydrate identification algorithm, namely HTR+ algorithm.
+HTR+ enablestheidentificationofhydratetypes,notjustcage
+types. It includes the differentiation of grains in polycrystal-
+line gas hydrates, the determination of GBs, and the identi-
+fication of cages and ice structures at GBs. Additionally, the
+HTR+ algorithm possesses an efficiency advantage in identi-
+fyingpolycrystallinestructuresduetoitsoptimizationoflarge
+systems.Thisadvantageisparticularlyprominentinpolycrys-
+talline hydrate systems, which are larger than general nucle-
+ationmodelstoensureanadequatenumberofgrainsandgrain
+sizes.
+2. Principles of the HTR+ algorithm
+Intherealmofgashydrate,sI,sII,andsHareprevalenthydrate
+types. These types of gas hydrates are uniquely distinguished
+by specific cages: 51262 for sI hydrates, 51264 for sII hydrates,
+and 51268 for sH hydrates. Consequently, the unique topology
+of these three cages enables the determination of the hydrate
+type.Theprocessofidentifyinghydratetypesinvolvesthefol-
+lowing four steps, elucidated using sI hydrates as an example:
+(I) applying the HTR algorithm to detect and record informa-
+tion about all cage structures, including water molecule data
+and the center of mass coordinates of each cage in a data-
+base; (II) choosing two adjacent 51262 cages (sharing rings)
+as starting points for topology, identifying all cages adjacent
+to both these cages (sharing rings), and expanding the topo-
+logical arrangement for sI hydrates. This expansion involves
+transitioning from two 51262 cages to encompass two 51262
+cages and four 512 cages; (III) validating whether the found
+cages conform to the cage arrangement pattern of sI hydrates.
+If conformity is established, the two 51262 cages are labeled
+for topology and the neighboring cages as sI hydrates in the
+cage database; (IV) initiating from the expanded two 51262
+cages, followed by identifying another adjacent 51262 cages,
+and repeating steps (II) and (III). These specific steps are out-
+lined in figure 1.
+The HTR algorithm possesses the capability to identify
+cages and extract details, including water molecule IDs,
+coordinates of the cage center of mass, guest molecules, and
+surrounding rings within the cages. This capability facilit-
+ates the topology identification of hydrate structures based
+on cages. In figure 2, guest molecules are green-rendered,
+while water molecules represented with coarse-graining are
+red-painted. The coordinate axes in the lower left corner of
+each sub-figure indicate the three-dimensional orientation of
+the cage. First, an analysis of sI-type hydrate recognition is
+conducted on the basis of structural topology of figure 2(a-
+sI). In figure 2(a-sI), three connected cages are illustrated, in
+which two cages on the right serving as adjacent upper and
+lower 51262 cages. These two cages function as the starting
+point for cage topology. Based on the hydrate’s structure, it
+becomes evident that the adjacent rings of these two cages
+can be uniquely positioned on a distinct cage. Consequently,
+in figure 2(a-sI), the adjacent yellow rings allow identification
+oftheuniquecage.Multiplesetsofadjacentringsbetweenthe
+two neighboring cages are also evident, implying that the two
+adjacent 51262 cages can topologically recognize six cages.
+Figure 2(b-sI) shows the top-down view of six cages con-
+nected through multiple sets of adjacent rings in figure 2(a-
+sI), in which the connected bonds of 51262 and 512 cages
+are blue- and yellow-rendered for clarification, respectively.
+Here, the 51262 and 512 cages are denoted with ‘0’ and ‘1’
+in HTR+ algorithm, respectively. As a result, the sI-type
+hydrate’s topological structure (figure 2(a-sI)) is marked as
+‘001001’ arrangement. Following, two another 51262 cages
+are identified through the abovementioned procedure with the
+two recognized 51262 cages serving as the starting point of the
+topology.
+2
+
+--- PAGE 4 ---
+J. Phys.: Condens. Matter 36 (2024) 365901 Q Shi et al
+Figure 1. Overall flow chart of the polycrystalline hydrate identification algorithm.
+Figure 2. Principles of topological identification of sI, sII and sH hydrates.
+3
+
+--- PAGE 5 ---
+J. Phys.: Condens. Matter 36 (2024) 365901 Q Shi et al
+For sII-type hydrates that are illustrated in figure 2(a-sII),
+thebondsinlarge51264 cagesarewhite-painted.Whensixsets
+of adjacent rings connecting two neighboring 51264 cages are
+identified to be six 512 cages, thereby this topological struc-
+ture is recognized as sII-type hydrate, in which two 51264 and
+six 512 cages are marked. sII-type hydrate is not able to be
+topologicallyrecognizedusingtwo51262 cages,differingfrom
+sI-typehydrate.Therefore,thesearchcontinuesforotheradja-
+cent51264 cageslinkedtotheinitialtwo51264 cagestoachieve
+further structure recognition.
+sH-type hydrate differs from sI- and sII-type ones. Large
+51268 cages in sH-type hydrate are not fully adjacent. As illus-
+trated in figure 2(b-sH), the bonds of the 51268 cages are
+white-painted, demonstrating that two 51268 cages are separ-
+ated. Consequently, the topology of cages in sH-type hydrates
+differs from that in sI and sII hydrates. However, thanks to
+its unique arrangement of clathrate cages, sH-type hydrate is
+identified. For example, as indicated in figure 2(a-sH), six 512
+cages are topologically recognized by two 51268 cages, while
+six 435663 cages can be topologically identified by 51268 and
+512cages. In addition, two 51268 cages are linked through two
+adjacent 435663 cages.
+3. Features by HTR+
+Currently, the algorithms of recognition of hydrate structures
+mainly focus on the clathrate cages, including the number
+of cages, and the size of cage clusters during nucleation.
+However, the microstructures such as hydrate type, grains size
+and GBs in polycrystalline hydrates are not identified by these
+algorithms, but can be identified by our HTR+ algorithm. In
+order to assess the feasibility and accuracy of identification
+of hydrate types by our HTR+ algorithm, three-dimensional
+polycrystalline model of methane hydrate was constructed as
+depictedinfigure3(a).Themodeliscomposedof27970water
+molecules. It consists of five crystalline grains of methane
+hydrate. Among them, the red, pink and orange crystalline
+grains belong to sI type of clathrate hydrates; In which the
+green and blue crystalline grains belong to sII and sH type
+of clathrate hydrates, respectively. In figure 3(a) left image,
+crystalline grains are differently rendered, where crystalline
+grains belonging to the same hydrate type are not able to dif-
+ferentiate. Figure 3(a) right image shows the configuration of
+as-constructed polycrystalline model of methane hydrate that
+is identified using our HTR+ algorithm. For clarification, sI-,
+sII- and sH-type hydrates are red-, green- and blue-painted,
+respectively. In comparison with figure 3(a) left image, the
+five grains are clearly identified and occupy the identical posi-
+tions in the model. In figure 3(a) right image, the water and
+guest methane molecules located at GBs are grey-rendered
+because they do not belong to any type of the three hydrate
+types. GBs separating neighboring hydrate grains that belong
+to identical hydrate types or different hydrate types are accur-
+ately recognized.
+The molecular behaviors at GBs play a crucial role in
+impacting properties of gas hydrate systems, including mech-
+anical properties [38, 41–43] and stability [40, 44]. In order to
+evaluate the feasibility and accuracy of the HTR+ algorithm
+in identifying hydrate GBs. Inspired by previous work by Wu
+et al [38], a polycrystalline model of sI-type methane hydrate
+with grain size of 11.2 nm subjected to uniaxial straining was
+tested. Figure 3(b) shows the identified result of microstruc-
+tures of the sI-type polycrystalline methane hydrate subjected
+to uniaxial strain of 8% by HTR+. Note that guest molecules
+are not displayed for emphasizing the clathrate cage struc-
+tures. In the snapshot, sI-hydrate crystalline grains are blue-
+pointed, while the clathrate cages at GBs are highlighted, in
+whichdifferenttypesofclathratecagesaredifferentlycolored.
+In zoomed-in configuration of figure 3(b), local GBs com-
+posed of various clathrate cages are identified. In comparison
+to clathrate cages in crystalline grains, the number of cages
+located at the GBs that connect adjacent grains is relatively
+small, leading to thin GBs, whereas the GB at junction region
+of four crystalline grains exhibit the large number of clathrate
+cages. In a nutshell, HTR+ algorithm is capable of identify-
+ingcrystallinegrains,thehydratetypeofcrystallinegrainsand
+GBs of complex polycrystalline gas hydrate in which multiple
+crystalline grains, multiple hydrate types are involved.
+4. Case results by HTR+
+4.1. Hydrate types in nucleation and growth of gas hydrates
+Homogenousnucleationandgrowthofgashydratearepreval-
+ent. In MD simulations, gas hydrates homogenously nucleate
+with complex microstructures, for example, they are neither
+sI-, sII- nor sH-type hydrates. Figure 4 illustrates the hydrate
+nucleation and growth by MD simulations. In the MD sim-
+ulations, a mixture of water and methane molecules is pre-
+pared with periodic boundary conditions in the three ortho-
+gonaldirections.Acoarse-grainedbyoneparticleisemployed
+for both water and methane molecule, and the particles’ inter-
+actions are described using the SW potential [45]. The nucle-
+ation and growth of gas hydrate are studied at temperature of
+270 K and confining pressure of 10 MPa under NPT ensemble
+using MD simulations with 250 ns, in which timestep is set
+to be 2 fs. figures 4(a)–(g) shows the nucleated- and grown-
+microstructures of gas hydrates that are structurally identified
+bytheHTR+ algorithm,wheredifferenthydratetypesaredif-
+ferently colored for clarification. This clearly illustrates the
+formation and development of gas hydrates, evolving from
+the small clusters to complex and stable crystal structures.
+As is indicated, multiple sites of hydrate nucleation appear,
+in which sI-type hydrate clusters are uniquely identified dur-
+ing the initial nucleation. Once stable sI-type hydrate clusters
+nucleate, however, it is of particular observed that sII-type
+hydrates are structurally identified during the growth pro-
+cess. In this process, the changes and arrangements of clath-
+rate cages are captured, characterizing by transitioning from
+simple cage arrangement to complex and stable cage com-
+binations. Furthermore, sI- and sII-type hydrates are quant-
+itively identified during the nucleation and growth process
+of gas hydrates using the HTR+ algorithm, as well as the
+clathrate cages such as 512, 51262, 51263 and 51264 cages, as
+shown in figures 4(h)–(k). In a nutshell, our developed HTR+
+4
+
+--- PAGE 6 ---
+J. Phys.: Condens. Matter 36 (2024) 365901 Q Shi et al
+Figure 3. Structural identification of polycrystalline model of methane hydrate by the HTR+ algorithm. (a) HTR+ algorithm identified
+configuration of the polycrystalline gas hydrate. The polycrystalline hydrate color in the left image is dyed according to the number of
+grains to distinguish between different grains; the polycrystalline hydrate in the right image is stained according to the hydrate type, in
+which sI-, sII- and sH-type hydrate crystalline grains are red-, green- and blue-painted for clarification, respectively, while water and guest
+molecules that do not form clathrate cages are grey-rendered. (b) Configurations of grain boundaries (GBs) and clathrate cages of
+polycrystalline sI-type methane hydrate identified by HTR+ algorithm, in which crystalline grains of sI-type methane hydrate are
+blue-rendered, while clathrate cages at GBs are highlighted, where different types of clathrate cages are differently colored.
+algorithm is able to identify not only the microstructures dur-
+ing hydrate nucleation and growth process, but also a win-
+dow into how gases are immobilized in the hydrate structure
+at the microscopic level. In a nutshell, through the HTR+
+algorithm combined with post-visualization processing, these
+subtle crystalline structure changes of gas hydrate can be cap-
+tured, providing a valuable perspective on studying the form-
+ation mechanisms of gas hydrates.
+4.2. Microstructures of polycrystalline hydrates subjected to
+alternating shear
+In natural settings, sediments-hosted polycrystalline hydrates
+are commonly subjected to external loadings due to various
+activity such as petro-activity, crustal movement, and so on.
+Figure 5 illustrate the changes in the clathrate cages, sI- and
+sII-typehydrateclustersinthepolycrystallinegashydratesub-
+jected to dynamic alternating shear loads using the HTR+
+algorithm. As is indicated, clathrate cages located at GBs of
+polycrystallinehydrateareidentified.Polycrystallinehydrates
+subjected to straining are structurally degraded due to the fol-
+lowing two events. The first one is that, when polycrystalline
+hydrates are mechanically loaded, water and guest molecules
+located at mis-latticed GBs fast diffuse, leading to complex
+formation and dissociation of clathrate cages in the vicinity
+of GBs (figures 5(a)–(d)), thereby altering their macroscopic
+physical properties. The second one is that when shearing is
+critical,thesizeofcrystallinegrainsshrinks(figures5(e)–(h)),
+suggesting the direct physical destruction of hydrate crystal-
+linegrains.Basedonthisstructuralidentification,deformation
+mechanisms of polycrystalline hydrate are revealed, which is
+crucial for understanding and predicting the mechanical beha-
+vior of gas hydrates.
+4.3. Efficiency of HTR+ algorithm in identifying
+polycrystalline hydrates
+To evaluate the efficiency of our HTR+ algorithm, we
+conducted tests on polycrystalline hydrate systems with
+varying dimensions. The computer configuration parameters
+5
+
+--- PAGE 7 ---
+J. Phys.: Condens. Matter 36 (2024) 365901 Q Shi et al
+Figure 4. Application of HTR+ in hydrate nucleation. (b)–(d) is the change of crystal phase during the nucleation of hydrate, green
+represents sI type hydrate, and red represents sII type. (e)–(g) is the change in cage shape during hydrate nucleation, the green molecule is
+51262 cage, the red molecule is 512 cage, the yellow molecule is 51263 cage, and the purple molecule is 51264 cage. (h) and (i) Change in the
+percentage of crystal phase of different hydrates. (j) and (k) Changes in the number of cages in hydrates.
+Figure 5. Microstructural identification of polycrystalline gas hydrates subjected to mechanical loads using the HTR+ algorithm. (a)–(d)
+Identified changes in the clathrate cages of polycrystalline hydrate subjected to different strains. Conventional cages of 512 and 51262 are
+green-painted, while unconventional cages of 51263, 51264, 4151062, and 4151063 are yellow-, purple-, pink-, and light blue-colored for
+clarification, respectively. Unidentified water is red-rendered. (e)–(g) Identified changes in the hydrate crystalline grains or hydrate clusters
+in polycrystalline hydrate subjected to straining. sI- and sII-type hydrates are green- and red-pointed for clarification, respectively, while
+amorphous structures are blue-rendered.
+were shown as follows: Operating System—Ubuntu 18.04.5
+LTS; Hardware Architecture—x86_64; Kernel—Linux 5.4.0-
+81-generic; CPU—Intel(R) Xeon(R) Gold 6128 CPU @
+3.40GHz (6 cores); Memory—32 GB. In figure S1, the rela-
+tionship between the number of water molecules in each sys-
+tem and the time required for recognition is presented. The
+6
+
+--- PAGE 8 ---
+J. Phys.: Condens. Matter 36 (2024) 365901 Q Shi et al
+Table 1. Comparison of different hydrate algorithms.
+Algorithm Water order parameter Hydrate cage identification Hydrate phase identification Efficiency cages/time (s)
+FSICA [33] × √ × 13691/16480
+ICO [36] × √ × 13695/691
+GRADE [35] F4 Only 3 types × 4,410/419
+HTR [37] F3/F4 √ × 15724/26
+HTR+ F3/F4 √ √ 15724/26
+HTR+ algorithm is an extension of the HTR algorithm that
+demonstrated linear recognition efficiency. As is observed,
+our HTR+ algorithm exhibit a similar linear trend in recog-
+nition efficiency. Moreover, the polycrystalline hydrate model
+is critically characterized by grain size, the number of grains
+and grain size, and contains a substantial number of water
+molecules.Consequently,theHTR+ algorithmshowcasehigh
+recognition efficiency in identifying polycrystalline hydrate
+systems.
+Moreover, table 1 lists the advantages and disadvantages
+of various hydrate identification algorithms. By comparing
+with available hydrate recognition algorithms, the HTR+
+algorithm not only offers more comprehensive functionalities
+but also achieves greater accuracy and the highest recognition
+efficiency.
+5. Conclusions
+In conclusion, the HTR+ algorithm as an extension of
+the HTR algorithm was specifically tailored for identifying
+micro/mesoscopic structures in gas hydrates. Its capability
+extendsbeyondidentifyingindividualclathratecagestructures
+to delineating hydrate type, crystalline grains, grain size and
+GBs within polycrystalline hydrates, a feature not present in
+previousalgorithms.Intermsofhydratetype,itaccuratelydis-
+tinguishes between sI-, sII-, and sH-type hydrates. This is par-
+ticularly crucial for understanding the structural and mechan-
+ical behaviors of polycrystalline hydrates subjected to various
+conditions.Inaddition,itisabletoidentifyingclathratecages,
+hydrate clusters of sI-, sII-, and sH-types during the hydrate
+nucleation and growth process, as well as ice structures. The
+incorporationofthesystemsplittingalgorithminHTR+ signi-
+ficantly improves the identification efficiency, rendering cost
+time and system size linear instead of exponential, thereby
+allowing for the structural identification of large hydrate sys-
+tems. The HTR+ algorithm marks a significant leap forward
+in structural identifications of gas hydrate system from the
+molecular level.
+Data availability statement
+All data that support the findings of this study are included
+within the article (and any supplementary files).
+Acknowledgments
+This work is financially supported by the National Natural
+Science Foundation of China (Grant Nos. 12172314,
+11772278,and11904300),theJiangxiProvincialOutstanding
+Young Talents Program (Grant No. 20192BCBL23029), the
+Fundamental Research Funds for the Central Universities
+(Xiamen University: Grant Nos. 20720210025 and
+20720220023). The supercomputer GPU hours are provided
+by Shaorong Fang and Tianfu Wu from Information and
+Network Center of Xiamen University are acknowledged for
+the help with the high-performance computer.
+ORCID iDs
+Qiao Shi  https://orcid.org/0000-0002-6469-8052
+Jianyang Wu  https://orcid.org/0000-0002-9094-4835
+Zhisen Zhang  https://orcid.org/0000-0002-8638-0993
+References
+[1] Hammerschmidt E G 1934 Formation of gas hydrates in
+natural gas transmission lines Ind. Eng. Chem. 26 851–5
+[2] Max M D and Clifford S M 2000 The state, potential
+distribution, and biological implications of methane in the
+Martian crust J. Geophys. Res. Planets 105 4165–71
+[3] Kvenvolden K A 1993 Gas hydrates—geological perspective
+and global change Rev. Geophys. 31 173–87
+[4] Sondreal E A and Wiltsee G A 1984 Low-rank coal: its present
+and future role in the United States Annu. Rev. Energy
+9 473–99
+[5] Koh C A, Sum A K and Sloan E D 2009 Gas hydrates:
+unlocking the energy from icy cages J. Appl. Phys. 106 9
+[6] Sum A K, Koh C A and Sloan E D 2009 Clathrate hydrates:
+from laboratory science to engineering practice Ind. Eng.
+Chem. Res. 48 7457–65
+[7] Sloan E D Jr 2003 Fundamental principles and applications of
+natural gas hydrates Nature 426 353–63
+[8] Zhao W, Wang L, Bai J, Francisco J S and Zeng X C 2014
+Spontaneous formation of one-dimensional hydrogen gas
+hydrate in carbon nanotubes J. Am. Chem. Soc.
+136 10661–8
+[9] Boswell R 2009 Engineering. Is gas hydrate energy within
+reach? Science 325 957–8
+[10] Dickens G R, Paull C K and Wallace P 1997 Direct
+measurement of in situ methane quantities in a large
+gas-hydrate reservoir Nature 385 426–8
+[11] Hesselbo S P, Grocke D R, Jenkyns H C, Bjerrum C J,
+Farrimond P, Morgans Bell H S and Green O R 2000
+7
+
+--- PAGE 9 ---
+J. Phys.: Condens. Matter 36 (2024) 365901 Q Shi et al
+Massive dissociation of gas hydrate during a Jurassic
+oceanic anoxic event Nature 406 392–5
+[12] Phrampus B J and Hornbach M J 2012 Recent changes to the
+Gulf Stream causing widespread gas hydrate destabilization
+Nature 490 527–30
+[13] Lu H, Seo Y T, Lee J W, Moudrakovski I, Ripmeester J A,
+Chapman N R, Coffin R B, Gardner G and Pohlman J 2007
+Complex gas hydrate from the Cascadia margin Nature
+445 303–6
+[14] Wood W T, Gettrust J F, Chapman N R, Spence G D and
+Hyndman R D 2002 Decreased stability of methane
+hydrates in marine sediments owing to phase-boundary
+roughness Nature 420 656–60
+[15] Lambeck K, Esat T M and Potter E K 2002 Links between
+climate and sea levels for the past three million years
+Nature 419 199–206
+[16] Kim S M, Lee J D, Lee H J, Lee E K and Kim Y 2011 Gas
+hydrate formation method to capture the carbon dioxide for
+pre-combustion process in IGCC plant Int. J. Hydrog.
+Energy 36 1115–21
+[17] Dashti H, Thomas D and Amiri A 2019 Modeling of
+hydrate-based CO2 capture with nucleation stage and
+induction time prediction capability J. Clean.Prod.
+231 805–16
+[18] Park K S, Ni Z, Cote A P, Choi J Y, Huang R, Uribe-Romo F J,
+Chae H K, O’Keeffe M and Yaghi O M 2006 Exceptional
+chemical and thermal stability of zeolitic imidazolate
+frameworks Proc. Natl Acad. Sci. USA 103 10186–91
+[19] Jacobson L C, Hujo W and Molinero V 2009 Thermodynamic
+stability and growth of guest-free clathrate hydrates: a
+low-density crystal phase of water J. Phys. Chem. B
+113 10298–307
+[20] Mao W L, Mao H K, Goncharov A F, Struzhkin V V, Guo Q,
+Hu J, Shu J, Hemley R J, Somayazulu M and Zhao Y 2002
+Hydrogen clusters in clathrate hydrate Science 297 2247–9
+[21] Ten Wolde P R and Frenkel D 1997 Enhancement of protein
+crystal nucleation by critical density fluctuations Science
+277 1975–8
+[22] Maddah M, Maddah M and Peyvandi K 2021 Investigation on
+structural properties of winter flounder antifreeze protein in
+interaction with clathrate hydrate by molecular dynamics
+simulation J. Chem. Thermodyn. 152 106267
+[23] Pandey H D and Leitner D M 2017 Thermodynamics of
+hydration water around an antifreeze protein: a molecular
+simulation study J. Phys. Chem. B 121 9498–507
+[24] Stern L and Kirby S 2006 Natural gas hydrate in sediments
+imaged by cryogenic SEM: insights from lab experiments
+on synthetic hydrates as interpretive guides AGU Fall
+Meeting Abstracts pp OS33B–1699
+[25] Walsh D A, Zaikova E, Howes C G, Song Y C, Wright J J,
+Tringe S G, Tortell P D and Hallam S J 2009 Metagenome
+of a versatile chemolithoautotroph from expanding oceanic
+dead zones Science 326 578–82
+[26] Jacobson L C, Hujo W and Molinero V 2010 Amorphous
+precursors in the nucleation of clathrate hydrates J. Am.
+Chem. Soc. 132 11806–11
+[27] English N J, Lauricella M and Meloni S 2014 Massively
+parallel molecular dynamics simulation of formation of
+clathrate-hydrate precursors at planar water-methane
+interfaces: insights into heterogeneous nucleation J. Chem.
+Phys. 140 204714
+[28] Zhao W H, Wang L, Bai J, Yuan L-F, Yang J and Zeng X C
+2014 Highly confined water: two-dimensional ice,
+amorphous ice, and clathrate hydrates Acc. Chem. Res.
+47 2505–13
+[29] Bai J and Zeng X C 2012 Polymorphism and polyamorphism
+in bilayer water confined to slit nanopore under high
+pressure Proc. Natl Acad. Sci. USA 109 21240–5
+[30] Lauricella M, Meloni S, English N J, Peters B and Ciccotti G
+2014 Methane clathrate hydrate nucleation mechanism by
+advanced molecular simulations J. Phys. Chem. C
+118 22847–57
+[31] Lauricella M, Meloni S, Liang S, English N J, Kusalik P G and
+Ciccotti G 2015 Clathrate structure-type recognition:
+application to hydrate nucleation and crystallisation J.
+Chem. Phys. 142 244503
+[32] Guo G J, Zhang Y G, Li M and Wu C-H 2008 Can the
+dodecahedral water cluster naturally form in methane
+aqueous solutions? A molecular dynamics study on the
+hydrate nucleation mechanisms J. Chem. Phys. 128 194504
+[33] Guo G J, Zhang Y G, Liu C J and Li K-H 2011 Using the
+face-saturated incomplete cage analysis to quantify the cage
+compositions and cage linking structures of amorphous
+phase hydrates Phys. Chem. Chem. Phys. 13 12048–57
+[34] Nguyen A H and Molinero V 2015 Identification of clathrate
+hydrates, hexagonal ice, cubic ice, and liquid water in
+simulations: the CHILL+ algorithm J. Phys. Chem. B
+119 9369–76
+[35] Mahmoudinobar F and Dias C L 2019 GRADE: a code to
+determine clathrate hydrate structures Comput. Phys.
+Commun. 244 385–91
+[36] Hao Y, Xu Z, Du S, Yang X, Ding T, Wang B, Xu J, Zhang J
+and Yin H 2021 Iterative cup overlapping: an efficient
+identification algorithm for cage structures of amorphous
+phase hydrates J. Phys. Chem. B 125 1282–92
+[37] Liu Y S, Xu K, Xu Y H, Liu J, Wu J and Zhang Z 2022 HTR:
+an ultra-high speed algorithm for cage recognition of
+clathrate hydrates Nanotechnol. Rev. 11 699–711
+[38] Wu J, Ning F, Trinh T T, Kjelstrup S, Vlugt T J H, He J,
+Skallerud B H and Zhang Z 2015 Mechanical instability of
+monocrystalline and polycrystalline methane hydrates Nat.
+Commun. 6 8743
+[39] Yockell-Lelièvre H, Lussier F and Masson J F 2015 Influence
+of the particle shape and density of self-assembled gold
+nanoparticle sensors on LSPR and SERS J. Phys. Chem. C
+119 28577–85
+[40] Zhang Z, Kusalik P G, Guo G-J, Ning F and Wu N 2021
+Insight on the stability of polycrystalline natural gas
+hydrates by molecular dynamics simulations Fuel
+289 119946
+[41] Kida M, Yoneda J, Masui A, Konno Y, Jin Y and Nagao J 2021
+Mechanical properties of polycrystalline tetrahydrofuran
+hydrates as analogs for massive natural gas hydrates J. Nat.
+Gas Sci. Eng. 96 104284
+[42] Atig D, Broseta D, Pereira J M and Brown R 2020 Contactless
+probing of polycrystalline methane hydrate at pore scale
+suggests weaker tensile properties than thought Nat.
+Commun. 11 3379
+[43] Cao P, Ning F, Wu J, Cao B, Li T, Sveinsson H A, Liu Z,
+Vlugt T J H and Hyodo M 2020 Mechanical
+response of nanocrystalline ice-contained methane
+hydrates: key role of water Ice ACS Appl. Mater. Interfaces
+12 14016–28
+[44] Sveinsson H A, Ning F, Cao P, Fang B and
+Malthe-Sørenssen A 2021 Grain-size-governed shear
+failure mechanism of polycrystalline methane hydrates J.
+Phys. Chem. C 125 10034–42
+[45] Jacobson L C and Molinero V 2010 A methane-water model
+for coarse-grained simulations of solutions and clathrate
+hydrates J. Phys. Chem. B 114 7302–11
+8

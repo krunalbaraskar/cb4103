@@ -1,0 +1,353 @@
+--- PAGE 1 ---
+IUIID PHiISE 
+[OglUgglA 
+ELSEVIER Fluid Phase Fxluilibria 116 (1996) 326-332 
+Simulations of the methane hydrate / methane gas interface near hydrate forming 
+conditions 
+P.M. Rodger a, T.R. Forester b and W. Smith b 
+aDepartment of Chemistry, University of Reading, Whiteknights, Reading RG6 6AD, U.K. 
+bC.C.L.R.C. Daresbury Laboratory, Daresbury, Warrmgton WA4 4AD, U.K. 
+ABSTRACT 
+Molecular dynamics simulations have been used to probe the interface between type I methane hydrate aud 
+methane gas in the temperature range 250-300 K, and at pressures of 1 and 100 MPa. The interface was found 
+to be stable up to 270 K, with the onset of melting occurring more readily at the lower pressure. Disordering of 
+the surface layer was observed at all temperatures, to the extent that under some conditions a stable liquid film 
+formed between the clathrate and gas phases. 
+1. INTRODUCTION 
+During recent years, two new major research drives have developed with respect to clathrate hydrates. The 
+first of these relates to the mechanism by which clathrate hydrate crystals nucleate. This has been a natural 
+development in the evolution of our understanding of this form of water: the theory for describing bulk 
+thermodynamic properties is mature, although improvements have been identified[I][2], and promising 
+descriptions of the kinetics of hydrate growth have been developed over the past 5-10 years[3]. This leaves 
+the primary nucleation stage - i.e. the initial formation of a stable, embryonic, clathrate crystal - as the one major 
+area in which our understanding is still lacking. 
+Several mechanisms have been proposed for the primary nucleation process[4][5]. One aspect common 
+to all these theories is a focus on the interfacial region between the bulk water and guest phases, this being the 
+only region in which there will be sufficient mixing of hydrophobic guests such as methane with the water to 
+form a clathrate. Unfortunately our knowledge of the behaviour of this interface is limited, with little or no 
+experimental information about the thickness of the interfacial region, the concentration gradients that can be 
+maintained therein, or the different static and dynamic structure to be expected between the bulk and interfacial 
+aqueous regions. Experimental techniques have only recently developed to the stage where they can be used to 
+probe such regions and some important data is now becoming available from techniques such as laser light 
+scattering and neutron reflection[6]. However, much more information about the water/guest interface is needed 
+before the nucleation mechanisms can become other than speculative. 
+The second new area of interest has been in the development of kinetic inhibitors. The precise definition 
+of "kinetic inhibition" is somewhat vague, but may be taken to refer to compounds that either delay the onset of 
+hydrate formation, or affect the growth process (crystal size and shape) thereafter. The interest in kinetic 
+inhibition has arisen largely from the discovery of anti-freeze glycopeptides in winter flounder, and the hope of 
+developing analogues for hydrate inhibition. Modelling and experimental studies indicate that these glycopeptides 
+0378-3812/96/$15.00© 1996 Elsevier Science B.V. All rights reserved 
+SSDI 0378- 3812(95)02903-6 
+
+
+--- PAGE 2 ---
+P.M. Rodger et al. / Fluid Phase Equilibria 116 (19.96) 326-332 327 
+bind strongly to the growth faces of ice crystals[7], thereby preventing further growth of the crystal and 
+ensuring that the system remains as a suspension of microcrystals rather than freezing completely. Similar studies 
+have now been performed for clathrate inhibition and indicate that such a mechanism is viable[8]. However, 
+the scope for exploiting such mechanisms is again being restricted by the lack of information about clathrate 
+surfaces: effecLs such as pre-melting, proton disorder and surface diffusion will influence the distribution of 
+binding sites on the surface, and hence affect the optimal design for kinetic inhibitors. 
+In this paper we present the first dynamic simulations of a clathrate surface: the interface between type I 
+methane hydrate and methane gas. The simulations have been performed for a range of thermodynamic states 
+around the melting point so as to identify the interfacial structure associated with near-hydrate-forming conditions. 
+In the next section we give a brief description of the methodology, while the results and their implications are 
+discussed in section 3. 
+2. SIMULATION DETAILS 
+Molecular dynamics simulations (MD) have been performed for 552 water molecules and up to 216 
+methane molecules at a range of temperatures (250-300 K) and pressures (1, 100 MPa). Periodic boundary 
+conditions were used in the x and y directions, but fixed boundaries were used in the z direction; z is the direction 
+of the surface normal. A reflective boundary was used for the upper z limit, and a clathrate layer one unit cell 
+thick (11.86 /~ for the conditions and potentials used in this study) was immobilised to create the lower z 
+boundary. The use of a frozen boundary rather than periodicity in the z direction does not appear to have had 
+much effect in simulations of the liquid water/ice interface[9]. The water molecules were initially arranged 
+in a 2x2x3 array of unit cells (2x2x2 dynamic and 2x2xl frozen cells) exposing the (001;0) surface[8], with 
+oxygen positions taken from neutron data, and hydrogens assigned in accord with normal practice[10]. 
+Initially all 96 cavities in the clathrate were occupied by methane, with the remaining 120 methane molecules 
+comprising the gaseous side of the interface. 
+Water was modelled with the SPC potential[ll]. For pure water systems, this has been shown to give 
+the same interfacial behaviour as TIP4P water, albeit at a lower temperature[12]; we therefore do not expect 
+the physical properties of the present study to be strongly dependent on this choice of water potential. Methane 
+was modelled by a single Lennard-Jones site, with parameters taken from the work of Jorgensen et a/.[13], 
+and Lorenz-Berthelot mixing rules were used. All intermolecular interactions were neglected when the 
+intermolecular separation exceeded 11.3 /~; this truncation has been found to give equivalent results to an 
+EWALD method in clathrate systems[14]. 
+Equilibration was achieved in several stages. Initially the entire clathrate region was held frozen, and the 
+gas allowed to equilibrate in the presence of this solid boundary. A further 5 ps (2000 time steps) were then 
+simulated during which time the clathrate was also allowed to move, but with retarded water dynamics (masses 
+of 200 u for O and 50 u H); this allowed the gas to equilibrate around the relaxed hydrate surface, while still 
+ensuring that any surface relaxation was not an artifact of the initial configuration for the gas/surface interface. 
+The system was then allowed to evolve normally for a further 5 ps before a further 150 ps trajectory was 
+simulated for analysis. To give some idea of the stability of the interface, the 150 ps was generated as three 
+successive 50 ps trajectories: except at the highest temperature (300 K), analysis of the second and third 50 ps 
+portions revealed no significant differences, indicating that the interface is stable on the MD timescale. 
+Initially, simulations were performed with a computer program used in earlier hydrate simulations[10], with 
+boundary conditions modified as above, and allowing constant pressure simulations via movement of the 
+reflective (gas phase) boundary. Some further simulations (the final 50 ps trajectories) were performed using 
+DL_POLY[15] in the [N,V,T] ensemble (Verlet leap-frog algorithm with Hoover thermostat). Several 
+
+
+--- PAGE 3 ---
+328 P.M. Rodger et al. /Fluid Phase Equilibria 116 (1996) 326-332 
+duplicate simulations were also run with both programs, using the same starting configuration but different 
+velocities, and showed no observable difference over a 50 ps trajectory. A 50 ps trajectory took about 20 cpu 
+hours on a SG R4000 workstation. 
+3. RESULTS 
+3.1. Structural order 
+12 ,~ .... 
+10 4 / ~ ., 
+4 
+2 i 
+0 1 i i r " i "i ~ i 
+-15 -10 -5 0 5 -15 -10 -5 0 5 
+z/angstrom z/angstrom 
+Figure 1. Density of (a) oxygen and (b) methane across the interface for various state points: T = 250 K (---), 
+270 K (- - -) and 300 K (- ); P = 1 MPa (thick lines) and 100 MPa (thin lines) 
+The (001) surface of type I hydrates has a repeat unit of about 5.9 /k (i.e. half a unit cell length), with 
+successive layers rotated through 90 ° . This repeating pattern is clearly evident in the normal density profiles 
+(Figure 1. ) which show a repeating three-peak pattern for water in the crystalline region (e.g. between -6 ,& and - 
+12/~). In order to utilise this repeating unit, we have defined four successive 5.9 ,~ layers in the clathrate region, 
+with layer 1 being adjacent to the interface (-5.9 -0 A,). 
+The density profiles indicate that our range of state points does span the clathrate/liquid coexistence line 
+for this model system. At 250 K there is essentially complete crystallinity below the surface layer, and strong 
+evidence of ordering within the surface layer. On the other hand, the profile at 300 K is more characteristic of 
+a liquid, with no structure in the first two layers, and only minor residual spacial order in the third layer (12-18 
+/k below the surface); there is also depletion of methane from layers 1-3 at this temperature. The behaviour at 
+270 K is more subtle. The higher pressure system exhibits residual peaks in the surface layer, and essentially bulk 
+clathrate behaviour in all other layers; at the lower pressure, however, the surface layer has become liquid-like, 
+and there is degradation of the clathrate structure in layer 2. This degradation is associated with a loss of methane 
+from the hydrate region, with complete loss of the first peak and partial loss of the second peak in the methane 
+density profile. This is particularly interesting as it is the first simulation to observe the pressure-induced 
+stabilisation that leads to the formation of clathrate hydrates in nature. 
+The conclusions drawn above are also supported by plots of gas, the radial distribution functions (RDF's) 
+for pairs of atoms (A,B) where both atoms are contained within the same layer; examples for layers 1 and 2 are 
+depicted in Figure 2. These curves indicate that layer 2 remains strongly crystalline at and below 270 K, but has 
+completely melted at 300 K. Equivalent RDF's from layers through bulk clathrate and liquid water phases were 
+also calculated and found to be indistinguishable from RDF's for layer 2 of the interface at 250 K and 300 K, 
+respectively. Once again, structure is more evident in the clathrate region at higher pressures. The behaviour of 
+water in the surface layer shows evidence of pre-melting, with significant loss of structure at all temperatures 
+
+
+--- PAGE 4 ---
+P.M. Rodger et al. / Fluid Phase Equilibria 116 (1996) 326--332 329 
+!t" O, J 
+2 
+(a) 
+i i ~ i t 
+4 6 8 10 12 
+r/angstrom 
+4 ~ 4 
+~ -..,.,.-~ 1 
+1~ 1 i i 0 
+2 4 6 8 10 12 
+r/angstrom 
+7- 
+6- 
+5 
+4 
+3 
+2 
+1 
+0 
+(b) 
+i i t J i 
+4 6 8 10 12 
+r/angstrom 
+(d) 
+• ° ~ ° 
+b i i i 
+4 6 8 10 12 
+r/angstrom 
+Figure 2. RDFs for (a) O in layer 2, (b) CH 4 in layer 2, (c) O in layer 1, and (d) CH 4 in layer 1: T = 250 K 
+( ), 260 K (- - -), 270 K (- ), 300 K (-- --); P = 1 MPa (thick), 100 MPa (thin) 
+studied: at 300 K goo is again indistinguishable from that for liquid water, while at lower temperatures the water 
+structure in the interface is intermediate between the clathrate and liquid. This behaviour is entirely analogous 
+to that seen for ice interfaces[9][12], although the effect of pressure was not been considered in those studies. 
+Perhaps the most striking feature of Figure 2. is the variations in the methane distributions, gMM" In 
+particular, a single peak at 4/~ forms on melting. This is seen in both layers 1 and 2, and indicates that melting 
+is associated with aggregation of methane within the condensed phase. Subsequent depletion of methane occurs 
+through diffusion into the gas phase. Note that such depletion of methane is complete in the surface layer at 300 
+K and 1 MPa after 150 ps. 
+As a final probe of interfacial structure, two different order parameters have been calculated. The first is 
+a three-body order parameter suggested by Clancy[16], and may be defined as 
+F n = (I~01oa~0 + co~(109.47) ) 
+where 0 is the angle between a water oxygen and two of the oxygens in it's first solvation shell. Fj is designed 
+to measure deviations from the tetxahedral angle, and vanishes for any tetrahedral network. It is also useful to 
+have an order parameter that can distinguish between the different tetrahedral networks adopted by water, and 
+so we have developed a new, four-body order parameter based on the H-O ...... O-H torsion angle, 0, for two 
+
+
+--- PAGE 5 ---
+330 P.M. Rodger et al. / Fluid Phase Equilibria 116 (1996) 326-332 
+adjacent water molecules; for these purposes the hydrogens have been defined as the outer-most hydrogens in 
+the water dimer. 
+F 4 = ( cos 3~ } 
+For a hydrogen bonding network, the outer O-H bonds will point towards the next O sites in the lattice, so that 
+this torsion angle will reflect the torsion angles found within the water lattice. The hydrate lattice is dominated 
+by nearly-planar rings, and so should give rise to values of F 4 close to 1. Both order parameters were averaged 
+over all possible angles associated with a given water molecule (i.e. from all trimers or dimers it participates in), 
+and then over all water molecules in a layer. 
+1.0 
+0.9 
+0.8 
+0.7 
+0.6 
+0.5 
+0.4 
+0.3 
+0.2 
+0.1 
+0.0 
+1.1 
+(a) 1.O 
+0.9 
+0.5 
+-.., 0.4 
+03 
+0.2 
+0.1 
+.... ~Tr"--~~ 0.0 
+4.0 3.0 :E.O 1,0 
+layer 
+S ~ z ~ (b) 
+4.0 3.0 a.O 1.0 
+layer 
+Figure 3. Order parameters for water within the interface: (a) F4; (b) 10 x F 3. The key is as per Figure 2. 
+Average order parameters across the interface have been depicted in Figure 3. For comparison, the 
+corresponding values for the bulk hydrate are about 0.7 and 0.1 for F 4 and F3, respectively, while those for liquid 
+water are 0.0 and 0.9. From Figure 3. it is apparent that layer 4 is influenced by the frozen boundary adjacent 
+to it, giving higher order parameters than are found in the bulk, but order parameters for layer 3 and (at 250 K) 
+layer 2 are in quantitative agreement with those for the bulk hydrate. The trends observed in Figure 3. reinforce 
+the conclusions drawn from the RDF's, but with better resolution. In particular it is clear from Figure 3. that 
+melting is complete within the surface layer at 270 K an 1 MPa. This would be consistent with a melting point 
+just above 270 K at this pressure. Structural order is more persistent at the higher pressure, such that at 270 K 
+and 100 MPa the surface layer is still more ordered than at 260 K and 1 MPa. Comparing the high and low 
+pressure order parameters, we predict a melting point above 280 K for the higher pressure. These values are much 
+higher than the melting point of SPC ice (ca. 200 K) and indicates that the inclusion of methane into the water 
+network leads to enhanced mechanical stability compared with ice; we note that clathrate hydrates can exhibit 
+very slow melting rates, which is consistent with such mechanical stability. 
+3.2 Dynamic properties 
+Rotational time correlation functions (tcf's) have been calculated from the Legendre polynomials 
+P/u(O).u(t)), where u(t) is some specified unit vector at time t. P2 for the water dipole vector is shown in 
+Figure 4. In calculating these tcffs, only portions of trajectory that remained within a given layer were considered. 
+Stable librational behaviour is indicated by a horizontal long time limit, where as rotational behaviour is revealed 
+by a negative slope at long times. In the surface layer, librational behaviour is seen only at 250 K and 100 MPa; 
+in layer 2 it is seen up to 270 K for the higher pressure, but only at 250 K for the lower pressure. These results 
+are in accord with the structural disorder observed above. 
+
+
+--- PAGE 6 ---
+P.M. Rodger et al. / Fluid Phase Equilibria 116 (1996) 326-332 331 
+°°° l (") -o.1°° 0-051 -0.2 
+--0.3 
+0-10 1 -0.4 
+0.5 -0.15 -0.6 
+o.eo ql -. __ o7 
+II ".4, "-- .............. 7 - -08 
+1l ....... - 
+0.25 -0.9 
+-1.0 
+0.304 k .... -1.1 
+0 1 2 3 4 5 0 
+t/ps 
+(b) 
+1 2 3 4 5 
+t/ps 
+Figure 4. In(P,) orientational correlation functions for the water dipole vector in (a) layer 2 and (b) layer 1. Key 
+is as for Figure 2. 
+0.14- 
+c~ 0.12 
+O.lO 
+0 
+0.08 ol 
+0.06 
+~" 0.04 
+0.02 
+0.00 - 
+0 
+(a) 
+.° 
+0.26 
+0.24 
+0.22 
+, 0 20 
+0.18 
+o 0.16 
+0.14 
+gl, oO.le .10 
+"- 0.08 ¢zl 
+m 0.06 
+0.04 
+0.02 
+0.0( 
+(b) 
+1 2 3 4 5 0 
+t/ps t/ps 
+i i i r 
+1 2 3 4 5 
+Figure 5. components of the oxygen means square displacement at 270 K in (a) layer 4 and (b) layer 2: x 
+( ), y (- - -), z ( ); 1 MPa (thick), 100 MPa (thin) 
+Mean square displacements (MSD' s) for the various atoms as a function of time have also been calculated 
+for the interfacial layers; again, only portions of atomic trajectories that remain confined within the given layer 
+have been considered. Separate x, y and z components for the (water) O atoms are depicted in Figure 5. for layers 
+2 and 4 at 270 K; the plots for the surface layer (not shown) were diffusive, as expected from the discussion of 
+structural order above. For layer 4 the MSD's are typical of stable crystals, with the plateau of 0.06-0.10 .a, 2 
+indicating lattice vibrations with amplitudes of typically 0.25-0.30/~. The MSD's for layer 2 still indicate that 
+the water is constrained to the vicinity of the lattice sites, but they also show the large amplitude, low frequency 
+oscillations that precede melting; these oscillations were damped out under pressure. One striking feature of 
+Figure 5. is the asymmetry between the x and y directions, with larger amplitude lattice vibrations being found 
+in the x direction. A similar phenomenon was found in all the non-diffusive MSD's, with the x components 
+consistently showing the larger displacements. This behaviour may be correlated with the structure of the 
+underlying frozen clathrate boundary. Cleavage of a type I hydrate crystal does not yield a flat surface, but one 
+with large well-defined channels[8]. Depending on the depth at which the crystal is created, these may be either 
+in the x or in the y directions; in our simulations they lie in the x direction. Thus the larger amplitude vibrations 
+in this direction are associated with water moving along these channels rather than across them. What is 
+surprising is that this effect persists out to the second layer, which is 12-18 tl, away from the frozen boundary, 
+and larger scale simulations are still needed to assess the significance of this long range dynamical correlation. 
+
+
+--- PAGE 7 ---
+332 P.M. Rodger et al. / Fluid Phase Equilibria 116 (1996) 326-332 
+4. CONCLUSIONS 
+In this paper we have presented the results of an MD computer simulation study of the interface between 
+type I methane hydrate and methane gas at various temperatures and pressures. The interface was found to be 
+stable up to about 270 K, and complete melting of the hydrate phase was found at 300 K. For the first time in 
+MD simulations, pressure-induced stabilisation of a water interface was observed. For the SPC water model used 
+in this work, the melting temperature was found to be close to 270 K at 1 MPa, but above 280 K at 100 MPa. 
+We note that these temperatures are substantially higher than those found in simulations of SPC ice, and illustrate 
+the importance of guest/water interactions in providing mechanical stability for clathrate hydrates. 
+There was evidence of pre-melting under all conditions considered, with disordering of the surface layer 
+even at 250 K. In most cases this led to the formation of a layer on the surface that showed a structure 
+intermediate to that of the bulk hydrate and liquid water, but in one case (270 K, 1 MPa) this layer showed all 
+the structural characteristics of liquid water. For all these systems the clathrate region below this layer remained 
+stable throughout the simulations. 
+The dynamic properties of the interface did exhibit a curious anisotropy, with lattice vibrations in the x direction 
+being larger than those in the y direction (where z is the surface normal). This is believed to be associated with 
+the presence of channels in the (001) surface of type I hydrates, but the effect was found to persist over a 
+distance of 10-15 A. It is not clear to what extent this is an artifact of the simulation size, and larger simulations 
+are in progress to assess this. In other respects the properties of clathrate-like portions of the interface were 
+quantitatively consistent with those for bulk hydrates, and so this dynamic anisotropy is not expected to have 
+influenced the conclusions drawn above. 
+Acknowledgements: This work was supported under EPSRC grants GR/H07207 and GR/K41625 
+REFERENCES 
+1. P.M. Rodger, AIChE J., 1991, 37, 1511 
+2. G.D. Holder, S. Zele, R. Enick and C. LeBlond, Annals N.Y. Acad. Sci., 1994, 715, 344 
+3. P.R. Bishnoi, V. Natarajan and N. Kalogerakis, Annals N.Y. Acac. Sci., 1994, 715, 311 
+4. R.L. Christiansen and E.D. Sloan, Annals N.Y. Acad. Sci., 1994, 715, 283 
+5. P.M. Rodger, J. Phys. Chem., 1990, 94, 6080 
+6. A.R. Nerheim, T.M. Svartaas and E.K. Samuelsen, Proc. 2nd Int. Offshore and Polar Eng. Conf., 1992, 620; 
+T. Cosgrove, A. Eagleslmm, D. Home, J.S. Phipps and R.M. Richardson, in Surface X-ray and Neutron 
+Scattering, Ed. H. Zabel and I.K. Robinson, Springer-Verlag, 1992 
+7. M. Lal, A.H. Clarke, A. Lips, J.N. Ruddock and D.N.J. White, Farady Discuss., 1993, 95, 299 
+8. T.J. Carver, M.G.B. Drew and P.M. Rodger, J. Chem. Soc., Faraday Trans., 1995, in press 
+9. G.J. Kroes, Surf. Sci., 1992, 275, 365; O.A. Karma and A.D.J. Haymet, J. Chem. Phys., 1988, 89, 6889 
+10. P.M. Rodger, J. Phys. Chem., 1989, 93, 6850 
+11. H.J.C. Berendsen, J.P.M. Postma, W.F. van Gunsteren and J. Hermans, in lntermolecular Forces, Ed. B. 
+Pullman, Reidel, Dodrecht, 1981 
+12. O.A. Karim, P.A. Kay and A.D.J. Haymet, J.Chem. Phys., 1990, 92, 4634 
+13. W.L. Jorgensen, J.D. Madura and C.J. Swenson, J. Am. Chem. Soc., 1984, 106, 6638 
+14. P.M. Rodger in Spectroscopic and Computational Studies of Supramolecular Systems, Ed. J.E.D. Davies, pp 
+239-267, Kluwer Academic Publishers, 1992 
+15. DL_POLY is a package of molecular simulations routine written by W. Smith and T.R. Forester, copyright 
+C.C.L.R.C., Daresbury Laboratory at Daresbury, Nr Warrington (1995) 
+16. P. Clancy, Annual Report GRI-93/0336, Gas Research Institute, Chicago Illinois, 1993 

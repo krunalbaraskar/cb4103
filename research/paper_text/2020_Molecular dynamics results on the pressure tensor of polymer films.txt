@@ -1,0 +1,925 @@
+--- PAGE 1 ---
+
+View
+Online
+
+Export
+Citation
+RESEARCH ARTICLE |  SEPTEMBER 08 2000
+Molecular dynamics results on the pressure tensor of
+polymer films
+F. Varnik; J. Baschnagel; K. Binder
+J. Chem. Phys. 113, 4444–4453 (2000)
+https://doi.org/10.1063/1.1288390
+Articles You May Be Interested In
+Methodological problems in pressure profile calculations for lipid bilayers
+J. Chem. Phys. (March 2005)
+A molecular dynamics study of liquid drops
+J. Chem. Phys. (July 1984)
+The tension of a curved surface from simulation
+J. Chem. Phys. (December 2012)
+ 04 November 2026 09:54:00
+
+
+--- PAGE 2 ---
+Molecular dynamics results on the pressure tensor of polymer ﬁlms
+F. Varnik
+Institut fu¨r Physik, Johannes-Gutenberg Universita¨t, 55099 Mainz, Germany
+J. Baschnagel
+Institut Charles Sadron, 6 rue Boussingault, 67083 Strasbourg Cedex, France
+K. Binder
+Institut fu¨r Physik, Johannes-Gutenberg Universita¨t, 55099 Mainz, Germany
+~Received 4 May 2000; accepted 14 June 2000!
+Polymeric thin ﬁlms of various thicknesses, conﬁned between two repulsive walls, have been
+studied by molecular dynamics simulations. Using the anisotropy of the perpendicular, PN(z), and
+parallel components, PT(z), of the pressure tensor the surface tension of the system is calculated for
+a wide range of temperature and for various ﬁlm thicknesses. Three methods of determining the
+pressure tensor are compared: the method of Irving and Kirkwood ~IK!, an approximation thereof
+~IK1!, and the method of Harasima ~H!. The IK- and the H-methods differ in the expression for
+PT(z) ~z denotes the distance from the wall!, but yield the same formula for the normal component
+PN(z). When evaluated by molecular dynamics ~or Monte Carlo!-simulations PN(z) is constant, as
+required by mechanical stability. Contrary to that, the IK1-method leads to strong oscillations of
+PN(z). However, all methods give the same expression for the total pressure when integrated over
+the whole system, and thus the same surface tension, whereas the so-called surface of tension, zs ,
+depends on the applied method. The difference is small for the IK- and H-methods, while the
+IK1-method leads to values that are in conﬂict with the interpretation of zs as the effective position
+of the interface. © 2000 American Institute of Physics. @S0021-9606~00!51334-8#
+I. INTRODUCTION
+The aim of statistical mechanics is to relate macroscopic
+quantities to microscopic degrees of freedom. An example
+for this connection is the virial equation of the pressure. Con-
+sider a system of volume V and M particles which interact by
+a pair potential U. Let the distance between two particles be
+denoted R(R5uRu). The pressure can then be written as a
+sum of two parts,
+p5kBTr2
+1
+6 E R
+dU~R!
+dR r~2!~R!d3R, ~1!
+a kinetic ~ideal-gas! part kBTr (r5M/V), which arises from
+the average kinetic energy and the momentum transfer of the
+particles on the container walls, and a potential part which
+accounts for the intermolecular forces. Two particles experi-
+ence an interaction force 2RU8(R)/R. When weighing the
+corresponding virial, 2RU8(R), with the average density,
+r(2)(R), of a particle at distance R from another one and
+integrating over all possible separations, one obtains the con-
+tribution of the potential to the pressure. There are different
+ways to derive Eq. ~1!~see Refs. 1–3, for instance!, but none
+of these routes can readily be generalized to inhomogeneous
+systems. They all use the isotropy of space somewhere in the
+derivation and take p as a scalar.
+In inhomogeneous systems, however, the pressure in
+general depends on the spatial direction and on the position r
+where it is determined: It is a tensor P(r). Nonetheless, the
+pressure tensor can still be split into a kinetic part, PK, and a
+potential part, PU:
+P~r!5PK~r!1PU~r!. ~2!
+The kinetic part may be expressed by a generalization of the
+ideal-gas contribution,
+PK~r!5kBTr~r!1ˆ, ~3!
+where r(r) is the density at r and 1ˆ a333 unit matrix.
+On the other hand, there seems to be no unique expres-
+sion for PU(r).2,4–10 The origin of this problem may be ex-
+plained as follows: The pressure tensor can be deﬁned by the
+inﬁnitesimal force dF acting across an inﬁnitesimal surface
+dA which is located at r:
+dF~r!52dA•P~r!. ~4!
+If a particle moves across dA, the resulting momentum
+transfer contributes to PK(r). Since the momentum is asso-
+ciated with the particle position, it is a single particle prop-
+erty which may be well localized in space ~see however Ref.
+11!. The ambiguity in the calculation of P(r) arises from the
+interaction between two particles: Which particles should
+contribute to the force at r? Somehow the nonlocal two-
+particle force, 2U8(R), has to be reduced to a local force
+dF(r).7 This ambiguity was already pointed out in the semi-
+nal work of Irving and Kirkwood, and they required that ‘‘all
+deﬁnitions must have this in common—that the stress be-
+tween a pair of molecules be concentrated near the line of
+centers. When averaging over a domain large compared with
+the range of intermolecular force, these differences are
+JOURNAL OF CHEMICAL PHYSICS VOLUME 113, NUMBER 10 8 SEPTEMBER 2000
+44440021-9606/2000/113(10)/4444/10/$17.00 © 2000 American Institute of Physics
+ 04 November 2026 09:54:00
+
+
+--- PAGE 3 ---
+washed out, and the ambiguity remaining in the macroscopic
+stress tensor ~Ref. 12! is of negligible order’’ ~footnote on p.
+829 of Ref. 4!.
+In the present paper, we apply common ways to calcu-
+late PU(r) to a model of a glassy polymer ﬁlm and determine
+the surface tension as a function of temperature. This work
+serves as a preparation for simulations on the sluggish relax-
+ation of the ﬁlm in the supercooled state.13 The paper is
+organized as follows: In Sec. II we discuss the theoretical
+background of various approaches to PU(r). Section III pre-
+sents details of the model and simulation technique, and Sec.
+IV compiles the results. The ﬁnal section contains our con-
+clusions.
+II. THEORETICAL BACKGROUND
+A. The methods of Irving and Kirkwood and of
+Harasima
+Irving and Kirkwood4 gave a deﬁnition of the PU tensor
+by starting from a statistical mechanical derivation of the
+equations of hydrodynamics and by making a special choice
+for the particles that contribute to the local force: Only those
+pairs of particles should give rise to dF(r) for which the line
+connecting their centers of mass passes through the inﬁni-
+tesimal surface dA ~see Fig. 1!.2 With this choice they ob-
+tained the following expression for the potential part of the
+pressure tensor
+PU~r!52 1 2 E RR R U8~R!S E 0 1 da r~2!@r2aR;r
+1~12a!R# Dd3R, ~5!
+where RR is a dyadic, U8(R)5dU/dR, and r(2)(r;r8) de-
+notes the two-particle density
+r~2!~r;r8!5 K( iÞ j d~ri2r!d~rj2r8!L. ~6!
+Using Eq. ~6! one obtains from ~5!
+PU~r!52 1 2 K( iÞ j rijrij rij U8~rij! E 0 1 da d~ri2r1arij!L,
+~7!
+where rij5rj2ri (rij5uriju).
+Equation ~5! can be interpreted as follows: The term
+2RRU8/R is a tensorial generalization of the virial 2RU8
+of the integrand in Eq. ~1!. It accounts for the force RU8/R
+that a particle at r1 experiences from another particle at r2
+(R5r22r1). The virial has to be multiplied by the probabil-
+ity of ﬁnding two particles at r1 and r2 . The probability is
+proportional to the density r(2)(r1 ;r2) which depends ex-
+plicitly on both particle positions for inhomogeneous sys-
+tems. Therefore, different values of r(2)(r1 ;r2) are obtained
+for ﬁxed R when shifting particle 1 or 2 to position r, where
+the pressure shall be determined, i.e., for r15r (a50) or
+r25r (a51) ~see Fig. 1!. The integral over a takes all of
+these contributions into account. The outer integral ﬁnally
+sums over the possible vectors R which pass through dA.
+Equations ~5! and ~7! are general and apply to systems of any
+shape if the particles interact by a pair potential. In the fol-
+lowing we are interested in thin ~polymer! ﬁlms conﬁned
+between two impenetrable walls. For systems with planar
+geometry the pressure tensor, P, depends only on the dis-
+tance, z, from the wall.2,10 Furthermore, the nondiagonal
+components of P vanish in thermal equilibrium and it can be
+written as ~see Sec. II D!
+P~z!5~exex1eyey !PT~z!1ezezPN~z!, ~8!
+where ex ,ey ,ez are orthogonal unit vectors and the lateral,
+PT(z), and normal component, PN(z), of P(z) are given by
+Pzz~z!5PN~z! and Pxx~z!5Pyy~z!5PT~z!. ~9!
+Using
+E
+0
+1
+da d~z2azij2zi!5
+1
+uziju QS
+z2zi
+zij DQS
+zj2z
+zij D,
+and averaging Eq. ~7! over the tangential coordinates one
+obtains10,14
+PU~z!5 1 A EEPU~r!dx dy
+52
+1
+2A K( iÞ j
+rijrij
+rij
+U8~rij!
+1
+uziju
+3QS
+z2zi
+zij DQS
+zj2z
+zij D L, ~10!
+where A is the area of a plane in tangential direction. With
+Eq. ~10! this leads to the following ~full! expressions for the
+normal and tangential components of the pressure tensor for
+planar systems ~IK method!
+FIG. 1. Schematic illustration of the different contributions to PU(r) which
+are taken into account by Irving and Kirkwood ~IK method! and by Ha-
+rasima ~H method!.LetdA be an inﬁnitesimal surface situated at position r
+@panel ~a!#. In the IK method all particles whose center line passes through
+dA contribute to the force felt across the surface @panel ~b!#, whereas Ha-
+rasima assumes that the interaction between the particles inside a prisma
+with base dA and those on the side to which dA is pointing causes the force
+at r @panel ~c!#. Panel ~b! shows two possible contributions in the IK
+method. If R5r22r1 , the position vectors of the particles can also be
+expressed as r15r2aR and r25r1(12a)R(0<a<1) @see Eq. ~5!#.The
+interaction between r18 and r28 is also taken into account in the H method, but
+not that between r1 and r2 . On the other hand, particles at r3 and r4 (5r3
+1R) contribute in Harasima’s approach, whereas they do not in the IK
+method.
+4445J. Chem. Phys., Vol. 113, No. 10, 8 September 2000 Pressure tensor of polymer ﬁlms
+ 04 November 2026 09:54:00
+
+
+--- PAGE 4 ---
+PN IK~z!5r~z!kBT
+2
+1
+2A K( iÞ j
+uziju
+rij
+U8~rij!QS
+z2zi
+zij DQS
+zj2z
+zij D L,
+~11!
+PT IK~z!5r~z!kBT2 1 4A K( iÞ j xij 2 1yij 2 rij U8~rij! uziju
+3QS
+z2zi
+zij DQS
+zj2z
+zij D L, ~12!
+where r(z) denotes the density at z averaged over tangential
+coordinates x and y. These equations are valid only in ther-
+mal equilibrium ~for an extension to nonequilibrium situa-
+tions see Refs. 8 and 9!.
+In addition to the IK expressions the formulas of Ha-
+rasima are often used in the literature.2,5 They are obtained
+from a different choice of the contributing interactions ~see
+Fig. 1!: Harasima considered a prisma whose base is dA. The
+force dF(r) is thought to result from all interactions between
+particles in the prisma and those on the side of dA to which
+the vector dA points. This also includes particles whose cen-
+ter line does not pass through dA. Harasima’s choice corre-
+sponds to a contour which goes parallel to the walls ~or the
+planar surface! from r1 to (x2 ,y2 ,z1) and then along the
+normal to r2 .2,10 Using this convention he obtained the same
+results for the normal component as Irving and Kirkwood
+@Eq. ~11!#,
+PN H~z!5PN IK~z!, ~13!
+but a different expression for the lateral component of the
+pressure tensor2,5
+PT H~z!5r~z!kBT2 1 4A K( iÞ j xij 2 1yij 2 rij U8~rij!d~zi2z!L.
+~14!
+Thus, the tangential component, PT , of the pressure tensor is
+not uniquely deﬁned. Consequently, the pressure anisotropy,
+PN2PT , is ambiguous. This ambiguity is extensively dis-
+cussed in the literature.2,4–10,14
+However, the integral over z of Eq. ~12! is identical to
+that of Eq. ~14!. This implies that both the IK and the H
+methods yield the same results for any physical quantity
+which does not depend on the local proﬁle of the pressure
+tensor. In particular, they lead to the same values of the
+surface tension g ~Kirkwood–Buff formula2!
+2g5 E
+2D/2
+1D/2
+@PN~z!2PT~z!#dz ~15!
+5
+1
+4A K( iÞ j
+rij 2 23zij 2
+rij
+U8~rij!L. ~16!
+The factor 2 arises from the existence of two walls at
+z52D/2 and z5D/2 in our simulation, D being the distance
+from one wall to the other ~i.e., the ﬁlm thickness!. However,
+moments of PN2PT , such as the so-called ‘‘surface of ten-
+sion’’ zs , i.e., the position where the surface tension acts,
+zs5
+1
+2g E 2D/2
+1D/2
+z@PN~z!2PT~z!#dz, ~17!
+depends on the different choices made to determine PU. This
+was already pointed out by Harasima.5
+In Sec. IV we want to show for the polymer model con-
+sidered that the differences in zs obtained from the IK and H
+expressions are small compared to the size s of a particle,
+but not negligible. The ambiguous nature of zs was discussed
+in detail in Ref. 2, 10. In Ref. 10 a liquid–vapor interface is
+studied. Since there are no density oscillations near a free
+surface, which are characteristic of liquid–wall interfaces,1,15
+we expect the difference between the IK and H expressions
+for PT(z) to be more pronounced for the thin ﬁlms studied
+here.
+B. The method of planes
+Todd, Evans, and Daivis8,9 have introduced a variant of
+the original IK derivation to determine the pressure tensor
+~termed ‘‘method of planes’’! which avoids the ambiguity of
+deﬁning a contour to relate two interacting particles. The
+problem is, however, not circumvented because one has to
+choose a gauge for both the pressure tensor and the momen-
+tum density.8 The derivation starts from the continuity equa-
+tions for the mass and momentum and leads to
+Paz U ~z!5 1 2A K ( i51
+M
+Fai sgn~zi2z!L ~18!
+5
+1
+2A K( iÞ j Faij~Q~zi2z!Q~z2zj!
+2Q~zj2z!Q~z2zi!!L ~19!
+for the potential part of the pressure tensor and to
+Paz K ~z!5 1 A K ( i51
+M
+paipzi
+m d~z2zi!L ~20!
+for the kinetic part (a5x,y,z), where M denotes the number
+of particles and m is the mass of a particle. In Eq. ~18! sgn(x)
+is the sign function ~51ifx.0 and 21 for x,0), and Fai
+is the a component of the force exerted on particle i by all
+other particles. Furthermore, U(x) denotes the Heaviside
+step function and pai is the a component of the momentum
+of particle i. Using the identity
+uzijuQS
+z2zi
+zij DQS
+zj2z
+zij D52zij@Q~zi2z!Q~z2zj!
+2Q~zj2z!Q~z2zi!#,
+one can verify that the diagonal components of the Eqs. ~19!
+and ~20! yield the IK expression for the normal pressure @Eq.
+~11!#. Since Eq. ~18! contains a single sum instead of the
+double sum of Eq. ~11!, it is computationally more conve-
+nient. Therefore, we used Eqs. ~18! and ~20! to calculate the
+normal pressure. However, these equations are not sufﬁcient
+for determining the surface tension g, as they do not contain
+4446 J. Chem. Phys., Vol. 113, No. 10, 8 September 2000 Varnik, Baschnagel, and Binder
+ 04 November 2026 09:54:00
+
+
+--- PAGE 5 ---
+the diagonal components of the pressure tensor parallel to the
+walls, i.e., Pxx and Pyy . On the other hand, they provide a
+method for the calculation of the viscosity.8
+C. An approximate formula: IK1 method
+In the literature ~see Refs. 16 and 17, for instance! there
+is still another formula for the pressure tensor, which is a
+kind of a ‘‘tensorized’’ version of the Harasima expression
+~14!~called ‘‘IK1’’ in Ref. 8!
+PIK1~z!5r~z!kBT1ˆ2 1 2A K( iÞ j rijrij rij U8~rij!d~zi2z!L.
+~21!
+Todd, Evans, and Daivis8 noticed that Eq. ~21! is equivalent
+to a zeroth-order approximation of the ~full! IK expression
+and that it leads to spurious unphysical oscillations of PN .
+They thus concluded that this formula should not be used for
+inhomogeneous ﬂuids. In the same reference, they gave a
+physical interpretation of the IK1 approximation in k space
+@see Eq. ~24! in Ref. 8#. One can also ﬁnd a real-space inter-
+pretation in the following way. If one replaces the integral
+over a in Eq. ~7! by the value of the integrand at the lower
+bound a50, one obtains
+PU~r!52 1 2 K( iÞ j rijrij rij U8~rij!d~ri2r!L, ~22!
+which gives the potential part of the IK1 expression ~21!
+after averaging over the tangential coordinates.
+Thus, the IK1 method corresponds to the assumption
+that the two-particle density r(2)(r1 ;r2) is unchanged upon
+translation of both arguments along the line R5r22r1
+which connects the points 1 and 2. However, the breaking of
+translational invariance is one of the basic characteristics of
+inhomogeneous systems. The more the system is inhomoge-
+neous, the more the IK1 expression ~21! for PN(z) should
+become inaccurate. On the other hand, integration over z
+yields the same result as the IK and H approaches. Therefore,
+the IK1 method leads to the same surface tension g, but to a
+different value for zs compared to the other two methods.
+In Sec. IV we show that the IK1 result for zs is too large
+to allow for an interpretation of zs as the effective position of
+the interface, i.e., as the distance of closest approach of a
+particle to the wall. Furthermore, Eq. ~21! leads to strong
+oscillations of PN in contrast to the condition of mechanical
+stability which requires a constant proﬁle for PN ~see Sec.
+II D!.
+D. Mechanical stability requires PNÄconst
+In equilibrium, mechanical stability requires that the gra-
+dient of the pressure tensor vanishes
+“•P50, ~23!
+where 0 denotes the null vector. For a system with planar
+symmetry, the nondiagonal components of P must also van-
+ish ~otherwise shear forces would exist! and the lateral com-
+ponents should be identical. So, we have
+]Pxx
+]x ex1
+]Pyy
+]y ey1
+]Pzz
+]z ez50
+and
+Pxx~r!5Pyy~r!. ~24!
+Since ]Pxx /]x50, ]Pyy /]y50 on the one hand, and Pxx
+5Pyy on the other hand, the lateral components can be func-
+tions of z only. Furthermore, since ]Pzz /]z50, the normal
+component of the pressure tensor is independent of the dis-
+tance from the surfaces and must be identical to the external
+pressure PN,ext . This gives
+PN~z!5Pzz5PN,ext5const
+and
+PT~z!5Pxx~z!5Pyy~z!, ~25!
+i.e., Eq. ~9!. The argument presented is not new. It essen-
+tially follows the discussion of Ref. 2 ~see p. 44 of Ref. 2!.
+We repeated it here to stress the erroneous character of ex-
+pression ~21!. In Sec. IV we will see that only the IK- ~or H-!
+formula ~11! satisﬁes condition ~25!. The independence of
+Eq. ~11! on z was already proved analytically in the work of
+Harasima ~see p. 224 of Ref. 5!. This important property
+helps us to set the pressure in the simulations for a given
+wall separation and temperature.
+III. SIMULATION OF POLYMERIC FILMS
+A. Model
+We study a Lennard-Jones model for a polymer melt18
+embedded between two impenetrable walls. All simulation
+results are given in Lennard-Jones ~LJ! units. Two potentials
+are used for the interaction between particles. The ﬁrst one is
+a truncated and shifted LJ-potential which acts between all
+pair of particles regardless of whether they are connected or
+not,
+ULJ-ts~r!5H
+ULJ~r!2ULJ~rc! if r,rc ,
+0 otherwise,
+where
+ULJ~r!54e@~r/s!122~r/s!6#
+and rc52321/6. The connectivity between adjacent mono-
+mers of a chain is ensured by a FENE-potential19
+UFENE~r!52
+k
+2 R0 2 lnF12S r R0 D 2 G,
+where k530 is the strength factor and R051.5 the maximum
+allowed length of a bond. The wall potential was chosen as
+UW~z!5S
+s
+z D
+9
+, ~26!
+where z5uzparticle2zwallu (zwall56D/2). This corresponds to
+an inﬁnitely thick wall made of inﬁnitely small particles
+which interact with inner particles via the potential
+45(r/s)212/(prwall) where rwall denotes the density of wall
+particles. The sum over the wall particles then yields (s/z).9
+4447J. Chem. Phys., Vol. 113, No. 10, 8 September 2000 Pressure tensor of polymer ﬁlms
+ 04 November 2026 09:54:00
+
+
+--- PAGE 6 ---
+The static and dynamic properties of this model were
+studied in the bulk when gradually supercooling towards the
+glass transition.18,20–23 The model begins to develop sluggish
+relaxation if the temperature drops below T’0.7 and yields a
+critical temperature of mode-coupling theory of Tc,bulk
+.0.45 ~Ref. 20! upon further cooling. We quote this value
+for the sake of comparison with the ﬁlm results to be dis-
+cussed below.
+B. Contribution of the walls to the normal pressure
+As the wall potential acts only in the normal direction,
+the expressions ~12! and ~14! for PT remain unchanged. To
+obtain the contribution of the walls to PN one can consider
+each wall as an additional particle of inﬁnite mass and use
+Eq. ~18! for the extended system of M12 particles. Starting
+from Eq. ~18! one can show that
+PN walls,IK~z!5 1 A K ( i51
+M
+FW~zi2zbotwall!Q~zi2z!
+3Q~z2zbotwall!L2
+1
+A K ( i51
+M
+FW
+3~ztopwall2zi!Q~ztopwall2z!Q~z2zi!L,
+~27!
+where FW(z)52dUW(z)/dz, zbotwall,zi,ztopwall for all ~in-
+ner! particles ~i.e., excluding the wall particles! and zbotwall
+,z,ztopwall for all planes. From Eq. ~27! it follows that the
+force FW of a wall on a particle contributes to the normal
+pressure on a given plane if the plane lies between the par-
+ticle and the wall.
+Similarly, one can derive the contribution of the walls
+within the IK1 approximation by starting from Eq. ~21!. This
+yields24
+PN walls,IK1~z!5 1 A K ( i51
+M
+FW~zi2zbotwall!d~zi2z!L
+2
+1
+A K ( i51
+M
+FW~ztopwall2zi!d~zi2z!L,
+~28!
+where the sum runs over inner particles only, as before.
+Since FW(zi2z8)d(zi2z) is equivalent to FW(z2z8)d(zi
+2z), PN walls,IK1(z) can be written as a product of the density
+proﬁle and a contribution from the walls, i.e.,
+PN walls,IK1~z!5@FW~z2zbotwall!2FW~ztopwall2z!#r~z!.
+C. About the simulation
+The equilibration of the system was done in the NpT
+ensemble. The production runs, however, were performed in
+the NVT ensemble because we are also interested in analyz-
+ing the dynamics of the ﬁlms later on ~for preliminary results
+see Ref. 13!.
+At the beginning of the simulation the velocities of all
+particles were set to zero and NRRW ~Nonreversal–random-
+walk! chains were ‘‘synthesized,’’ i.e., only the average bond
+length and bond angle ~known from previous bulk simula-
+tions! were used to build a chain of N(510) monomers. This
+initial state corresponds to very high energies @usually E(t
+50).1010# due to the occurrence of extremely short dis-
+tances between nonbonded monomers.
+The surplus of energy must be removed to prevent nu-
+merical instabilities. For the bulk this can be done by replac-
+ing the full LJ potential by a softer one. The LJ potential is
+then switched on smoothly.19 For our model, however, it was
+necessary to keep the ~full! wall potential from the very be-
+ginning of the simulation to avoid penetration of the walls.
+We thus left the potentials unchanged, but used an adaptive
+time step: First, the maximum force Fmax and the maximum
+velocity vmax were determined. A time step D was then cho-
+sen so that the resulting displacement of a particle, which is
+subject to Fmax and moves with initial velocity vmax in direc-
+tion of Fmax , would be drmax51023. This ~empirical! value
+is only applicable if Fmax does not point in direction of a
+bond vector whose size b is closer to the maximum bond
+length R0 ~see UFENE) than 1023, since a displacement of
+this size could break the bond. In such a situation we chose
+drmax5(R02bmax)/2 instead of 1023 to adjust the time step
+~bmax denotes the largest measured bond length!. The equa-
+tions of motion were then integrated with this time step and
+the procedure was repeated.
+After about 250 MD steps the velocities of all particles
+were renewed by drawing them from the Maxwell distribu-
+tion, and the time derivative of the volume was set to zero.
+These steps are important to warrant the numerical stability
+of our procedure. Our criterion for the end of this stage was
+that the minimum distance between particles should not be
+smaller than a certain value, empirically 0.8, and that the
+normal pressure of the system should not be too far away
+from the external value, i.e., uP¯ N(t)2PN,extu/PN,ext<1022,
+where P¯ N(t) was computed as an average over the last 20
+samples preceding time t. The sample distance was empiri-
+cally chosen to 10 exp(1/T)MD steps to take into account
+stronger correlations at lower temperatures. Since we kept
+the ﬁlm thickness D ﬁxed, the simulation at constant pres-
+sure was realized by varying the area (5A) of the simulation
+box parallel to the walls. During this initial stage a high bath
+temperature, T51, was used.
+After this initial stage ~with a typical duration of 105 MD
+steps! the time step could be set to D50.003. This value is
+close to that used in previous bulk simulations.18 The system
+was then slowly cooled down to the desired temperature by
+gradually reducing temperature in a step-wise fashion: The
+bath temperature was set to the next smaller value and the
+system was propagated for a a certain amount of time before
+the bath temperature was decreased again.
+At the end of the cooling process the sampling of the
+mean-square displacement of the chain centers parallel to the
+walls, g3i(t), and of the volume was started. The system was
+propagated until g3i>9Reei
+2 , where Reei denotes the compo-
+nent of the chain’s end-to-end vector parallel to the walls.
+This criterion sufﬁces to reach the free diffusive limit and to
+equilibrate the system completely. During this period the
+system volume was sampled once every 1000 time steps and
+4448 J. Chem. Phys., Vol. 113, No. 10, 8 September 2000 Varnik, Baschnagel, and Binder
+ 04 November 2026 09:54:00
+
+
+--- PAGE 7 ---
+the average volume of the system was calculated. The equili-
+brated conﬁguration was then further propagated until the
+instantaneous volume reached the average value within a
+given relative accuracy, usually 1025. At this point the pro-
+gram ﬁxes this volume and switches to a ~pure! Nose–
+Hoover Algorithm ~NVT ensemble! for production runs in
+the canonical ensemble. During a production run sampling
+was done once every 1000 time steps.
+IV. RESULTS
+A. Proﬁles of PN„z…: IK1 versus „full… IK
+In order to analyze the pressure proﬁles for our model
+we studied different ﬁlm thicknesses (D53,5,10,20) at vari-
+ous temperatures while always keeping PN,ext51. For this
+external pressure many results for the bulk behavior are
+known.18,20–23 Here, we want to discuss two representative
+cases: D53(’2Rg where Rg.1.45 is the bulk radius of
+gyration! at T51, and D510 (’7Rg)atT50.42. The tem-
+perature T51 corresponds to the high-temperature ~ordi-
+nary! liquid state of the melt, whereas T50.42 belongs to the
+supercooled temperature regime close to the critical tempera-
+ture of mode-coupling theory @Tc(D510)’0.39 ~Ref. 13!#.
+For a ﬁlm of thickness D53, 10 independent runs of 106
+time steps were simulated at T51 and PN,ext51. The total
+number of particles was 1000 corresponding to 100 chains of
+length N510 ~this number of monomers per chain was al-
+ways kept ﬁxed in our simulations!. For D510 ﬁve indepen-
+dent runs were done at T50.42. The length of a run was
+4.43107 time steps. Samples were taken every 1000 steps.
+The much longer simulation time in this case is necessary to
+allow for a detailed analysis of the dynamics of the system
+which is very slow at this temperature.
+Figures 2 and 3 show the simulation results for the nor-
+mal component of the pressure tensor, PN , calculated ac-
+cording to the IK- and IK1 prescriptions, respectively @see
+Eqs. ~11! and ~21!#. Furthermore, they resolve the different
+contributions stemming from the kinetic part, the virial
+~forces between inner particles, i.e., excluding the walls! and
+the walls. The striking difference between both prescriptions
+is that the IK1 method yields strong oscillations, whereas the
+pressure proﬁle of the IK method is constant throughout the
+ﬁlm, in agreement with the condition of mechanical stability
+~see Sec. II D!.
+Since the kinetic contribution to PN is proportional to
+the density proﬁle r(z), Fig. 2 shows that practically no
+particle is present in the vicinity of the walls. The excluded-
+volume interaction creates a depletion zone of about 0.8 be-
+tween the wall (zwall561.5) and the monomer positions at
+this temperature. Any plane in this region separates all par-
+ticles of the system, which lie on the side of the plane facing
+towards the inner part of the ﬁlm, from the wall on the other
+side. There is no interparticle force across the plane and thus
+the virial contribution to the normal pressure vanishes. The
+behavior of PN(z) near the wall arises only from the wall-
+particle interaction. This interaction does not depend on the
+position of the plane as long as all the particles stay on the
+opposite side, i.e., as long as r(z)’0. This explains why PN
+is constant in the region close to the walls. With increasing
+distance from the wall the density starts to increase from
+zero. Then, the kinetic and virial parts begin to contribute,
+whereas the effect of the walls decreases. In this intermediate
+region none of the contributions is negligible, but their sum
+still remains constant, in accord with Eq. ~25!. Very far from
+the walls the contribution of the walls to PN becomes negli-
+gible. There, one expects that the variations of the kinetic
+and virial terms must be opposite to each other. A ﬁrst indi-
+cation of this opposite behavior can be observed in Fig. 2. A
+FIG. 2. Different contributions to the normal pressure proﬁle PN(z)fora
+ﬁlm of thickness D53(’2Rg)atT51 ~high-temperature liquid state! and
+PN,ext51 according to the ~full! IK method @see Eq. ~11!#. The H method
+yields the same result @see Eq. ~13!#. The various parts, kinetic ~solid line!,
+virial ~dashed line!, and wall ~dashed–dotted!, mutually balance one another
+to yield a constant proﬁle PN(z)5PN,ext ~circles!, as required by mechanical
+stability ~see Sec. II D!. The difference between PN,ext51 ~vertical dashed
+line! and PN(z) shows the accuracy to which we can ﬁx PN,ext in the simu-
+lation for this ﬁlm thickness. The difference is smaller than 2%.
+FIG. 3. Different contributions to the normal pressure proﬁle PN(z) for a
+ﬁlm of thickness D53(’Rg)atT51 ~high-temperature liquid state! and
+PN,ext51 ~vertical dashed line! according to the IK1 method @see Eq. ~21!#.
+Contrary to Fig. 2, the various parts, kinetic ~solid line!, virial ~dashed line!,
+and wall ~dashed–dotted!, do not balance, but amplify one another, resulting
+in a ~nonphysical! oscillatory structure of PN(z) ~circles!.
+4449J. Chem. Phys., Vol. 113, No. 10, 8 September 2000 Pressure tensor of polymer ﬁlms
+ 04 November 2026 09:54:00
+
+
+--- PAGE 8 ---
+better demonstration is, however, shown in Fig. 4 where the
+ﬁlm thickness is large enough to exhibit an inner region with
+negligible wall contribution.
+Contrary to that, the various contributions of the IK1
+methods are ~almost! in phase. Figure 3 illustrates that the
+strong deviation of PN IK1 from a constant is caused by the
+interaction of the wall with the monomers close to the maxi-
+mum of r(z)ifD53. If the ﬁlm thickness increases, Fig. 5
+shows that the oscillations of PN propagate through the
+whole ﬁlm. Close to the wall, the dominant contribution still
+comes from the wall-monomer interaction, whereas the os-
+cillations in the inner part of the ﬁlm are in phase with the
+virial. The contribution of the virial is negative close to the
+wall, reﬂecting a predominantly attractive interaction be-
+tween the monomers. This dominance of the attractive inter-
+action is also visible for the ~correct! IK method, but is much
+less pronounced in this case.
+The situation becomes more complicated when studying
+the lateral component of the pressure tensor. Here, the two
+alternative formulas, Eqs. ~12! and ~14!, can yield com-
+pletely different proﬁles. Figures 6 and 7 compare the IK and
+the H versions to calculate the lateral pressure PT(z) for D
+53, T51 and D510, T50.42, respectively. Whereas both
+methods oscillate in phase with one another for the thicker
+FIG. 4. Different contributions to the normal pressure proﬁle PN(z)fora
+ﬁlm of thickness D510 (’7Rg)atT50.42 @supercooled state close to Tc
+’0.39 ~Ref. 13!# and PN,ext51 ~vertical dashed line! according to the IK-
+method @see Eq. ~11!#. The H-method gives the same result @see Eq. ~13!#.
+As in Fig. 2, the various parts, kinetic ~solid line!, virial ~dashed line!,and
+wall ~dashed–dotted!, mutually balance one another and sum up to a con-
+stant proﬁle PN(z)5PN,ext ~circles!, in agreement with the condition of
+mechanical stability ~see Sec. II D!.
+FIG. 5. Different contributions to the normal pressure proﬁle PN(z)fora
+ﬁlm of thickness D510 (’7Rg)atT50.42 @supercooled state close to Tc
+’0.39 ~Ref. 13!# and PN,ext51 ~vertical dashed line! according to the IK1
+method @see Eq. ~21!#. As in Fig. 3, the various parts, kinetic ~solid line!,
+virial ~dashed line!, and wall ~dashed–dotted!, give rise to a nonconstant
+pressure proﬁle ~circles! contrary to the requirement of mechanical stability.
+FIG. 6. Tangential component PT(z) of the pressure tensor as obtained from
+the IK formula @Eq. ~12!# and from the H-formula @Eq. ~14!# for D53
+(’2Rg), T51 ~high-temperature liquid state! and PN,ext51. The thin solid
+line shows the kinetic contribution kBTr(z) ~divided by 15 to put it on the
+scale of the ﬁgure!.
+FIG. 7. Tangential component PT(z) of the pressure tensor as obtained from
+the IK formula @Eq. ~12!# and from the H formula @Eq. ~14!# for D510
+(’7Rg), T50.42 @supercooled state close to Tc’0.39 ~Ref. 13!# and
+PN,ext51 ~vertical dashed line!. The thin solid line shows the kinetic con-
+tribution kBTr(z).
+4450 J. Chem. Phys., Vol. 113, No. 10, 8 September 2000 Varnik, Baschnagel, and Binder
+ 04 November 2026 09:54:00
+
+
+--- PAGE 9 ---
+ﬁlm, they are anticorrelated for D53. The lateral pressure of
+the IK method is positive close to the walls, but negative in
+the middle of the ﬁlm, whereas the behavior is just vice versa
+for the H method. Due to the aforementioned ambiguity of
+PT(z) it is impossible to decide which methods yield the
+physically more realistic result. If the ﬁlm thickness in-
+creases, the qualitative difference between the IK and H
+methods ~almost! vanishes and only quantitative differences
+remain. The oscillations of PT(z) clearly reﬂect the mono-
+mer proﬁle. In the inner portion of the ﬁlm they are much
+weaker for the H method than for the IK method. This is
+related to the local nature of Eq. ~14! due to the presence of
+delta function. Density oscillations are thus incorporated not
+only in the kinetic term, but also in the virial part of the
+Harasima formula. Both terms partially cancel each other.
+Although the proﬁle generated by Eq. ~14! is thus closer to
+PN,ext than that of Eq. ~12!, this should not be considered as
+an argument in favor of the H method. A clear distinction
+between both methods would only be possible if one could
+ﬁnd a quantity which speciﬁcally probes PT(z) and whose
+behavior is known a priori, as it was the case for PN(z).
+B. Surface tension and surface of tension
+As mentioned in Sec. II A, integration of the pressure
+proﬁles over z yields the same result for the IK-, H-, and IK1
+expressions. Therefore, all methods must lead to the same
+surface tension g @i.e., Eq. ~16!#. This expectation is nicely
+borne out by the simulation data for all ﬁlm thicknesses and
+temperatures studied, where g was calculated by Eq. ~15!.
+Figure 8 exempliﬁes this behavior for D55(’3Rg). With
+decreasing temperature the surface tension increases by
+about a factor of 1.5.
+Qualitatively, this temperature dependence is expected.
+The monomer density of a polymer melt close to a hard wall
+exhibits a proﬁle that is large at the wall and decays towards
+the bulk value in an oscillatory fashion with increasing dis-
+tance from the wall ~see Fig. 11 as an example!.15 Since the
+average density grows with decreasing temperature in a
+simulation at constant pressure, the maxima and minima of
+the proﬁle become more pronounced. This means that there
+are more monomers in the highly populated layers at low
+than at high temperatures, and that the oscillations of proﬁle
+become more long ranged. These effects tighten the ﬁlm so
+that the free energy needed to move monomers out of the
+interface, i.e., the surface tension, should increase as tem-
+perature decreases. The same effect is expected when reduc-
+ing the ﬁlm thickness because the layering is more pro-
+nounced in thinner ﬁlms. This expectation is borne out by the
+simulation data ~see Fig. 9!.
+FIG. 8. Temperature dependence of the surface tension, g, calculated by Eq.
+~15!, using the IK, H, and IK1 methods for D55(’3Rg) and PN,ext51.
+The temperatures shown range from the high-temperature, liquid state of the
+ﬁlm to the supercooled state.
+FIG. 9. Comparison of the temperature dependence of the surface tension,
+g, for D55(’3Rg) and D520 (’14Rg). The results of the IK method are
+shown only. The other methods ~H and IK1 methods! yield the same g’s
+within the error bars, as exempliﬁed in Fig. 8 for D55. The external pres-
+sure is PN,ext51. The temperatures shown range from the high-temperature,
+liquid state of the ﬁlm to the supercooled state.
+FIG. 10. Temperature dependence of the surface of tension zs @Eq. ~17!#
+determined by the IK, H, and IK1 methods for D55andPN,ext51. The
+solid line shows the simple estimate, zw51/T1/9 @Eq. ~29!#, for the position
+of the wall.
+4451J. Chem. Phys., Vol. 113, No. 10, 8 September 2000 Pressure tensor of polymer ﬁlms
+ 04 November 2026 09:54:00
+
+
+--- PAGE 10 ---
+Contrary to g, the discussion of Sec. II A implies that the
+surface of tension, zs , depends on the method applied. This
+fact is illustrated in Fig. 10 which shows the temperature
+dependence of zs for the IK, H, and IK1 methods. The dif-
+ference between IK and the H methods is rather small,
+whereas the IK1 result lies substantially above the values of
+the other two methods. Since zs can be interpreted as the
+distance of the closest approach of a monomer to the wall,
+i.e., as the effective position of the wall, the following simple
+argument rules out the IK1 result: At temperature T, a par-
+ticle can only penetrate into a ~soft! wall up to the point, zw ,
+where the wall potential balances thermal energy of the par-
+ticle, i.e., Uw(zw)/T51. Using Eq. ~26! this gives
+zw5S
+1
+T D
+1/9
+. ~29!
+Equation ~29! is compatible with the IK and H predictions,
+but not with the IK1 result. Another way to illustrate this
+point is shown in Fig. 11 where we plotted the monomer
+density proﬁle of a ﬁlm of thickness D510 at T50.42. With
+increasing ﬁlm thickness the IK and H values for zw ap-
+proach one another—for D520, for example, they are indis-
+tinguishable within the error bars ~not shown here!—but the
+disparity to the IK1 result remains. The ﬁgure clearly shows
+that the IK1 method places the effective wall position deeply
+into the interior of the ﬁlm, whereas it has to be situated in
+the region where the density proﬁle approaches zero.
+V. CONCLUSIONS
+We have reported simulation results for the pressure ten-
+sor of polymeric thin ﬁlms which investigate the ambiguity
+in the deﬁnition of the potential part of this quantity. We
+studied three common methods: the method of Irving and
+Kirkwood,4 that of Harasima5 and an approximation of the
+IK method, the so-called IK1 approach.8 On a microscopic
+scale, our simulation results show signiﬁcant differences be-
+tween the IK and H methods for the lateral component PT(z)
+of the pressure tensor. However, both methods agree with
+each other for the normal component PN(z). They lead to a
+constant proﬁle in accord with mechanical stability. On the
+other hand, the IK1 formula exhibits strong oscillations of
+PN(z), as also found in Refs. 8 and 9. The origin of this
+discrepancy comes from the fact that the IK1 method corre-
+sponds to a zeroth-order approximation of the IK expression,
+which assumes translational invariance of the two-particle
+density r(2)(r1 ;r2) with respect to the difference vector R
+5r22r1 . This assumption is not valid in thin ﬁlms which
+exhibit density oscillations that are damped out only gradu-
+ally with increasing distance from the wall. This local struc-
+ture becomes more pronounced with decreasing temperature
+and ﬁlm thickness. The more pronounced it is, the stronger
+the IK1 method will deviate from the IK expression.
+However, when integrated over the whole system all
+methods give the same result. Thus, the surface tension, g,of
+a planar system can still be calculated using each of these
+methods. This is no longer possible for moments of the pres-
+sure proﬁles, such as the surface of tension zs . The fact that
+IK1 expression can be used to calculate the surface tension
+although it is based on an incorrect expression for the local
+pressure tensor has occasionally caused confusion in the lit-
+erature. For instance, Pandey et al.17 applied the IK1 expres-
+sions to polymer ﬁlms conﬁned between one repulsive and
+one attractive wall, taking the local pressure proﬁles literally.
+The present analysis shows that the pressure proﬁles pub-
+lished in Ref. 17 are incorrect. Thus we hope that the present
+analysis will help to avoid this confusion in future simulation
+studies.
+ACKNOWLEDGMENTS
+We thank M. Mu¨ller and J. Horbach for enlightening
+discussions. Generous grants of simulation time by the com-
+puter center at the University of Mainz, the HLRZ Ju¨lich and
+the RHRK in Kaiserslautern are gratefully acknowledged.
+This work was supported by the Deutsche Forschungsge-
+meinschaft under SFB262/D2. J.B. is indebted to the Euro-
+pean Science Foundation for ﬁnancial support by the ESF
+Program on ‘‘Experimental and Theoretical Investigations of
+Complex Polymer Structures’’ ~SUPERNET!.
+1 J.-P. Hansen and I. R. McDonald, Theory of Simple Liquids ~Academic,
+London, 1990!.
+2 J. S. Rowlinson and B. Widom, Molecular Theory of Capillarity ~Claren-
+don, Oxford, 1982!.
+3 J. M. Haile, Molecular Dynamics Simulation ~Wiley, New York, 1992!.
+4 J. H. Irving and J. G. Kirkwood, J. Chem. Phys. 18, 817 ~1950!.
+5 A. Harasima, Adv. Chem. Phys. 1, 203 ~1958!.
+6 P. Schoﬁeld and J. R. Hendersen, Proc. R. Soc. London, Ser. A 379,231
+~1982!.
+7 R. Lovett and M. Baus, Adv. Chem. Phys. 102,1~1997!.
+8 B. D. Todd, D. J. Evans, and P. J. Daivis, Phys. Rev. E 52,1627
+~1995!.
+9 B. D. Todd and D. J. Evans, Mol. Simul. 17, 317 ~1996!.
+10 J. P. R. B. Walton, D. J. Tildesly, J. S. Rowlinson, and J. R. Henderson,
+Mol. Phys. 48, 1357 ~1983!.
+11 Strictly speaking, there is also an ambiguity associated with the kinetic
+contribution to the pressure tensor. As pointed out, this contribution can
+FIG. 11. Monomer density proﬁle of a ﬁlm of thickness D510 (’7Rg)at
+T50.42 @.Tc’0.39 ~Ref. 13!# and PN,ext51. Since the proﬁle is symmetric
+around the middle of the ﬁlm, the ﬁgure only shows one half of it. The scale
+of the abscissa was shifted so that the wall is placed at z50. The vertical
+lines mark the values of zs computed according to the IK, H and IK1 meth-
+ods.
+4452 J. Chem. Phys., Vol. 113, No. 10, 8 September 2000 Varnik, Baschnagel, and Binder
+ 04 November 2026 09:54:00
+
+
+--- PAGE 11 ---
+be obtained by calculating the momentum ﬂux across an inﬁnitesimal
+surface dA at a given time, and then by averaging over time. The question
+is how the point in time when the particle crosses dA is determined? Is it
+when the particle just touches the surface? Or is it when its center of mass
+coincides with the position of the surface? Obviously, there are inﬁnitely
+many possible deﬁnitions of a crossover time. However, all of them
+should yield the same result for PK(r) when averaging over time.8 In
+thermal equilibrium this result is given by Eq. ~3!.
+12 Irving and Kirkwood discuss the stress tensor sU(r) which is equal to
+2PU(r).
+13 F. Varnik, J. Baschnagel, and K. Binder, J. Phys. IV 10,239~2000!.
+14 M. Rao and B. J. Berne, Mol. Phys. 37, 455 ~1979!.
+15 D. Y. Yoon, M. Vacatello, and G. D. Smith, Simulations Studies of Poly-
+mer Melts at Interfaces, in Monte Carlo and Molecular Dynamics Simu-
+lations in Polymer Science, edited by K. Binder ~Oxford University Press,
+New York, 1995!, pp. 433–475.
+16 M. J. P. Nijmeijer, C. Bruin, and A. F. Bakker, Phys. Rev. A 42,6052
+~1990!.
+17 R. B. Pandey, A. Milchev, and K. Binder, Macromolecules 30,1194
+~1997!.
+18 C. Bennemann, W. Paul, K. Binder, and B. Du¨nweg, Phys. Rev. E 57,843
+~1998!.
+19 K. Kremer and G. S. Grest, J. Chem. Phys. 92, 5057 ~1990!.
+20 C. Bennemann, J. Baschnagel, and W. Paul, Eur. Phys. J. B 10, 323
+~1999!.
+21 C. Bennemann, W. Paul, J. Baschnagel, and K. Binder, J. Phys.: Condens.
+Matter 11, 2179 ~1999!.
+22 C. Bennemann, J. Baschnagel, W. Paul, and K. Binder, Comput. Theor.
+Polym. Sci. 9, 217 ~1999!.
+23 C. Bennemann, C. Donati, J. Baschnagel, and S. C. Glotzer, Nature ~Lon-
+don! 399, 246 ~1999!.
+24 M. Mu¨ller and L. Gonzalez MacDowell, Macromolecules 33,3902
+~2000!.
+4453J. Chem. Phys., Vol. 113, No. 10, 8 September 2000 Pressure tensor of polymer ﬁlms
+ 04 November 2026 09:54:00

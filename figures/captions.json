@@ -1,0 +1,10 @@
+{
+  "01_geometry": "Every reconstructed molecule in every frame contributes to the geometry envelopes. The diagram defines the proxy and is schematic. Type labels are inferred chemistry, not verified force-field provenance.",
+  "02_spatial_profiles": "Center number profiles use fractional periodic positions and 24 bins per axis. Quarter-to-quarter curves show variation; projection uniformity does not prove bulk phase or full-system provenance.",
+  "03_collective_stationarity": "Collective components are sampled only for display. The finite-cell factor uses all available frames up to each endpoint with means reestimated; early-prefix changes and block differences diagnose finite sampling, not thermal equilibration.",
+  "04_smor_cor": "Ordinary rank-one SMOR, connected molecular self and centered collective COR use all F-k origins. Full-record reporting lag is at most one tenth of duration. Simulation-step axes cannot be converted to ps without the integration timestep.",
+  "05_decomposition": "Both self and cross use the same B(0) denominator. Their sum reconstructs centered COR at every lag. Negative cross contributions are retained. The zero-lag self amplitude is 1/G_cell, not one.",
+  "06_running_integrals": "Trapezoidal integrals depend on the declared upper cutoff. Vertical guides mark saved cutoff estimates. Curves are not certified converged full relaxation times; no tail is extrapolated.",
+  "07_block_variation": "Nonoverlapping quarters use locally estimated means, with lags <= one tenth of each quarter duration; halves similarly restrict lags. These curves show block variation, not confidence bounds or independent molecular replicates.",
+  "08_sensitivity": "Centering is a finite-record convention and can alter long-lag behavior. Downsampling tests sensitivity to saved cadence but cannot recover dynamics faster than ten steps. The initial 10% removal is a sensitivity calculation, not an asserted equilibration cutoff."
+}

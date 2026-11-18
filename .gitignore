@@ -1,0 +1,51 @@
+# Python environments and generated package files
+.venv/
+.venv-*/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Test, coverage, and lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.ipynb_checkpoints/
+
+# Downloaded local interpreters, utilities, and dependency caches
+/tools/python/
+/tools/uv/
+/tools/uv-cache/
+/tools/uv.zip
+
+# Large raw trajectory and regenerable analysis cache (share separately)
+*.lammpstrj
+/cache/
+
+# Local credentials (keep example templates shareable)
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Logs and local automation runtime state
+*.log
+/automation/logs/
+/automation/worker.lock
+/automation/status.json
+/automation/latest-result.json
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+~$*

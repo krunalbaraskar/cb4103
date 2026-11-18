@@ -1,0 +1,8 @@
+{
+  "command": ".venv/Scripts/python.exe -m corsmor.cli all --config config/analysis.json",
+  "exit_code": 0,
+  "output_file": "results/reproduce.log",
+  "full_validated_cache_reused": true,
+  "all_required_stages_completed": true,
+  "overall_validation_pass": true
+}

@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "corsmor"
+version = "1.0.0"
+description = "Streaming, validated geometric COR/SMOR analysis"
+requires-python = ">=3.11,<3.15"
+dependencies = ["numpy", "scipy", "matplotlib", "pytest", "reportlab", "python-pptx", "pymupdf", "psutil"]
+
+[project.scripts]
+corsmor = "corsmor.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

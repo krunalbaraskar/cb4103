@@ -1,0 +1,1400 @@
+{
+  "analysis_config": {
+    "trajectory": "dumpr.lammpstrj",
+    "cache": "cache",
+    "expected_frames": 10001,
+    "expected_atoms": 8232,
+    "expected_molecules": 2744,
+    "expected_first_step": 0,
+    "expected_last_step": 100000,
+    "expected_cadence": 10,
+    "hydrogen_type": 1,
+    "central_type": 2,
+    "bond_range": [
+      0.8,
+      1.2
+    ],
+    "angle_range_degrees": [
+      95,
+      120
+    ],
+    "spatial_bins": 24,
+    "molecule_batch": 64,
+    "max_lag_frames": 1000,
+    "blocks": 4,
+    "cutoff_steps": [
+      1000,
+      2500,
+      5000,
+      7500,
+      10000
+    ],
+    "fit_window_steps": [
+      100,
+      2500
+    ],
+    "discard_frames": 0,
+    "assumption": "type-2 center and two type-1 satellites form water-like molecules; identical constant dipoles follow normalized MIC bond-vector sum",
+    "integration_timestep": null,
+    "unit_style": null,
+    "temperature": null,
+    "water_model": null,
+    "dump_group_is_full_system": null
+  },
+  "definitions": {
+    "G_cell": "B(0)/A(0); A=sum_i <(u_i-mean_i)(0) dot (u_i-mean_i)(lag)>; B=<(U-mean_U)(0) dot (U-mean_U)(lag)>",
+    "origins": "All F-k pairs in each analyzed segment, with means estimated once over that segment",
+    "ordinary_smor": "sum_i <u_i(0) dot u_i(lag)> / N",
+    "connected_self": "A(lag)/A(0)",
+    "cor": "B(lag)/B(0)",
+    "collective_self": "A(lag)/B(0)",
+    "collective_cross": "[B(lag)-A(lag)]/B(0)",
+    "integral": "Trapezoidal running integral in simulation steps; finite cutoff values only"
+  },
+  "full": {
+    "frames": 10001,
+    "molecules": 2744,
+    "G_cell": 2.695802161031557,
+    "A0": 2518.295555649466,
+    "B0": 6788.826601035997,
+    "ordinary_A0": 2744.0000000028904,
+    "molecular_mean_square_per_molecule": 0.08225380625124844,
+    "total_mean": [
+      7.896503699154672,
+      -15.05220235322433,
+      16.542016724991186
+    ],
+    "total_variance_components": [
+      1257.9570538007483,
+      3669.7771697147637,
+      1861.0923775204917
+    ],
+    "raw_collective_mean_square": 7351.38848471906,
+    "G_raw": 2.6790774361192846,
+    "G_centered_over_N": 2.4740621723892118,
+    "max_unit_norm_error": 5.0884837232700875e-08,
+    "decomposition_max_abs_error": 1.1102230246251565e-16,
+    "max_lag_steps": 10000,
+    "minimum_origins": 9001,
+    "truncated_integrals_steps": {
+      "1000": {
+        "smor": 804.3235335186091,
+        "connected_self": 786.4017442942729,
+        "cor": 890.9114946660533,
+        "collective_self": 291.7134482870785,
+        "collective_cross": 599.1980463789752
+      },
+      "2500": {
+        "smor": 1707.7510536665072,
+        "connected_self": 1634.5637141311558,
+        "cor": 1950.5889295080217,
+        "collective_self": 606.3366732763817,
+        "collective_cross": 1344.2522562316406
+      },
+      "5000": {
+        "smor": 2707.691015913114,
+        "connected_self": 2494.843336079484,
+        "cor": 3147.5742266397483,
+        "collective_self": 925.4549062030662,
+        "collective_cross": 2222.1193204366855
+      },
+      "7500": {
+        "smor": 3312.6884127838453,
+        "connected_self": 2922.9784611349405,
+        "cor": 3969.2349139568364,
+        "collective_self": 1084.2703902338485,
+        "collective_cross": 2884.964523722996
+      },
+      "10000": {
+        "smor": 3684.9834885509094,
+        "connected_self": 3096.299680090569,
+        "cor": 4520.637798207225,
+        "collective_self": 1148.5633941719811,
+        "collective_cross": 3372.0744040352492
+      }
+    },
+    "tail_diagnostics": {
+      "smor": {
+        "last_value": 0.11641356925299548,
+        "last_20_percent_mean": 0.14145769152504445,
+        "last_20_percent_min": 0.11641356925299548,
+        "last_20_percent_max": 0.1703271696382921,
+        "last_20_percent_integral_drift_steps": 282.8962562708839,
+        "first_zero_crossing_steps": null
+      },
+      "connected_self": {
+        "last_value": 0.03367459002447074,
+        "last_20_percent_mean": 0.06115313220320364,
+        "last_20_percent_min": 0.03367459002447074,
+        "last_20_percent_max": 0.0927941496724521,
+        "last_20_percent_integral_drift_steps": 122.28545202995565,
+        "first_zero_crossing_steps": null
+      },
+      "cor": {
+        "last_value": 0.14800592415758385,
+        "last_20_percent_mean": 0.20691606425375647,
+        "last_20_percent_min": 0.14800592415758385,
+        "last_20_percent_max": 0.26028837596949417,
+        "last_20_percent_integral_drift_steps": 413.8598176494179,
+        "first_zero_crossing_steps": null
+      }
+    },
+    "fits": {
+      "smor": {
+        "window_steps": [
+          100,
+          2500
+        ],
+        "model": "a * exp(-lag/tau)",
+        "points": 241,
+        "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+        "supported": true,
+        "amplitude": 0.8958676255985265,
+        "tau_steps": 4348.916688828038,
+        "rmse": 0.0061760095558476575,
+        "r_squared": 0.9966803621035718,
+        "reason": "Passes descriptive residual/span screen"
+      },
+      "connected_self": {
+        "window_steps": [
+          100,
+          2500
+        ],
+        "model": "a * exp(-lag/tau)",
+        "points": 241,
+        "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+        "supported": true,
+        "amplitude": 0.890291328645832,
+        "tau_steps": 3794.227860337046,
+        "rmse": 0.005772305104604286,
+        "r_squared": 0.9975758985634823,
+        "reason": "Passes descriptive residual/span screen"
+      },
+      "cor": {
+        "window_steps": [
+          100,
+          2500
+        ],
+        "model": "a * exp(-lag/tau)",
+        "points": 241,
+        "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+        "supported": false,
+        "amplitude": 0.9782429444039201,
+        "tau_steps": 5310.599883168196,
+        "rmse": 0.003171431577569628,
+        "r_squared": 0.9990186620872297,
+        "reason": "Residuals or extrapolation fail descriptive adequacy screen"
+      }
+    }
+  },
+  "limitations": [
+    "Force field, unit style, integration timestep, charges, temperature, ensemble and dump-group completeness are unavailable.",
+    "Normalized bisectors are identical-dipole geometric proxies; nearly rigid geometry does not prove physical charge-site provenance.",
+    "All lags, fitted scales and truncated integrals are in simulation steps; no ps conversion or dielectric constant is justified.",
+    "Full relaxation integrals are not certified converged. Fits describe specified windows and correlated residuals have no IID confidence interval.",
+    "Four temporal blocks give variation, not a calibrated confidence interval. Collective signal has one summed vector per frame.",
+    "Molecular and collective finite-sample mean subtraction can bias long-lag correlations; alternative centering and segments are shown.",
+    "Spatial profiles and orientation traces cannot establish temperature/energy equilibration without simulation logs.",
+    "Finite-cell factor B(0)/A(0) uses molecular time-mean centering and is not automatically a macroscopic Kirkwood factor.",
+    "Trajectory may be a selected atom group; no bulk-water, droplet, substrate or hydrate identity is established."
+  ],
+  "retained_frames": 10001,
+  "discard_frames": 0,
+  "time_unit": "simulation steps",
+  "fit_adequacy_screen": "Unweighted a exp(-lag/tau); entire fixed window positive, span >=0.05, RMSE <0.03, R2>0.95, tau <=2*window width. Descriptive only.",
+  "block_uncertainty": "Four nonoverlapping contiguous blocks. Range/variation only, no standard errors or confidence intervals.",
+  "segments": {
+    "half_1": {
+      "frames": 5000,
+      "molecules": 2744,
+      "G_cell": 1.7175871797777544,
+      "A0": 2322.8694461868477,
+      "B0": 3989.730781067982,
+      "ordinary_A0": 2743.999999975613,
+      "molecular_mean_square_per_molecule": 0.15347323388803408,
+      "total_mean": [
+        -0.8006912452531812,
+        23.273841858859466,
+        -1.0489537847239014
+      ],
+      "total_variance_components": [
+        1166.003602834425,
+        1593.8897601344927,
+        1229.8374180990675
+      ],
+      "raw_collective_mean_square": 4533.143906451894,
+      "G_raw": 1.6520203740860722,
+      "G_centered_over_N": 1.4539835207973697,
+      "max_unit_norm_error": 5.087015386706639e-08,
+      "decomposition_max_abs_error": 1.1102230246251565e-16,
+      "max_lag_steps": 4990,
+      "minimum_origins": 4501,
+      "truncated_integrals_steps": {
+        "1000": {
+          "smor": 804.3238635409942,
+          "connected_self": 767.2841440513746,
+          "cor": 794.2504749006771,
+          "collective_self": 446.7220954401028,
+          "collective_cross": 347.5283794605744
+        },
+        "2500": {
+          "smor": 1707.6390542228157,
+          "connected_self": 1555.2099259232502,
+          "cor": 1482.429655369456,
+          "collective_self": 905.462001715968,
+          "collective_cross": 576.9676536534876
+        }
+      },
+      "tail_diagnostics": {
+        "smor": {
+          "last_value": 0.307064853238599,
+          "last_20_percent_mean": 0.3400821264181921,
+          "last_20_percent_min": 0.307064853238599,
+          "last_20_percent_max": 0.37524000224719445,
+          "last_20_percent_integral_drift_steps": 336.6706021407622,
+          "first_zero_crossing_steps": null
+        },
+        "connected_self": {
+          "last_value": 0.17193508167323993,
+          "last_20_percent_mean": 0.21139022955827402,
+          "last_20_percent_min": 0.17193508167323993,
+          "last_20_percent_max": 0.253408805833273,
+          "last_20_percent_integral_drift_steps": 209.26351012074292,
+          "first_zero_crossing_steps": null
+        },
+        "cor": {
+          "last_value": -0.01808406713102657,
+          "last_20_percent_mean": 0.04668768396703891,
+          "last_20_percent_min": -0.01808406713102657,
+          "last_20_percent_max": 0.10832140236243103,
+          "last_20_percent_integral_drift_steps": 46.23649729088197,
+          "first_zero_crossing_steps": 4820
+        }
+      },
+      "fits": {
+        "smor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8960491686502648,
+          "tau_steps": 4344.635380455808,
+          "rmse": 0.006065064023997593,
+          "r_squared": 0.9968047362219876,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "connected_self": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8862136414309812,
+          "tau_steps": 3283.119505094733,
+          "rmse": 0.0050773200827649995,
+          "r_squared": 0.9984386840129374,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "cor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.9879155737585573,
+          "tau_steps": 2230.277986865932,
+          "rmse": 0.008752964083113391,
+          "r_squared": 0.9976396225690186,
+          "reason": "Passes descriptive residual/span screen"
+        }
+      },
+      "first_frame": 0,
+      "last_frame_exclusive": 5000,
+      "first_step": 0,
+      "last_step": 49990
+    },
+    "half_2": {
+      "frames": 5001,
+      "molecules": 2744,
+      "G_cell": 2.542796428079464,
+      "A0": 2312.625783608016,
+      "B0": 5880.536582042934,
+      "ordinary_A0": 2744.000000030163,
+      "molecular_mean_square_per_molecule": 0.1572063470926194,
+      "total_mean": [
+        16.591959552391884,
+        -53.370582889200804,
+        34.129469744102416
+      ],
+      "total_variance_components": [
+        1198.6550905725812,
+        2808.359251374802,
+        1873.5222400955624
+      ],
+      "raw_collective_mean_square": 10169.069526777814,
+      "G_raw": 3.7059291277937434,
+      "G_centered_over_N": 2.143052690248883,
+      "max_unit_norm_error": 5.0884837232700875e-08,
+      "decomposition_max_abs_error": 1.1102230246251565e-16,
+      "max_lag_steps": 5000,
+      "minimum_origins": 4501,
+      "truncated_integrals_steps": {
+        "1000": {
+          "smor": 804.3486798177425,
+          "connected_self": 766.448157258357,
+          "cor": 885.0897386234425,
+          "collective_self": 301.4193935443129,
+          "collective_cross": 583.6703450791294
+        },
+        "2500": {
+          "smor": 1707.626916346966,
+          "connected_self": 1551.7579265477962,
+          "cor": 1903.2206889563456,
+          "collective_self": 610.2564520746222,
+          "collective_cross": 1292.9642368817229
+        },
+        "5000": {
+          "smor": 2706.5256482800946,
+          "connected_self": 2250.7485722234546,
+          "cor": 2822.899700105942,
+          "collective_self": 885.146977307739,
+          "collective_cross": 1937.7527227982014
+        }
+      },
+      "tail_diagnostics": {
+        "smor": {
+          "last_value": 0.30627837147153353,
+          "last_20_percent_mean": 0.33948866183832105,
+          "last_20_percent_min": 0.30627837147153353,
+          "last_20_percent_max": 0.3751367308674798,
+          "last_20_percent_integral_drift_steps": 339.4764729450094,
+          "first_zero_crossing_steps": null
+        },
+        "connected_self": {
+          "last_value": 0.16726039552203256,
+          "last_20_percent_mean": 0.20721733043659576,
+          "last_20_percent_min": 0.16726039552203256,
+          "last_20_percent_max": 0.25014489962453684,
+          "last_20_percent_integral_drift_steps": 207.2024772652303,
+          "first_zero_crossing_steps": null
+        },
+        "cor": {
+          "last_value": 0.24251166445605835,
+          "last_20_percent_mean": 0.2793468872252041,
+          "last_20_percent_min": 0.24251166445605835,
+          "last_20_percent_max": 0.32536096585269747,
+          "last_20_percent_integral_drift_steps": 279.30099294591446,
+          "first_zero_crossing_steps": null
+        }
+      },
+      "fits": {
+        "smor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8959154662107033,
+          "tau_steps": 4346.814055346598,
+          "rmse": 0.006206799374034717,
+          "r_squared": 0.9966497104297538,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "connected_self": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8858570695376149,
+          "tau_steps": 3265.077134178274,
+          "rmse": 0.005119056523668856,
+          "r_squared": 0.9984223516630849,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "cor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.9902413989191254,
+          "tau_steps": 4551.271242052717,
+          "rmse": 0.012787159173101874,
+          "r_squared": 0.9879280336800196,
+          "reason": "Passes descriptive residual/span screen"
+        }
+      },
+      "first_frame": 5000,
+      "last_frame_exclusive": 10001,
+      "first_step": 50000,
+      "last_step": 100000
+    },
+    "quarter_1": {
+      "frames": 2500,
+      "molecules": 2744,
+      "G_cell": 1.7618216507191076,
+      "A0": 1978.0609520868063,
+      "B0": 3484.9906118285867,
+      "ordinary_A0": 2743.9999999445754,
+      "molecular_mean_square_per_molecule": 0.27913230607061523,
+      "total_mean": [
+        5.579180791705946,
+        18.875218894175507,
+        6.757849562919822
+      ],
+      "total_variance_components": [
+        971.4595118083773,
+        1803.1917142417517,
+        710.3393857784586
+      ],
+      "raw_collective_mean_square": 3918.060289153222,
+      "G_raw": 1.4278645368922598,
+      "G_centered_over_N": 1.2700403104331583,
+      "max_unit_norm_error": 5.087015386706639e-08,
+      "decomposition_max_abs_error": 1.1102230246251565e-16,
+      "max_lag_steps": 2490,
+      "minimum_origins": 2251,
+      "truncated_integrals_steps": {
+        "1000": {
+          "smor": 805.9086131257196,
+          "connected_self": 725.0847190702611,
+          "cor": 744.8837720775688,
+          "collective_self": 411.5539837839486,
+          "collective_cross": 333.32978829361997
+        }
+      },
+      "tail_diagnostics": {
+        "smor": {
+          "last_value": 0.5180851287025803,
+          "last_20_percent_mean": 0.5448938422605394,
+          "last_20_percent_min": 0.5180851287025803,
+          "last_20_percent_max": 0.572951666909868,
+          "last_20_percent_integral_drift_steps": 266.99173715220627,
+          "first_zero_crossing_steps": null
+        },
+        "connected_self": {
+          "last_value": 0.310151570103535,
+          "last_20_percent_mean": 0.34869230364870485,
+          "last_20_percent_min": 0.310151570103535,
+          "last_20_percent_max": 0.3890552726960113,
+          "last_20_percent_integral_drift_steps": 170.85011761035503,
+          "first_zero_crossing_steps": null
+        },
+        "cor": {
+          "last_value": 0.3450588764215949,
+          "last_20_percent_mean": 0.35853702185940395,
+          "last_20_percent_min": 0.34505147557881094,
+          "last_20_percent_max": 0.37108038218578954,
+          "last_20_percent_integral_drift_steps": 175.68781463666505,
+          "first_zero_crossing_steps": null
+        }
+      },
+      "fits": {
+        "smor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 240,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8957378309157048,
+          "tau_steps": 4435.0588568006415,
+          "rmse": 0.006230903117846461,
+          "r_squared": 0.9965017001738776,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "connected_self": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 240,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8807726967556702,
+          "tau_steps": 2443.0746052930876,
+          "rmse": 0.004895836367757926,
+          "r_squared": 0.9989623090107411,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "cor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 240,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.9309816288392024,
+          "tau_steps": 2082.6823852471507,
+          "rmse": 0.027821523661492154,
+          "r_squared": 0.973873571443757,
+          "reason": "Passes descriptive residual/span screen"
+        }
+      },
+      "first_frame": 0,
+      "last_frame_exclusive": 2500,
+      "first_step": 0,
+      "last_step": 24990
+    },
+    "quarter_2": {
+      "frames": 2500,
+      "molecules": 2744,
+      "G_cell": 2.1291174152488934,
+      "A0": 1997.2958092618237,
+      "B0": 4252.477290902981,
+      "ordinary_A0": 2744.000000006652,
+      "molecular_mean_square_per_molecule": 0.2721225184930132,
+      "total_mean": [
+        -7.180563282212311,
+        27.672464823543443,
+        -8.85575713236763
+      ],
+      "total_variance_components": [
+        1279.1421594445258,
+        1345.8920380563432,
+        1627.4430934021116
+      ],
+      "raw_collective_mean_square": 5148.2275237505655,
+      "G_raw": 1.8761762112748124,
+      "G_centered_over_N": 1.5497366220491913,
+      "max_unit_norm_error": 5.0846416410621487e-08,
+      "decomposition_max_abs_error": 1.1102230246251565e-16,
+      "max_lag_steps": 2490,
+      "minimum_origins": 2251,
+      "truncated_integrals_steps": {
+        "1000": {
+          "smor": 802.8539869902187,
+          "connected_self": 724.3541162479726,
+          "cor": 811.766480597412,
+          "collective_self": 340.2133255122971,
+          "collective_cross": 471.553155085115
+        }
+      },
+      "tail_diagnostics": {
+        "smor": {
+          "last_value": 0.5072157896847794,
+          "last_20_percent_mean": 0.5346922663839287,
+          "last_20_percent_min": 0.5072157896847794,
+          "last_20_percent_max": 0.5634605849787693,
+          "last_20_percent_integral_drift_steps": 261.99275131864647,
+          "first_zero_crossing_steps": null
+        },
+        "connected_self": {
+          "last_value": 0.3046873148685232,
+          "last_20_percent_mean": 0.34371257883596856,
+          "last_20_percent_min": 0.3046873148685232,
+          "last_20_percent_max": 0.3845629654239967,
+          "last_20_percent_integral_drift_steps": 168.41003801652164,
+          "first_zero_crossing_steps": null
+        },
+        "cor": {
+          "last_value": 0.24660859728575177,
+          "last_20_percent_mean": 0.30790241687878805,
+          "last_20_percent_min": 0.24660859728575177,
+          "last_20_percent_max": 0.3803313646700484,
+          "last_20_percent_integral_drift_steps": 150.81650862961533,
+          "first_zero_crossing_steps": null
+        }
+      },
+      "fits": {
+        "smor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 240,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.896085524191821,
+          "tau_steps": 4272.608872090918,
+          "rmse": 0.006031184098888147,
+          "r_squared": 0.9968962424784373,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "connected_self": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 240,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8827531394943231,
+          "tau_steps": 2403.578179707122,
+          "rmse": 0.00491319134933394,
+          "r_squared": 0.9989781970857916,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "cor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 240,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": false,
+          "amplitude": 1.0259988100960689,
+          "tau_steps": 2160.985426172397,
+          "rmse": 0.04001867397135337,
+          "r_squared": 0.9589945505731985,
+          "reason": "Residuals or extrapolation fail descriptive adequacy screen"
+        }
+      },
+      "first_frame": 2500,
+      "last_frame_exclusive": 5000,
+      "first_step": 25000,
+      "last_step": 49990
+    },
+    "quarter_3": {
+      "frames": 2500,
+      "molecules": 2744,
+      "G_cell": 2.611711790893557,
+      "A0": 1979.5638585148433,
+      "B0": 5170.050270109961,
+      "ordinary_A0": 2744.0000000345435,
+      "molecular_mean_square_per_molecule": 0.2785845996791915,
+      "total_mean": [
+        18.968798412491502,
+        -71.65117967657051,
+        50.70697851015065
+      ],
+      "total_variance_components": [
+        677.6837822907721,
+        3047.6921515176145,
+        1444.6743363015742
+      ],
+      "raw_collective_mean_square": 13234.954801996782,
+      "G_raw": 4.823234257226739,
+      "G_centered_over_N": 1.8841291071829305,
+      "max_unit_norm_error": 5.049796614198243e-08,
+      "decomposition_max_abs_error": 1.1102230246251565e-16,
+      "max_lag_steps": 2490,
+      "minimum_origins": 2251,
+      "truncated_integrals_steps": {
+        "1000": {
+          "smor": 804.6001614557633,
+          "connected_self": 723.9827562752747,
+          "cor": 859.0487158458321,
+          "collective_self": 277.2062211457012,
+          "collective_cross": 581.8424947001306
+        }
+      },
+      "tail_diagnostics": {
+        "smor": {
+          "last_value": 0.5134701677295522,
+          "last_20_percent_mean": 0.5406704240550386,
+          "last_20_percent_min": 0.5134701677295522,
+          "last_20_percent_max": 0.5688256180200647,
+          "last_20_percent_integral_drift_steps": 264.9237330987703,
+          "first_zero_crossing_steps": null
+        },
+        "connected_self": {
+          "last_value": 0.3049471188912725,
+          "last_20_percent_mean": 0.3441259050991232,
+          "last_20_percent_min": 0.3049471188912725,
+          "last_20_percent_max": 0.38475364605014556,
+          "last_20_percent_integral_drift_steps": 168.61444872485458,
+          "first_zero_crossing_steps": null
+        },
+        "cor": {
+          "last_value": 0.43243903284130536,
+          "last_20_percent_mean": 0.4844100103074159,
+          "last_20_percent_min": 0.43243903284130536,
+          "last_20_percent_max": 0.5349613998509554,
+          "last_20_percent_integral_drift_steps": 237.3680029902464,
+          "first_zero_crossing_steps": null
+        }
+      },
+      "fits": {
+        "smor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 240,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.895799041545689,
+          "tau_steps": 4362.152235586901,
+          "rmse": 0.0063220445368778405,
+          "r_squared": 0.9964837774543385,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "connected_self": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 240,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8819768303401136,
+          "tau_steps": 2406.300070187469,
+          "rmse": 0.004812335111848533,
+          "r_squared": 0.9990163327111982,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "cor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 240,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 1.0031013036655274,
+          "tau_steps": 3261.835332533594,
+          "rmse": 0.01717773362851259,
+          "r_squared": 0.9866069089545109,
+          "reason": "Passes descriptive residual/span screen"
+        }
+      },
+      "first_frame": 5000,
+      "last_frame_exclusive": 7500,
+      "first_step": 50000,
+      "last_step": 74990
+    },
+    "quarter_4": {
+      "frames": 2501,
+      "molecules": 2744,
+      "G_cell": 2.6970682151931666,
+      "A0": 1988.154843189029,
+      "B0": 5362.1892344474845,
+      "ordinary_A0": 2744.0000000257855,
+      "molecular_mean_square_per_molecule": 0.2754537743574182,
+      "total_mean": [
+        14.216071047694124,
+        -35.09729541682027,
+        17.558589330219775
+      ],
+      "total_variance_components": [
+        1708.126143341166,
+        1901.162410803535,
+        1752.900680302773
+      ],
+      "raw_collective_mean_square": 7104.410115323435,
+      "G_raw": 2.589070741711616,
+      "G_centered_over_N": 1.954150595644127,
+      "max_unit_norm_error": 5.0884837232700875e-08,
+      "decomposition_max_abs_error": 1.1102230246251565e-16,
+      "max_lag_steps": 2500,
+      "minimum_origins": 2251,
+      "truncated_integrals_steps": {
+        "1000": {
+          "smor": 804.2912078062676,
+          "connected_self": 724.9787127611488,
+          "cor": 873.5405585270532,
+          "collective_self": 268.80251254943687,
+          "collective_cross": 604.7380459776166
+        },
+        "2500": {
+          "smor": 1708.2846877616716,
+          "connected_self": 1380.4243542116071,
+          "cor": 1820.2491905079767,
+          "collective_self": 511.82404154087686,
+          "collective_cross": 1308.4251489671005
+        }
+      },
+      "tail_diagnostics": {
+        "smor": {
+          "last_value": 0.5119822384608946,
+          "last_20_percent_mean": 0.5396007140534768,
+          "last_20_percent_min": 0.5119822384608946,
+          "last_20_percent_max": 0.5682860475163276,
+          "last_20_percent_integral_drift_steps": 269.7950227373865,
+          "first_zero_crossing_steps": null
+        },
+        "connected_self": {
+          "last_value": 0.3075470956104213,
+          "last_20_percent_mean": 0.346887280390348,
+          "last_20_percent_min": 0.3075470956104213,
+          "last_20_percent_max": 0.38778418423584765,
+          "last_20_percent_integral_drift_steps": 173.4358565998466,
+          "first_zero_crossing_steps": null
+        },
+        "cor": {
+          "last_value": 0.4488199434116619,
+          "last_20_percent_mean": 0.5169681458978076,
+          "last_20_percent_min": 0.4488199434116619,
+          "last_20_percent_max": 0.5836750164371687,
+          "last_20_percent_integral_drift_steps": 258.49127960863825,
+          "first_zero_crossing_steps": null
+        }
+      },
+      "fits": {
+        "smor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8955510127199545,
+          "tau_steps": 4359.896616750062,
+          "rmse": 0.006220238866822287,
+          "r_squared": 0.9966179120586397,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "connected_self": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8813959644688237,
+          "tau_steps": 2432.0013610627148,
+          "rmse": 0.004785541330028493,
+          "r_squared": 0.9990194364461765,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "cor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 1.005388671836369,
+          "tau_steps": 3676.460143729727,
+          "rmse": 0.022815595587139637,
+          "r_squared": 0.9731511238323387,
+          "reason": "Passes descriptive residual/span screen"
+        }
+      },
+      "first_frame": 7500,
+      "last_frame_exclusive": 10001,
+      "first_step": 75000,
+      "last_step": 100000
+    },
+    "discard_first_10_percent": {
+      "frames": 9001,
+      "molecules": 2744,
+      "G_cell": 2.926236267413331,
+      "A0": 2492.6622377514254,
+      "B0": 7294.118642519892,
+      "ordinary_A0": 2744.000000003435,
+      "molecular_mean_square_per_molecule": 0.09159539440670912,
+      "total_mean": [
+        7.312342764582111,
+        -16.686282415604158,
+        17.756179144726143
+      ],
+      "total_variance_components": [
+        1330.5334310019598,
+        4005.028966628213,
+        1958.556244889716
+      ],
+      "raw_collective_mean_square": 7941.302917899536,
+      "G_raw": 2.8940608301346917,
+      "G_centered_over_N": 2.658206502376054,
+      "max_unit_norm_error": 5.0884837232700875e-08,
+      "decomposition_max_abs_error": 1.1102230246251565e-16,
+      "max_lag_steps": 9000,
+      "minimum_origins": 8101,
+      "truncated_integrals_steps": {
+        "1000": {
+          "smor": 804.1499254307981,
+          "connected_self": 783.8860182639206,
+          "cor": 899.2833536907358,
+          "collective_self": 267.8819981124909,
+          "collective_cross": 631.4013555782448
+        },
+        "2500": {
+          "smor": 1707.1704577278301,
+          "connected_self": 1624.301956625891,
+          "cor": 1988.0271704151637,
+          "collective_self": 555.0822996468789,
+          "collective_cross": 1432.944870768284
+        },
+        "5000": {
+          "smor": 2706.476987033533,
+          "connected_self": 2465.2124150788336,
+          "cor": 3241.545692030554,
+          "collective_self": 842.4515964522483,
+          "collective_cross": 2399.0940955783035
+        },
+        "7500": {
+          "smor": 3311.0631494160884,
+          "connected_self": 2869.010273323883,
+          "cor": 4095.5926466810424,
+          "collective_self": 980.4438231024866,
+          "collective_cross": 3115.1488235785505
+        }
+      },
+      "tail_diagnostics": {
+        "smor": {
+          "last_value": 0.1401615897691234,
+          "last_20_percent_mean": 0.16753454983643287,
+          "last_20_percent_min": 0.1401615897691234,
+          "last_20_percent_max": 0.1984371325034065,
+          "last_20_percent_integral_drift_steps": 301.5445415925801,
+          "first_zero_crossing_steps": null
+        },
+        "connected_self": {
+          "last_value": 0.048988830356664514,
+          "last_20_percent_mean": 0.07927541788886643,
+          "last_20_percent_min": 0.048988830356664514,
+          "last_20_percent_max": 0.11346189136056362,
+          "last_20_percent_integral_drift_steps": 142.6762527702631,
+          "first_zero_crossing_steps": null
+        },
+        "cor": {
+          "last_value": 0.21694221961224217,
+          "last_20_percent_mean": 0.26265439140634617,
+          "last_20_percent_min": 0.21694221961224217,
+          "last_20_percent_max": 0.3043779750732713,
+          "last_20_percent_integral_drift_steps": 472.7978474720626,
+          "first_zero_crossing_steps": null
+        }
+      },
+      "fits": {
+        "smor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.89573693553106,
+          "tau_steps": 4345.544155446504,
+          "rmse": 0.006208844720982671,
+          "r_squared": 0.9966476806760906,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "connected_self": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": true,
+          "amplitude": 0.8895652618236344,
+          "tau_steps": 3724.267312137096,
+          "rmse": 0.005732535215838268,
+          "r_squared": 0.9976652403510269,
+          "reason": "Passes descriptive residual/span screen"
+        },
+        "cor": {
+          "window_steps": [
+            100,
+            2500
+          ],
+          "model": "a * exp(-lag/tau)",
+          "points": 241,
+          "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+          "supported": false,
+          "amplitude": 0.9809589943879531,
+          "tau_steps": 5740.110807902534,
+          "rmse": 0.00370047133856249,
+          "r_squared": 0.9985022948747676,
+          "reason": "Residuals or extrapolation fail descriptive adequacy screen"
+        }
+      },
+      "first_frame": 1000,
+      "last_frame_exclusive": 10001,
+      "first_step": 10000,
+      "last_step": 100000
+    }
+  },
+  "downsample_2": {
+    "frames": 5001,
+    "molecules": 2744,
+    "G_cell": 2.6961969637051055,
+    "A0": 2518.316195469513,
+    "B0": 6789.876479874294,
+    "ordinary_A0": 2743.9999999951015,
+    "molecular_mean_square_per_molecule": 0.08224628444810143,
+    "total_mean": [
+      7.903489658105393,
+      -15.055016863139395,
+      16.53424262862659
+    ],
+    "total_variance_components": [
+      1258.1343576148595,
+      3669.909403189489,
+      1861.8327190699408
+    ],
+    "raw_collective_mean_square": 7352.376340701777,
+    "G_raw": 2.679437441951495,
+    "G_centered_over_N": 2.4744447812952965,
+    "max_unit_norm_error": 5.0884837232700875e-08,
+    "decomposition_max_abs_error": 1.1102230246251565e-16,
+    "max_lag_steps": 10000,
+    "minimum_origins": 4501,
+    "truncated_integrals_steps": {
+      "1000": {
+        "smor": 804.3178580002557,
+        "connected_self": 786.3973652528778,
+        "cor": 890.8134114691279,
+        "collective_self": 291.6691086886369,
+        "collective_cross": 599.1443027804906
+      },
+      "2500": {
+        "smor": 1707.7457327117286,
+        "connected_self": 1634.565228344049,
+        "cor": 1950.3830556293783,
+        "collective_self": 606.248449333551,
+        "collective_cross": 1344.1346062958273
+      },
+      "5000": {
+        "smor": 2707.681937475218,
+        "connected_self": 2494.854711281657,
+        "cor": 3147.32157281839,
+        "collective_self": 925.323611318527,
+        "collective_cross": 2221.9979614998597
+      },
+      "7500": {
+        "smor": 3312.671133584066,
+        "connected_self": 2922.9991350646874,
+        "cor": 3968.6667154979414,
+        "collective_self": 1084.1192889142312,
+        "collective_cross": 2884.5474265837106
+      },
+      "10000": {
+        "smor": 3684.9556691551884,
+        "connected_self": 3096.3296075650924,
+        "cor": 4519.876170504878,
+        "collective_self": 1148.4063105353134,
+        "collective_cross": 3371.4698599695666
+      }
+    },
+    "tail_diagnostics": {
+      "smor": {
+        "last_value": 0.11640948568228227,
+        "last_20_percent_mean": 0.14146304629430936,
+        "last_20_percent_min": 0.11640948568228227,
+        "last_20_percent_max": 0.17032835359433404,
+        "last_20_percent_integral_drift_steps": 282.88797512173824,
+        "first_zero_crossing_steps": null
+      },
+      "connected_self": {
+        "last_value": 0.033678910461235084,
+        "last_20_percent_mean": 0.0611673495546003,
+        "last_20_percent_min": 0.033678910461235084,
+        "last_20_percent_max": 0.09280342700132527,
+        "last_20_percent_integral_drift_steps": 122.29322272566742,
+        "first_zero_crossing_steps": null
+      },
+      "cor": {
+        "last_value": 0.14796639893925834,
+        "last_20_percent_mean": 0.20683921228286062,
+        "last_20_percent_min": 0.14796639893925834,
+        "last_20_percent_max": 0.2601754750031419,
+        "last_20_percent_integral_drift_steps": 413.733790071954,
+        "first_zero_crossing_steps": null
+      }
+    },
+    "fits": {
+      "smor": {
+        "window_steps": [
+          100,
+          2500
+        ],
+        "model": "a * exp(-lag/tau)",
+        "points": 121,
+        "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+        "supported": true,
+        "amplitude": 0.8961753628873299,
+        "tau_steps": 4345.168645340523,
+        "rmse": 0.006315781183704694,
+        "r_squared": 0.9965640003659021,
+        "reason": "Passes descriptive residual/span screen"
+      },
+      "connected_self": {
+        "window_steps": [
+          100,
+          2500
+        ],
+        "model": "a * exp(-lag/tau)",
+        "points": 121,
+        "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+        "supported": true,
+        "amplitude": 0.8906189308209911,
+        "tau_steps": 3791.058993696814,
+        "rmse": 0.005916513823465154,
+        "r_squared": 0.9974793132102631,
+        "reason": "Passes descriptive residual/span screen"
+      },
+      "cor": {
+        "window_steps": [
+          100,
+          2500
+        ],
+        "model": "a * exp(-lag/tau)",
+        "points": 121,
+        "interpretation": "descriptive window fit; no IID uncertainty or full-time convergence implied",
+        "supported": false,
+        "amplitude": 0.9781348368557347,
+        "tau_steps": 5310.204096554902,
+        "rmse": 0.003177559717187262,
+        "r_squared": 0.9990229401800167,
+        "reason": "Residuals or extrapolation fail descriptive adequacy screen"
+      }
+    }
+  },
+  "downsample_max_abs_difference": {
+    "smor": 1.1897295079582593e-05,
+    "connected_self": 1.1263683836255922e-05,
+    "cor": 0.0002668744317493865,
+    "collective_self": 5.431758499224726e-05,
+    "collective_cross": 0.0002576430808516328,
+    "uncentered_collective": 0.00026007022095647647
+  },
+  "centering_sensitivity": {
+    "max_abs_ordinary_minus_connected": 0.08273897922852474,
+    "max_abs_centered_minus_uncentered_collective": 0.04920420734823444,
+    "relative_total_mean_square": 0.08286584954124691
+  },
+  "spatial_diagnostics": {
+    "normalization": "Mean center count per fractional bin divided by N/bins; uniform expectation 1",
+    "profiles_relative_to_uniform": [
+      [
+        0.9919194669454339,
+        1.0059620860071428,
+        0.9922028205342731,
+        0.9929365664016689,
+        1.0113869079564346,
+        0.9928648534563453,
+        1.0058492693004752,
+        0.9958680516787971,
+        1.0065340404735037,
+        0.9968344273444376,
+        0.9998638620103004,
+        1.000313379740743,
+        0.9954692577389491,
+        1.0010873548213692,
+        0.9975471840571045,
+        1.0066372371509205,
+        1.0030821990687229,
+        1.0039305107390137,
+        0.9949987508537776,
+        1.0108499354146219,
+        0.9961750180667065,
+        0.9943883162704138,
+        1.0013908230168236,
+        1.0019076809520215
+      ],
+      [
+        0.9950276109415298,
+        1.004149147767439,
+        1.0086985470549155,
+        0.9861150911147952,
+        0.9950695892509875,
+        1.0041718860183952,
+        0.992522905143888,
+        1.0035754442048508,
+        0.9969201330595804,
+        1.0053568987124613,
+        1.0116711360933877,
+        0.9877714852421463,
+        0.9992105745693652,
+        0.9962633474261904,
+        1.0067430574726786,
+        0.9943148542288628,
+        1.0030148588639678,
+        0.9969498676954462,
+        1.0046406438073394,
+        1.0017852442161033,
+        0.9933677186217239,
+        1.0080146504300007,
+        1.0027166379571957,
+        1.0019286701067502
+      ],
+      [
+        1.000223301285032,
+        0.9985992654378878,
+        1.0060609099439912,
+        0.99115073915349,
+        1.0088752057738832,
+        0.9913160287469795,
+        1.0082857603452484,
+        1.0004847911710286,
+        1.0021516798757444,
+        0.9943043596514984,
+        1.0079936612752718,
+        0.9936274594114933,
+        1.0015324998112434,
+        1.000009036997175,
+        0.9884282708755364,
+        1.0138443881559367,
+        0.996994469649245,
+        0.9977798138553492,
+        1.011585430378245,
+        0.9949252888122266,
+        1.0004681747568682,
+        0.9981952242093576,
+        0.9992770402260066,
+        0.9938872002012628
+      ]
+    ],
+    "max_abs_deviation_from_uniform_by_axis": [
+      0.0113869079564346,
+      0.013884908885204772,
+      0.013844388155936693
+    ]
+  },
+  "stationarity_blocks": [
+    {
+      "block": 1,
+      "frames": 2500,
+      "first_step": 0,
+      "last_step": 24990,
+      "mean_U": [
+        5.579180791705946,
+        18.875218894175507,
+        6.757849562919822
+      ],
+      "variance_U": [
+        971.4595118083773,
+        1803.1917142417517,
+        710.3393857784586
+      ],
+      "mean_bond": 1.0000001828126768,
+      "mean_angle_degrees": 109.46997858819118,
+      "mean_mic_fraction": 0.061696793002915445,
+      "spatial_max_abs_deviation_from_uniform": [
+        0.022281049562682176,
+        0.031802915451895064,
+        0.02701341107871713
+      ]
+    },
+    {
+      "block": 2,
+      "frames": 2500,
+      "first_step": 25000,
+      "last_step": 49990,
+      "mean_U": [
+        -7.180563282212311,
+        27.672464823543443,
+        -8.85575713236763
+      ],
+      "variance_U": [
+        1279.1421594445258,
+        1345.8920380563432,
+        1627.4430934021116
+      ],
+      "mean_bond": 1.0000001610060092,
+      "mean_angle_degrees": 109.46998004625482,
+      "mean_mic_fraction": 0.060751166180758015,
+      "spatial_max_abs_deviation_from_uniform": [
+        0.025250145772594768,
+        0.03413994169096202,
+        0.02937609329446067
+      ]
+    },
+    {
+      "block": 3,
+      "frames": 2500,
+      "first_step": 50000,
+      "last_step": 74990,
+      "mean_U": [
+        18.968798412491502,
+        -71.65117967657051,
+        50.70697851015065
+      ],
+      "variance_U": [
+        677.6837822907721,
+        3047.6921515176145,
+        1444.6743363015742
+      ],
+      "mean_bond": 1.0000001920620414,
+      "mean_angle_degrees": 109.46997838802028,
+      "mean_mic_fraction": 0.06009606413994169,
+      "spatial_max_abs_deviation_from_uniform": [
+        0.0344104956268223,
+        0.020936443148688033,
+        0.025533527696792957
+      ]
+    },
+    {
+      "block": 4,
+      "frames": 2501,
+      "first_step": 75000,
+      "last_step": 100000,
+      "mean_U": [
+        14.216071047694124,
+        -35.09729541682027,
+        17.558589330219775
+      ],
+      "variance_U": [
+        1708.126143341166,
+        1901.162410803535,
+        1752.900680302773
+      ],
+      "mean_bond": 1.0000001873878106,
+      "mean_angle_degrees": 109.46997971253073,
+      "mean_mic_fraction": 0.06148298698013506,
+      "spatial_max_abs_deviation_from_uniform": [
+        0.026206427050171177,
+        0.023900643824102952,
+        0.02915685037938176
+      ]
+    }
+  ],
+  "relaxation_convergence": {
+    "full_integral_resolved": false,
+    "full_tau_smor_steps": null,
+    "full_tau_cor_steps": null,
+    "ratio_tau_cor_to_smor": null,
+    "reason": "Finite lag cutoff, temporally correlated origins, centering and segment sensitivity are explicitly inspected; no validated tail extrapolation or independent-run uncertainty establishes a converged full integral.",
+    "reported": "Truncated integrals at declared cutoffs and screened descriptive fit scales only"
+  },
+  "quarter_G_range": [
+    1.7618216507191076,
+    2.6970682151931666
+  ],
+  "versions": {
+    "corsmor": "1.0.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "pytest": "9.2.0",
+    "reportlab": "5.1.0",
+    "python-pptx": "1.0.2",
+    "pymupdf": "2.1",
+    "psutil": "7.2.2"
+  },
+  "analysis_seconds": 25.350559900005464
+}

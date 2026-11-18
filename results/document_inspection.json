@@ -1,0 +1,29 @@
+{
+  "report_pages": 9,
+  "planned_content_pages": 9,
+  "report_page_text_lengths": [
+    2148,
+    1853,
+    2343,
+    1363,
+    1329,
+    1736,
+    1432,
+    2945,
+    2813
+  ],
+  "representative_report_previews": [
+    "reports\\previews\\report_page_01.png",
+    "reports\\previews\\report_page_03.png",
+    "reports\\previews\\report_page_05.png",
+    "reports\\previews\\report_page_06.png",
+    "reports\\previews\\report_page_09.png"
+  ],
+  "slides": 14,
+  "slide_text_overflows": [],
+  "editable_text_shapes": 130,
+  "slide_layout_preview_pages": 14,
+  "slide_preview_file": "reports/presentation_layout_preview.pdf",
+  "native_powerpoint_render_available": false,
+  "presentation_preview_note": "Companion PDF renders the same editable slide text/image geometry; it is a layout preview, not a native PowerPoint rendering."
+}

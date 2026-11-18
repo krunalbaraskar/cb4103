@@ -1,0 +1,13 @@
+﻿{
+  "trajectory": "dumpr.lammpstrj", "cache": "cache",
+  "expected_frames": 10001, "expected_atoms": 8232, "expected_molecules": 2744,
+  "expected_first_step": 0, "expected_last_step": 100000, "expected_cadence": 10,
+  "hydrogen_type": 1, "central_type": 2,
+  "bond_range": [0.8, 1.2], "angle_range_degrees": [95, 120],
+  "spatial_bins": 24, "molecule_batch": 64, "max_lag_frames": 1000,
+  "blocks": 4, "cutoff_steps": [1000, 2500, 5000, 7500, 10000],
+  "fit_window_steps": [100, 2500], "discard_frames": 0,
+  "assumption": "type-2 center and two type-1 satellites form water-like molecules; identical constant dipoles follow normalized MIC bond-vector sum",
+  "integration_timestep": null, "unit_style": null, "temperature": null,
+  "water_model": null, "dump_group_is_full_system": null
+}

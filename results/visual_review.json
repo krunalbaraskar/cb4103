@@ -1,0 +1,40 @@
+{
+  "reviewed_utc": "2026-11-15T02:37:05.320237+00:00",
+  "method": "Opened rendered PNGs with view_image and visually inspected equations, tables, plot axes/captions, body text and representative slide layouts.",
+  "files": [
+    {
+      "path": "reports/previews/report_page_03.png",
+      "sha256": "b4d634d4e8c73b1714f3123fba30b3e863f616cef5df649a303d9617965c760c"
+    },
+    {
+      "path": "reports/previews/report_page_05.png",
+      "sha256": "0817fbab53a0e47db51b51365587298715fd34949120551e42f15e870dc1cd38"
+    },
+    {
+      "path": "reports/previews/report_page_06.png",
+      "sha256": "a389729818cb405d95202c871f3d65d27fef6e27435c52c9d562c99b96a338a7"
+    },
+    {
+      "path": "reports/previews/report_page_09.png",
+      "sha256": "295b3eae39049f1058d75f45b4869fd82df5ccb9ba0f8573b3809a66c08c889c"
+    },
+    {
+      "path": "reports/previews/slide_01.png",
+      "sha256": "2864e483419374f244e7cfe0a438d9ad65132b0623027405e80ca7c88a10a60a"
+    },
+    {
+      "path": "reports/previews/slide_13.png",
+      "sha256": "5e08296da224d0678c976d09329aa519eaacbaadcf6008ae8325128c2c43a609"
+    },
+    {
+      "path": "reports/previews/slide_14.png",
+      "sha256": "e84a7fd7d5f0f3d206ea666f857d260084f25743c0acee9430d808af3282e0d3"
+    },
+    {
+      "path": "figures/04_smor_cor.png",
+      "sha256": "4b23995f4de9e169ef32d75cc2ab1ad3aa0937edf3e650f2673c8f62a8b539bf"
+    }
+  ],
+  "findings": "Readable axes and captions; report tables/equations intact; allocation and viva slides fit their rows; no visible clipping in inspected artifacts. The full report is 9 pages and deck is 14 slides.",
+  "limitation": "PowerPoint/LibreOffice native renderer unavailable. Slide PNGs come from the explicitly labeled shared-layout PDF; editable PPTX was independently opened and structurally inspected with python-pptx."
+}

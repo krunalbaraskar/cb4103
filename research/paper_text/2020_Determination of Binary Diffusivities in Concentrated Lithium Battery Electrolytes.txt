@@ -1,0 +1,679 @@
+--- PAGE 1 ---
+Determination of Binary Diﬀusivities in Concentrated Lithium
+Battery Electrolytes via NMR and Conductivity Measurements
+Sergey Krachkovskiy,* Martin Dontigny, Sylviane Rochon, Chisu Kim, Michel L. Trudeau,
+and Karim Zaghib
+Cite This: J. Phys. Chem. C 2020, 124, 24624−24630 Read Online
+ACCESS Metrics & More Article Recommendations
+ABSTRACT: We report on the experimental determination of Onsager−Stefan−Maxwell
+binary diﬀusivities using the pulsed-ﬁeld gradient nuclear magnetic resonance (PFG NMR)
+technique, which are required for the concentrated solution theory to properly describe mass
+transport in practical liquid electrolytes for Li batteries. The ionic conductivity, calculated
+based on the obtained diﬀusivities, matches perfectly with the experimental values. We
+demonstrate the eﬀectiveness of the approach using two test solutions of either lithium bis
+(triﬂuoromethanesulfonyl) imide or lithium bis (ﬂuorosulfonyl) imide in tetraethylene glycol
+dimethyl ether in a temperature range of 20−50 °C. Accurate parametrization is achieved by reassessing the interpretation of PFG
+NMR-measured ionic diﬀusion coeﬃcients. In particular, using the supporting theoretical background, we postulate that the
+diﬀusion coeﬃcients represent an average of self-diﬀusion when the ions move independently and of the directionally correlated
+motion when the ions interact with each other even without the formation of neutral aggregates. A proper deconvolution of these
+two parts allows one to calculate the required binary diﬀusivities with high precision.
+■ INTRODUCTION
+Eﬀective modeling of battery performance is one of the
+prerequisites for the widespread adoption of electric drive
+vehicles. The operation of battery management systems relies
+on the accurate parametrization of charge and mass transport
+properties inside the cell and particularly in the electrolyte
+domain through which ions ﬂow from one electrode to
+another.1 This is especially true at extreme regimes in terms of
+current and temperature when the electrolyte solutions
+experience large concentration polarizations because of the
+fairly low values of the Li+ cation transference number and salt
+diﬀusivity.2,3 Reliable data on the mass transport properties of
+an electrolyte solution as functions of both salt concentration
+and temperature have become the centerpiece of para-
+metrization.
+The concentrated solution theory (CST) based on the
+Onsager−Stefan−Maxwell (OSM)4 formalism is often used to
+model the electrolyte domain of practical electrochemical
+systems. In this theory, mass transport is driven by mutual drag
+forces between components. The correlation between electro-
+chemical potential gradients (∇μi) and the average species
+velocities (υ
+⎯→⎯
+i ) is determined by the drag coeﬃcients (Kij):
+∑μυυ∇⃗ =−
+≠
+⎯→⎯⎯→⎯
+cK()i i ji
+ij
+N
+ij
+(1)
+where ci is the concentration of the ith component of the
+multicomponent system. The use of the binary diﬀusivity +ij is
+another way to describe the friction between species i and j:
++=K
+cc
+cRT
+ij
+T
+ij
+ij (2)
+where cT = ∑ ci is the total solution concentration, R is the
+universal gas constant, and T is the absolute temperature.
+Under the CST, an n-component electrolyte, including the
+solvent, requires n(n − 1)/2 parameters to characterize its
+transport under ﬁxed operating conditions.4 For a binary
+univalent electrolyte, this yields three ∇⃗μi and three +ij with i
+= {+, −, 0}. The salt thermodynamic diﬀusivity (+), the
+cation transference number (t+), and the ionic conductivity (κ)
+can be expressed by:
++ ++ ++= + +− +− 2 00 00 (3)
++
+++= + + + +− t 0 00 (4)
+++κ =+− +− + + − RT cF c c t11(1 ) 1 T 2 0 0
+Ä
+Ç
+ÅÅÅÅÅÅÅÅÅÅ É Ö ÑÑÑÑÑÑÑÑÑÑ (5)
+Received: August 12, 2020
+Revised: October 9, 2020
+Published: October 29, 2020
+Articlepubs.acs.org/JPCC
+© 2020 American Chemical Society
+24624
+https://dx.doi.org/10.1021/acs.jpcc.0c07383
+J. Phys. Chem. C 2020, 124, 24624−24630
+Downloaded via INDIAN INST OF TECH PATNA on May 16, 2021 at 18:31:11 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+
+--- PAGE 2 ---
+where F is the Faraday constant.
+Unfortunately, these OSM diﬀusivities are not typically
+accessible by experiment. It was demonstrated though, using
+molecular dynamics (MD) simulations, that the binary
+diﬀusivity can be predicted reasonably well by the general-
+ization of the Darken relations:
+= + + +D x xxD x xxDij i ij i ij j self i self (6)
+where xi and Di self are the mole fraction and the self-
+diﬀusivity of species i.5 This approach was applied recently to
+the characterization of Li-ion battery electrolytes,6,7 where the
+self-diﬀusivities of all species in solution were measured by
+pulsed-ﬁeld gradient nuclear magnetic resonance (PFG
+NMR).8,9 Although the comparison of the ionic conductivity
+values calculated using eqs 5 and 6 with the experimentally
+measured ones showed qualitative agreement in the entire
+concentration range with both having a maximum in a salt
+concentration of around 1 M, the predicted values were
+consistently 1.5−2.0 times higher.7 This could be explained by
+the fact that PFG NMR-measured diﬀusivities cannot be
+actually assigned as self-diﬀusivities in the case of concentrated
+electrolytes. The concept of self-diﬀusion assumes that all
+solution species move independently of each other, which is an
+approximation valid only in the inﬁnitely dilute limit of
+electrolyte solutions where PFG NMR indeed determines self-
+diﬀusion coeﬃcients.10 On the other hand, in concentrated
+electrolytes, the local electroneutrality condition ensures that
+the movement of positive and negative ions from a region of
+higher concentration to that of lower concentration is
+correlated.11 Therefore, the concept of self-diﬀusion in
+concentrated electrolyte solutions represents a considerable
+simpliﬁcation of the interactions among ions and should be
+used with caution.
+A technique allowing for the disentanglement of the
+contribution of various electrolyte components to PFG
+NMR-measured diﬀusivities (D+* D−*) has been reported
+previously.12 In order to do that, D+* and D−* are compared
+with the ideal charge diﬀusion coeﬃcient Dκ which represents
+the speciﬁc conductivity κ in units of diﬀusivity through the
+Nernst−Einstein equation:
+κ=κD kT cN es B A 2 (7)
+where kB is the Boltzmann constant, NA is Avogadro’s number,
+and e is the fundamental unit of charge. The degree of ion
+association (α) can be estimated based on this comparison:
+α =−* + * κ +− D DD1 (8)
+In addition, eﬀective ionic diﬀusivities can be calculated
+using:
+= * − * + κ++−DDDD1 2 ()eff (9a)
+= * − * + κ++−DDDD1 2 ()eff (9b)
+Usually, D+ effand D− eff are assigned to the diﬀusivities of
+positively and negatively charged species without any
+contribution of neutral aggregates. However, we would like
+to note that the Nernst−Einstein equation used to determine
+Dκ is only valid for inﬁnitely dilute electrolytes without any
+interactions between ions.13 This implies that to calculate D+ eff
+and D− eff, we did not just separate charged species from the
+neutral aggregates, but also eliminated part of the ionic
+diﬀusivities associated with interaction (friction) between ions
+whatsoever, even in the case where they did not form a
+complex with each other. In this regard, D+ eff and D− eff would
+represent binary diﬀusivities required for the implementation
+of the OSM formalism with:
++ =++D0 eff (10a)
++ =−−D0 eff (10b)
++ =++− + −DD1 2 ()eff eff (10c)
+In this paper, we demonstrate the eﬀectiveness of this
+approach by comparing experimentally measured ionic
+conductivity values of nonaqueous organic liquid electrolytes
+to the ones calculated using eq 5 with +ij determined by eq 10.
+As test samples, we chose two single-solvent lithium battery
+electrolytes consisting of either lithium bis (triﬂuoromethane-
+sulfonyl) imide (LiTFSI) or lithium bis (ﬂuorosulfonyl) imide
+(LiFSI) solution in tetraethylene glycol dimethyl ether
+(TEGDME). Ether-based electrolytes are known for their
+superior reductive stability with Li metal in comparison with
+standard carbonate-based electrolytes.14−16 A substitution of
+the most commonly used graphite anode by Li metal, which
+has approximately 10 times higher theoretical gravimetric
+capacity, is considered a very promising step toward next-
+generation high-energy-density battery systems. Although there
+are other parameters determining the energy density of a
+battery, an increase of up to 70% in energy density can be
+expected by using an Li metal anode.17,18 First, we
+characterized the transport phenomena in an LiTFSI−
+TEGDME (1:6 molar ratio) electrolyte in the temperature
+range of 20 to 50 °C, and then compared the transport
+parameters of the electrolyte to the ones of LiFSI−TEGDME
+(1:6 molar ratio) solution at 50 °C. We demonstrated that in
+both cases the ionic conductivity (κ) calculated using eq 5 with
+the binary diﬀusivities deﬁned by eqs 7−10 perfectly matched
+the experimental data. In contrast, a twofold to sixfold
+diﬀerence was observed between theoretical and experimental
+data when binary diﬀusivities were estimated using Darken
+relations (eq 6) under the assumption that PFG NMR
+provided self-diﬀusivities of species in the electrolyte.
+■ EXPERIMENTAL SECTION
+Sample Preparation and Test Conditions. Two
+solutions, LiTFSI−TEGDME and LiFSI−TEGDME (1:6
+molar ratio in both cases), were prepared in an argon-ﬁlled
+glove box (<0.5 ppm oxygen and water content). Battery-grade
+chemicals from 3M (LiTFSI), Nippon Shokubai (LiFSI), and
+Sigma-Aldrich (TEGDME) were used. The ionic conductivity
+was measured in the temperature range of 20−50 °C for both
+electrolytes, and the PFG NMR data were collected at 20, 25,
+30, 35, 40, and 50 °C for the ﬁrst electrolyte and at 50 °C for
+the second one.
+Conductivity Measurements. Electrochemical impe-
+dance spectroscopy data were obtained using an MCS 10
+(Bio-Logic) 2-pole conductivity system with frequency scans
+from 50 kHz to 100 Hz using an excitation amplitude between
+The Journal of Physical Chemistry C pubs.acs.org/JPCC Article
+https://dx.doi.org/10.1021/acs.jpcc.0c07383
+J. Phys. Chem. C 2020, 124, 24624−24630
+24625
+
+
+--- PAGE 3 ---
+50 and 150 mV. The experimental error is less than 1%. The
+cell was sealed inside a glove box prior to its use. The sample
+temperature was controlled using a wide temperature sample
+holder (WTSH 10) which provided an accuracy level of ± 0.2
+°C.
+PFG NMR Diﬀusion Measurements. Both samples were
+sealed inside a glove box into low-pressure/vacuum-valve
+NMR tubes (535-LPV-7, Wilmad-Lab Glass). NMR experi-
+ments were carried out using a Bruker Avance III HD NMR
+spectrometer with a resonance proton frequency of 600 MHz
+and a 5 mm double-resonance broadband probe. 7Li, 19F, and
+1Hdiﬀusion coeﬃcient measurements were conducted using
+the bipolar gradient longitudinal eddy current delay pulse
+sequence.19 The strength of the ﬁeld gradient (g) was
+increased in eight equidistant steps up to a maximum of 45
+G/cm, and the length of the gradient pulse (δ) and diﬀusion
+time (Δ) were adjusted to the experimental conditions
+(observed nucleus and sample temperature) depending on
+the expected diﬀusion coeﬃcient. In general, δ and Δ were in
+the range of 1−3 ms and 100−400 ms, respectively. Diﬀusivity
+values were obtained from ﬁts of the signal attenuation to the
+parameters of the pulse sequence according to Stejskal’s and
+Tanner’s equation9 using the Bruker Dynamics Center 2.2.1
+software. The accuracy of the diﬀusion coeﬃcients measured
+by PFG NMR was estimated as ± 1%, based on ﬁt quality.
+■ RESULTS AND DISCUSSION
+Ionic conductivity values as well as 7Li, 19F, and 1H PFG NMR
+data representing cation, anion, and solvent diﬀusion
+coeﬃcients (D+*, D−* and D0*) respectively, for the LiTFSI−
+TEGDME electrolyte as a function of temperature are listed in
+Table 1.
+We would like to emphasize here that although it is common
+for the diﬀusion coeﬃcient measured by 7Li PFG NMR to be
+termed “cation diﬀusivity,” in reality, it represents the
+ensemble-averaged diﬀusion coeﬃcients of all lithium-contain-
+ing species in solution, including cations (e.g., Li+), neutral ion
+pairs [Li+−TFSI−], and even negatively charged ion aggregates
+[Li+−(TFSI−)2]−. The same is valid for anion and solvent
+diﬀusivities. Because of that, the direct utilization of PFG
+NMR-measured parameters and especially their identiﬁcation
+as “ionic self-diﬀusivities” is a signiﬁcant oversimpliﬁcation of
+the mass transport phenomenon in concentrated battery
+electrolytes. Particularly, this oversimpliﬁcation aﬀects the
+estimation of the lithium transport number directly from PFG
+NMR-measured diﬀusivities (τ+, eq 11)whichsimply
+approaches 0.5 in the case of strong ion association and does
+not fully reﬂect diﬀerences in the nature of ions.20,21
+τ =
+*
+* + *
++ +
+++
+D
+DD (11)
+However, qualitative conclusions can be proposed based on
+the PFG NMR data alone (Figure 1). One can see that at room
+temperature, the lithium ion, which is supposed to be the
+smallest molecule in solution, is the slowest species in the
+electrolyte. This is due to the fact that its hydrodynamic radius
+is signiﬁcantly increased because of the solvation shell.
+Moreover, taking into account that the mass of lithium is
+negligibly small in comparison to that of TEGDME (more
+than 30 times diﬀerence) and that D+* at 20 °Cis
+approximately two times smaller than D0* it would be fair to
+assume that at room temperature, a signiﬁcant part of lithium
+cations is coordinated by two TEGDME molecules.22 The
+diﬀusivity of all species increases with temperature as the
+electrolyte viscosity decreases. The lithium diﬀusivity changes,
+however, are more pronounced with temperature change as,
+D+* which was the smallest at 20 °C, matches D−* at around 35
+°C and D0* at around 50 °C(Figure 1). This could be
+explained by the shift in the Li−TEGDME coordination
+number from close to 2 at a low temperature to approximately
+1at50°C. The mass of lithium solvated by a single TEGDME
+molecule (229.3) is smaller than the mass of TFSI− anion
+(280.1), which explains the fact that at high temperatures
+TFSI− becomes the slowest species in the sample. The change
+in lithium solvation structure aﬀects not only the lithium
+mobility but also the interaction of ions with each other; this is
+supported by the fact that the Arrhenius plots of measured
+diﬀusion coeﬃcients are not linear but are actually best ﬁtted
+with the quadratic function (Figure 1), implying that the
+diﬀusion activation energies of each species vary with
+temperature.
+The degree of ion interaction was calculated using eq 8 as a
+ﬁrst step for the quantiﬁcation of the mass transport in the
+electrolyte (Figure 2). The dielectric constant (ε), which
+reﬂects the ability of a solvent to maintain charge separation, is
+quite low for TEGDME (7.9)23 in comparison with standard
+carbonates blends used in typical Li-ion battery electrolytes
+(e.g., ε = 18 for EC:EMC 3:7 v/v),24 leading to high values of
+α. Moreover, α increases from 0.48 to 0.83 as the sample
+temperature rises from 20 to 50 °C. This can be explained by
+Table 1. Determined Ionic Conductivity and PFG NMR
+Diﬀusivities of Cations, Anions, and Solvent Molecules
+Measured at Six Temperature (T) Points for the LiTFSI−
+TEGDME Solution (Molar Ratio 1:6)
+T,K κ, mS/cm
+D+*
+10−10 m2·s−1
+D−*,
+10−10 m2·s−1
+D0*,
+10−10 m2·s−1
+293 2.35 ± 0.02 0.69 ± 0.01 0.87 ± 0.01 1.30 ± 0.01
+298 2.55 ± 0.03 0.87 ± 0.01 1.06 ± 0.01 1.40 ± 0.01
+303 2.90 ± 0.03 1.28 ± 0.01 1.37 ± 0.01 1.85 ± 0.02
+308 3.25 ± 0.03 1.85 ± 0.02 1.81 ± 0.02 2.35 ± 0.02
+313 3.62 ± 0.04 2.69 ± 0.03 2.53 ± 0.03 3.24 ± 0.03
+323 4.65 ± 0.05 5.72 ± 0.06 5.01 ± 0.05 5.80 ± 0.06
+Figure 1. Arrhenius plots of diﬀusivities determined by PFG NMR for
+cations (red circles), anions (blue triangles), and solvent molecules
+(gray squares) of LiTFSI−TEGDME solution (molar ratio 1:6).
+Quadratic function ﬁts of the data are shown by the dotted lines.
+The Journal of Physical Chemistry C pubs.acs.org/JPCC Article
+https://dx.doi.org/10.1021/acs.jpcc.0c07383
+J. Phys. Chem. C 2020, 124, 24624−24630
+24626
+
+
+--- PAGE 4 ---
+the fact that the added thermal energy disrupts the alignment
+of molecular dipoles in an applied electrical ﬁeld.25,26 It is
+important to clarify here that α = 0.83 does not mean that 83%
+of ions are involved in neutral ion aggregates and do not
+contribute to conductivity, as is often interpreted in related
+publications. What it does mean is that within the OSM
+formalism, only 17% of the ionic conductivity is attributed to
+the “self-part” related to the tracer diﬀusion coeﬃcients of
+charged particles via the Nernst−Einstein equation, while the
+remaining 83% are assigned to the “distinct part” associated
+with the directional correlation between the motion of
+diﬀerent ions.27 Under this interpretation, an increase in α
+with temperature makes even more sense because while the
+added thermal agitation weakens ion pairing, it increases the
+probability of “collisions” (“interactions”) between ions. These
+data are ensemble-averaged, implying that all species in
+solution are brought into consideration with ci and cT deﬁned
+by the original chemical composition of the electrolyte, while
+the degree of ion interaction has an input on eﬀective diﬀusion
+coeﬃcients. Following this description, one can calculate
+binary OSM diﬀusivities through eqs 7−10 and all the relevant
+mass transport parameters through eqs 3−5 (Table 2).
+The ﬁrst thing to note from the data shown in Table 2 is a
+signiﬁcant dependence of ++0 on temperature. At room
+temperatures, Li+ is tightly bound to TEGDME molecules and
+can be considered as a cation−solvent complex (low values of
+++0). If more than one TEGDME is included into the
+complex, then the cations become the bulkiest/heaviest species
+in solution, hampering the eﬀectiveness of positive charge
+transfer. The Li+−TEGDME residence time decreases with an
+increase in the temperature, promoting the rapid exchange of
+solvent molecules around Li+ (higher values of ++0), which
+evidently has an impact on the Li+ mobility as it reduces the
+probability of the simultaneous presence of 2 TEGDME
+molecules in the Li+ solvation shell, increasing the average
+lifetime of unbound Li+ with an extremely small hydrodynamic
+radius, and it facilitates momentum exchange between the
+complex and the more mobile, free TEGDME.27 In contrast,
++−0 stays essentially unchanged in the entire temperature
+range. Probably, the added thermal energy is compensated by
+the decreased dielectric constant of the solution and,
+consequently, by an appearance of bulky negatively charged
+triple ion aggregates [Li+ − (TFSI−)2]−. As a result, one can
+observe an increase in the Li+ cation transference number with
+the temperature increase shown in Figure 3. t+ reaches 0.7 at
+50 °C, which is in good correlation with the prediction based
+on MD simulations reported recently.27
+We have compared t+ with τ+, which is quite often
+interchanged with the transference number in the peer-
+reviewed literature, as well as to tD + , where ++0 and +−0 are
+calculated through the Darken relations assuming that PFG
+NMR provides the “self-diﬀusivities” of species in concentrated
+electrolytes (D+*, D−* and D0*; eq 6). One can see that τ+
+depends less on temperature (Figure 3), and essentially lies
+around 0.5 in electrolytes with low ε, as a directional motion
+correlation of positively and negatively charged species
+dominates in PFG NMR-measured values of ionic diﬀusion
+coeﬃcients. The addition of D0* and utilization of the Darken
+relations do not change the situation much, as mathematically,
+Figure 2. Degree of ion interaction in LiTFSI−TEGDME solution
+(molar ratio 1:6).
+Table 2. OSM Diﬀusivities (+ij) Determined Using eq 7−10, the Salt Thermodynamic Diﬀusivity (+), the Cation
+Transference Number (t+), and the Ionic Conductivity (κ) Calculated within the CST (eqs 3−5) at Six Temperature (T)
+Points for the LiTFSI−TEGDME Solution (Molar Ratio 1:6)
+T,K ++0,10−10 m2·s−1 +−0,10−10 m2·s−1 ++−,10−10 m2·s−1 +,10−10 m2·s−1 t+ κcalc, mS/cm
+293 0.32 ± 0.01 0.50 ± 0.01 0.41 ± 0.01 0.39 ± 0.01 0.39 ± 0.01 2.38 ± 0.07
+298 0.36 ± 0.01 0.55 ± 0.01 0.45 ± 0.01 0.43 ± 0.01 0.40 ± 0.01 2.61 ± 0.08
+303 0.48 ± 0.01 0.57 ± 0.01 0.52 ± 0.02 0.52 ± 0.02 0.46 ± 0.01 2.96 ± 0.09
+308 0.62 ± 0.01 0.58 ± 0.01 0.60 ± 0.02 0.60 ± 0.02 0.52 ± 0.02 3.33 ± 0.10
+313 0.76 ± 0.02 0.60 ± 0.01 0.68 ± 0.02 0.67 ± 0.02 0.56 ± 0.02 3.71 ± 0.11
+323 1.25 ± 0.02 0.55 ± 0.01 0.90 ± 0.03 0.76 ± 0.02 0.70 ± 0.02 4.81 ± 0.14
+Figure 3. Comparison of Li+ cation transference number calculated
+within the CST (eq 4) based on binary OSM diﬀusivities determined
+by eqs 7−10 (blue circles) with the Li+ cation transference number
+calculated using the Darken relations assuming that PFG NMR
+provides the “self-diﬀusivities” of species in concentrated electrolytes
+(eqs 6, green squares) and with the Li transport number determined
+by eqs 11 (brown triangles) of the LiTFSI−TEGDME solution
+(molar ratio 1:6).
+The Journal of Physical Chemistry C pubs.acs.org/JPCC Article
+https://dx.doi.org/10.1021/acs.jpcc.0c07383
+J. Phys. Chem. C 2020, 124, 24624−24630
+24627
+
+
+--- PAGE 5 ---
+the inﬂuence of the solvent on the binary diﬀusivities is very
+small, taking into account sixfold excess solvent concentration
+over the Li salt. The binary diﬀusivities calculated that way will
+essentially match the PFG NMR-measured values and will
+represent the overall displacement of particles in solution but
+not the motion of one type of species relative to another.
+Therefore, τ+ and tD + correspond to each other very well, but
+they signiﬁcantly deviate from the actual t+ (up to 25% in the
+investigated temperature range, considering t+ as the
+reference).
+A comparison of the experimentally measured ionic
+conductivities with the theoretical values calculated within
+the CST in the temperature range of 20−50 °C is shown in
+Figure 4. The Darken relations (eq 6) were used in the ﬁrst
+case to calculate binary OSM diﬀusivities from the PFG NMR
+data with the assumption that NMR provides the “self-
+diﬀusivities” of species in the electrolyte. One can see that as
+the temperature increases, the deviation between experimental
+and theoretical conductivities rises from approximately 100%,
+as observed previously,7 to approximately 500%, which is not
+acceptable for the reliable modeling of battery performance.
+This demonstrates the inﬂuence of the increased correlation in
+the motion of ions in concentrated electrolytes at a high
+temperature on the PFG NMR data (Figure 2) and conﬁrms
+the fact that these diﬀusion coeﬃcients cannot be termed “self-
+diﬀusivities” even though they are often referred to that way in
+the peer-reviewed literature.28−30 The separation of the self-
+part of ionic diﬀusion from the correlated motion of ions in the
+electrolyte was achieved via a comparison of PFG NMR data
+with the ideal ionic diﬀusivity calculated through the Nernst−
+Einstein relation (eqs 7−9). The measured conductivity was
+utilized within the ideal solution approximation in that case to
+identify the degree of “non-ideality” of the electrolyte.
+Subsequently, binary OSM diﬀusivities were deﬁned using
+the obtained correction (eq 10). The resulting values of ionic
+conductivity calculated according to the CST (eq 5) are
+completely in line with the experimental data throughout the
+temperature range (Figure 4), demonstrating the eﬀectiveness
+of the suggested two-step approach consisting of the
+consecutive application of the ideal and the concentrated
+solution theories.
+The above-described analysis was also applied to the
+characterization of the LiFSI−TEGDME (1:6 molar ratio)
+solution at 50 °C(Table 3) to study the inﬂuence of anions on
+mass transport. The ﬁrst point to note in comparing the
+experimental results of the two electrolytes is that the PFG
+NMR-measured diﬀusivities of all species in solution are higher
+in the case of LiFSI. This implies that the viscosity of this
+liquid is lower (which can be explained by the smaller size of
+the anion), and aﬀects the frequency of the solvent change in
+the Li+ solvation shell. The longer residence time of the Li+−
+TEGDME complex at a lower viscosity leads to a lower value
+of ++0 in comparison to the one in the LiTFSI-based
+electrolyte. At the same time, the decreased friction between
+the anions and the solvent is represented by the higher value of
++−0. Therefore, although the LiFSI-based electrolyte possesses
+better salt diﬀusivity and higher ionic conductivity than the
+LiTFSI-based electrolyte, the contribution of Li+ cations to this
+conductivity is signiﬁcantly less (t+(LiFSI) = 0.42 vs
+t+(LiTFSI) = 0.70 at 50 °C). Finally, we would like to note
+the perfect correlation between the experimental and
+theoretical values of ionic conductivity as was also observed
+for the LiTFSI−TEGDME solution.
+■ CONCLUSIONS
+We have reassessed the interpretation of PFG NMR data in
+their application to the characterization of concentrated
+electrolytes utilized in practical energy storage devices. First,
+we can conclude that although in the peer-reviewed literature
+concerned with the electrolyte study the PFG NMR-measured
+diﬀusivities are often termed the “self-diﬀusivities” of ions, this
+is not a correct deﬁnition of the data, as they do not actually
+represent the independent motion of ions. Second, we have
+discussed the deviation between PFG NMR-measured
+diﬀusivities and the ideal ionic diﬀusivity calculated through
+the Nernst−Einstein relations. We insist that this discrepancy
+is explained not only by the presence of neutral ion aggregates
+in the electrolyte, as is typically proposed, but by any
+interaction between ions even without the formation of neutral
+complexes, leading to their directionally correlated motion.
+Utilization of these facts allows one to separate the “self-part”
+related to the tracer diﬀusivity of charged particles from the
+“distinct part” associated with the directional correlation
+between motions of diﬀerent ions, and to calculate binary
+OSM diﬀusivities required for the parametrization of mass
+Figure 4. Comparison of the experimentally determined ionic
+conductivity (red dotted line) with ionic conductivity values
+calculated within the CST based on +ij determined either through
+eqs 7−10 (blue circles) or through Darken relations, assuming that
+PFG NMR provides the “self-diﬀusivities” of species in concentrated
+electrolytes (eq 6, green squares) obtained for the LiTFSI−TEGDME
+solution (molar ratio 1:6).
+Table 3. Experimental and Theoretical Mass Transport
+Parameters Obtained for the LiFSI−TEGDME (1:6 Molar
+Ratio) Solution at 50 °C
+D+* 10−10 m2·s−1 6.62 ± 0.07
+D−* 10−10 m2·s−1 6.91 ± 0.07
+D0* 10−10 m2·s−1 7.03 ± 0.07
+α 0.85 ± 0.02
+κ, mS/cm 5.11 ± 0.05
+++0,10−10 m2·s−1 0.83 ± 0.02
++−0,10−10 m2·s−1 1.13 ± 0.02
+++−,10−10 m2·s−1 0.98 ± 0.03
++,10−10 m2·s−1 0.96 ± 0.03
+t+ 0.42 ± 0.01
+κcalc, mS/cm 5.16 ± 0.15
+The Journal of Physical Chemistry C pubs.acs.org/JPCC Article
+https://dx.doi.org/10.1021/acs.jpcc.0c07383
+J. Phys. Chem. C 2020, 124, 24624−24630
+24628
+
+
+--- PAGE 6 ---
+transport in electrolytes within the CST. We have demon-
+strated the eﬀectiveness of the suggested approach using two
+diﬀerent electrolytes (LiTFSI and LiFSI in TEGDME (1:6
+molar ratio)) and showed that a perfect correlation between
+the experimental and the theoretically predicted ionic
+conductivity can be achieved in both cases.
+■ AUTHOR INFORMATION
+Corresponding Author
+Sergey Krachkovskiy − Center of Excellence in Transportation,
+Electriﬁcation and Energy Storage, Hydro-Québec, Varennes,
+Quebec J3X 1S1, Canada; orcid.org/0000-0002-6213-
+5619; Email: Krachkovskiy.Sergey@hydroquebec.com
+Authors
+Martin Dontigny − Center of Excellence in Transportation,
+Electriﬁcation and Energy Storage, Hydro-Québec, Varennes,
+Quebec J3X 1S1, Canada
+Sylviane Rochon − Center of Excellence in Transportation,
+Electriﬁcation and Energy Storage, Hydro-Québec, Varennes,
+Quebec J3X 1S1, Canada
+Chisu Kim − Center of Excellence in Transportation,
+Electriﬁcation and Energy Storage, Hydro-Québec, Varennes,
+Quebec J3X 1S1, Canada
+Michel L. Trudeau − Center of Excellence in Transportation,
+Electriﬁcation and Energy Storage, Hydro-Québec, Varennes,
+Quebec J3X 1S1, Canada
+Karim Zaghib − Department of Mining and Materials
+Engineering, McGill University, Montréal, Quebec H3A 0G4,
+Canada
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acs.jpcc.0c07383
+Notes
+The authors declare no competing ﬁnancial interest.
+■ ACKNOWLEDGMENTS
+The authors acknowledge Dr. Alexandre Arnold’s assistance
+with the NMR experiments and thank Dr. J. David Bazak for
+the productive discussions about modeling mass transport in
+electrolytes. We are also grateful to Éloïse Leroux for her help
+with manuscript preparation and submission. This research
+received no external funding.
+■ REFERENCES
+(1) Tanim, T. R.; Rahn, C. D.; Wang, C.-Y. A Temperature
+Dependent, Single Particle, Lithium Ion Cell Model Including
+Electrolyte Diffusion. J. Dyn. Sys. Meas. Control 2015, 137, 011005.
+(2) Tippmann, S.; Walper, D.; Balboa, L.; Spier, B.; Bessler, W. G.
+Low-Temperature Charging of Lithium-Ion Cells Part I: Electro-
+chemical Modeling and Experimental Investigation of Degradation
+Behavior. J. Power Sources 2014, 252, 305−316.
+(3) Legrand, N.; Knosp, B.; Desprez, P.; Lapicque, F.; Raél, S.
+Physical Characterization of the Charging Process of a Li-Ion Battery
+and Prediction of Li Plating by Electrochemical Modelling. J. Power
+Sources 2014, 245, 208−216.
+(4) Newman, J.; Thomas-Alyea, K. E., Electrochemical Systems. Wiley:
+2004, 297−316.
+(5) Krishna, R.; van Baten, J. M. The Darken Relation for
+Multicomponent Diffusion in Liquid Mixtures of Linear Alkanes:
+An Investigation Using Molecular Dynamics (MD) Simulations. Ind.
+Eng. Chem. Res. 2005, 44, 6939−6947.
+(6) Kim, S. U.; Srinivasan, V. A Method for Estimating Transport
+Properties of Concentrated Electrolytes from Self-Diffusion Data. J.
+Electrochem. Soc. 2016, 163, A2977−A2980.
+(7) Feng, Z.; Higa, K.; Han, K. S.; Srinivasan, V. Evaluating
+Transport Properties and Ionic Dissociation of LiPF6 in Concentrated
+Electrolyte. J. Electroch. Soc. 2017, 164, A2434−A2440.
+(8) Hahn, E. Spin Echoes. Phys. Rev. 1950, 80, 580−594.
+(9) Stejskal, E. O.; Tanner, J. E. Spin Diffusion Measurements: Spin
+Echoes in the Presence of a Time-Dependent Field Gradient. J. Chem.
+Phys. 1965, 42, 288.
+(10) Price, W. S. Pulsed-Field Gradient Nuclear Magnetic
+Resonance as a Tool for Studying Translational Diffusion: Part 1.
+Basic Theory. Concepts Magn. Reson. 1997, 9, 299−336.
+(11) Mills, R.; Lobo, V. M. M. Self-Diﬀusion in Electrolyte Solutions: A
+Critical Examination of Data Compiled from the Literature. Elsevier
+Science: 2013.
+(12) Stolwijk, N. A.; Kösters, J.; Wiencierz, M.; Schönhoff, M. On
+the Extraction of Ion Association Data and Transference Numbers
+From Ionic Diffusivity and Conductivity Data in Polymer Electrolytes.
+Electrochim. Acta 2013, 102, 451−458.
+(13) France-Lanord, A.; Grossman, J. C. Correlations from Ion
+Pairing and the Nernst-Einstein Equation. Phys. Rev. Lett. 2019, 122,
+136001.
+(14) Ren, X.; Zou, L.; Cao, X.; Engelhard, M. H.; Liu, W.; Burton, S.
+D.; Lee, H.; Niu, C.; Matthews, B. E.; Zhu, Z.; et al. Enabling High-
+Voltage Lithium-Metal Batteries under Practical Conditions. Joule
+2019, 3, 1662−1676.
+(15) Jiao, S.; Ren, X.; Cao, R.; Engelhard, M. H.; Liu, Y.; Hu, D.;
+Mei, D.; Zheng, J.; Zhao, W.; Li, Q.; et al. Stable Cycling of High-
+Voltage Lithium Metal Batteries in Ether Electrolytes. Nat. Energy
+2018, 3, 739−746.
+(16) Abraham, K. M.; Goldman, J. L.; Natwig, D. L. Characterization
+of Ether Electrolytes for Rechargeable Lithium Cells. J. Electrochem.
+Soc. 1982, 129, 2404.
+(17) Janek, J.; Zeier, W. G. A Solid Future for Battery Development.
+Nat. Energy 2016, 1, 16141.
+(18) Placke, T.; Kloepsch, R.; Dühnen, S.; Winter, M. Lithium Ion,
+Lithium Metal, and Alternative Rechargeable Battery Technologies:
+the Odyssey for High Energy Density. J. Solid State Electrochem. 2017,
+21, 1939−1964.
+(19) Cohen, Y.; Avram, L.; Frish, L. Diffusion NMR Spectroscopy in
+Supramolecular and Combinatorial Chemistry: an Old Parameter -
+New Insights. Angew. Chem. Int. Ed. Engl. 2005, 44, 520−554.
+(20) Krachkovskiy, S. A.; Bazak, J. D.; Fraser, S.; Halalay, I. C.;
+Goward, G. R. Determination of Mass Transfer Parameters and Ionic
+Association of LiPF6 : Organic Carbonates Solutions. J. Electrochem.
+Soc. 2017, 164, A912−A916.
+(21) Sethurajan, A. K.; Krachkovskiy, S. A.; Halalay, I. C.; Goward,
+G. R.; Protas, B. Accurate Characterization of Ion Transport
+Properties in Binary Symmetric Electrolytes Using In Situ NMR
+Imaging and Inverse Modeling. J. Phys. Chem. B 2015, 119, 12238−
+12248.
+(22) Callsen, M.; Sodeyama, K.; Futera, Z.; Tateyama, Y.; Hamada,
+I. The Solvation Structure of Lithium Ions in an Ether Based
+Electrolyte Solution from First-Principles Molecular Dynamics. J.
+Phys. Chem. B 2017, 121, 180−188.
+(23) Choi, J. W.; Cheruvally, G.; Shin, Y. J.; Ahn, H. J.; Kim, K. W.;
+Ahn, J. H. Effect of Various Lithium Salts in TEGDME Based
+Electrolyte for Li/Pyrite Battery. Solid State Phen. 2007, 124-126,
+971−974.
+(24) Hall, D. S.; Self, J.; Dahn, J. R. Dielectric Constants for
+Quantum Chemistry and Li-Ion Batteries: Solvent Blends of Ethylene
+Carbonate and Ethyl Methyl Carbonate. J. Phys. Chem. C 2015, 119,
+22322−22330.
+(25) Ding, M. S. Liquid Phase Boundaries, Dielectric Constant, and
+Viscosity of PC-DEC and PC-EC Binary Carbonates. J. Electrochem.
+Soc. 2003, 150, A455.
+(26) Ding, M. S.; Xu, K.; Zhang, S. S.; Amine, K.; Henriksen, G. L.;
+Jow, T. R. Change of Conductivity with Salt Content, Solvent
+The Journal of Physical Chemistry C pubs.acs.org/JPCC Article
+https://dx.doi.org/10.1021/acs.jpcc.0c07383
+J. Phys. Chem. C 2020, 124, 24624−24630
+24629
+
+
+--- PAGE 7 ---
+Composition, and Temperature for Electrolytes of LiPF6 in Ethylene
+Carbonate-Ethyl Methyl Carbonate. J. Electrochem. Soc. 2001, 148,
+A1196.
+(27) Dong, D.; Sälzer, F.; Roling, B.; Bedrov, D. How Efficient is Li+
+Ion transport in Solvate Ionic Liquids Under Anion-Blocking
+Conditions in a Battery? Phys. Chem. Chem. Phys. 2018, 20,
+29174−29183.
+(28) Hayamizu, K.; Aihara, Y.; Arai, S.; Martinez, C. G. Pulse-
+Gradient Spin-Echo 1H, 7Li, and 19F NMR Diffusion and Ionic
+Conductivity Measurements of 14 Organic Electrolytes Containing
+LiN(SO2CF3)2. J. Phys. Chem. B 1999, 103, 519−524.
+(29) Tsunekawa, H.; Narumi, A.; Sano, M.; Hiwara, A.; Fujita, M.;
+Yokoyama, H. Solvation and Ion Association Studies of LiBF4−
+Propylenecarbonate and LiBF4−Propylenecarbonate−Trimethyl
+Phosphate Solutions. J. Phys. Chem. B 2003, 107, 10962−10966.
+(30) Weingärtner, H. NMR Studies of Ionic Liquids: Structure and
+Dynamics. Curr. Opin. Colloid Interface Sci. 2013, 18, 183−189.
+The Journal of Physical Chemistry C pubs.acs.org/JPCC Article
+https://dx.doi.org/10.1021/acs.jpcc.0c07383
+J. Phys. Chem. C 2020, 124, 24624−24630
+24630

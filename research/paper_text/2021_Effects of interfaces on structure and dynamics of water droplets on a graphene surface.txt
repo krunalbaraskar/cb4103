@@ -1,0 +1,952 @@
+--- PAGE 1 ---
+J. Chem. Phys. 154, 164704 (2021); https://doi.org/10.1063/5.0046817 154, 164704
+© 2021 Author(s).
+Effects of interfaces on structure and
+dynamics of water droplets on a graphene
+surface: A molecular dynamics study
+Cite as: J. Chem. Phys. 154, 164704 (2021); https://doi.org/10.1063/5.0046817
+Submitted: 07 February 2021 . Accepted: 05 April 2021 . Published Online: 23 April 2021
+ Manish Maurya, 
+  Atanu K. Metya, 
+  Jayant K. Singh, and 
+  Shinji Saito
+ARTICLES YOU MAY BE INTERESTED IN
+Classical molecular dynamics
+The Journal of Chemical Physics 154, 100401 (2021); https://doi.org/10.1063/5.0045455
+Searching local order parameters to classify water structures of ice Ih, Ic, and liquid
+The Journal of Chemical Physics 154, 164505 (2021); https://doi.org/10.1063/5.0049258
+Machine learning meets chemical physics
+The Journal of Chemical Physics 154, 160401 (2021); https://doi.org/10.1063/5.0051418
+
+--- PAGE 2 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+Effects of interfaces on structure and dynamics
+of water droplets on a graphene surface:
+A molecular dynamics study
+Cite as: J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817
+Submitted: 7 February 2021 • Accepted: 5 April 2021 •
+Published Online: 23 April 2021
+Manish Maurya,1
+ Atanu K. Metya,2
+ Jayant K. Singh,3
+ and Shinji Saito1,4,a)
+AFFILIATIONS
+1 Department of Theoretical and Computational Molecular Science, Institute for Molecular Science, Myodaiji, Okazaki,
+Aichi 444-8585, Japan
+2Department of Chemical and Biochemical Engineering, Indian Institute of Technology Patna, Bihar 801106, India
+3Department of Chemical Engineering, Indian Institute of Technology Kanpur, Kanpur 208016, India
+4The Graduate University for Advanced Studies, Myodaiji, Okazaki, Aichi 444-8585, Japan
+a)Author to whom correspondence should be addressed: shinji@ims.ac.jp
+ABSTRACT
+The structure and dynamics of water droplets on a bilayer graphene surface are investigated using molecular dynamics simulations. The
+effects of solid/water and air/water interfaces on the local structure of water droplets are analyzed in terms of the hydrogen bond distribution
+and tetrahedral order parameter. It is found that the local structure in the core region of a water droplet is similar to that in liquid water.
+On the other hand, the local structure of water molecules at the solid/water and air/water interfaces, referred to as the interface and surface
+regions, respectively, consists mainly of three-coordinated molecules that are greatly distorted from a tetrahedral structure. This study reveals
+that the dynamics in different regions of the water droplets affects the intermolecular vibrational density of states: It is found that in the
+surface and interface regions, the intensity of vibrational density of states at ∼50 cm−1 is enhanced, whereas those at ∼200 and ∼500 cm−1
+are weakened and redshifted. These changes are attributed to the increase in the number of molecules having fewer hydrogen bonds in
+the interface and surface regions. Both single-molecule and collective orientation relaxations are also examined. Single-molecule orientation
+relaxation is found to be marginally slower than that in liquid water. On the other hand, the collective orientation relaxation of water droplets
+is found to be significantly faster than that of liquid water because of the destructive correlation of dipole moments in the droplets. The
+negative correlation between distinct dipole moments also yields a blueshifted libration peak in the absorption spectrum. It is also found
+that the water–graphene interaction affects the structure and dynamics of the water droplets, such as the local water structure, collective
+orientation relaxation, and the correlation between dipole moments. This study reveals that the water/solid and water/air interfaces strongly
+affect the structure and intermolecular dynamics of water droplets and suggests that the intermolecular dynamics, such as energy relaxation
+dynamics, in other systems with interfaces are different from those in liquid water.
+Published under license by AIP Publishing. https://doi.org/10.1063/5.0046817., s
+I. INTRODUCTION
+Water is one of the prerequisites for life and is the most
+common solvent in physicochemical processes.1,2 Despite having
+a simple molecular structure, water molecules can form strong
+hydrogen bonds (HBs) with each other in liquid water. As seen
+in ice, water molecules tend to form a local tetrahedral structure.
+However, owing to thermal fluctuations, local structures in liquid
+water are distorted. As a result, liquid water shows spatially and tem-
+porally complex fluctuations and numerous anomalous properties
+are found, such as a sharp change in the thermodynamic response
+function with decreasing temperature.3 It is now considered that
+the anomalous thermodynamic properties of water are related to
+fluctuations between low- and high-density liquid states.4–13
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-1
+Published under license by AIP Publishing
+
+--- PAGE 3 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+It is known that structural, dynamical, and thermody-
+namic properties of liquid water are strongly influenced by
+intermolecular HB interactions. Thus, when the intermolecular
+interactions among water molecules are interrupted by solvation, the
+structural and dynamical properties of these molecules in an aque-
+ous solution are altered,14–18 an example being the acceleration or
+retardation of collective orientation relaxation (COR) of aqueous
+solutions. Furthermore, hydration of proteins also changes the prop-
+erties of water. For example, the density of water molecules present
+at the surface of a protein is found to be greater than that of liq-
+uid water.19 In this context, the fast librational and reorientational
+dynamics of water molecules in the hydration layer of proteins have
+also been explored.20
+In addition to the presence of solutes, interfaces and surfaces
+also affect the properties of water. In this regard, the structure and
+intramolecular dynamics of water interfaces have been intensively
+investigated using surface-specific spectroscopy. In particular, one-
+and two-dimensional vibrational sum-frequency generation (SFG)
+spectroscopies have been applied to intramolecular vibrations of
+water at air/water interfaces.21–26 Furthermore, water molecules at
+the solid–water interface have also been a subject of immense scien-
+tific interest due to its importance in a broad range of physicochem-
+ical and technological processes, such as surface wettability,27,28
+lubrication,29,30 and capillary condensation.31
+A water droplet on a solid surface is a system with both
+air/water and solid/water interfaces. In this context, the contact
+angle of water droplets has been investigated both theoretically and
+experimentally,32–35 which plays an important role in wetting kinet-
+ics of water droplets on a solid interface. The behavior of water
+droplets in the presence of an electric field has also been studied
+and forms the basis for techniques such as inkjet and electrostatic
+painting and the manufacture of nanoscale structures.36–39 However,
+not much is known about structural and dynamical properties at the
+molecular level of water droplets on a solid surface.
+In this study, we investigate these properties of water droplets
+on a bilayer graphene surface at the molecular level using molecular
+dynamics (MD) simulations. First, we examine the effect of solid–
+water interaction strength on the local structure of water molecules
+in water droplets on a graphene surface. Then, we investigate the
+dynamical properties in terms of the intermolecular vibrational den-
+sity of states (vDOS). We find that the dynamics in the core region of
+a water droplet are very similar to those in liquid water. On the other
+hand, the intermolecular vibrational vDOS shows a redshift in the
+water/solid and water/air interface regions owing to fewer HBs being
+present. We study both single-molecule and collective orientation
+relaxations of water droplets. It is known that collective orientation
+relaxation (COR) is slower than single-molecule orientation relax-
+ation (SMOR) in liquid water. However, the present study reveals
+that COR in water droplets is much faster than SMOR because of
+a negative correlation between dipole moments. It is also clarified
+that the peak of the librational motion in the absorption spectrum
+of a water droplet is blueshifted owing to the negative correlation
+of distinct dipole moments. We also find that the structure and
+dynamics of the water droplets are sensitive to the water–graphene
+interaction.
+The remainder of the paper is organized as follows: The com-
+putational details are outlined in Sec. II. The results are discussed in
+Sec. III, and conclusions are given in Sec. IV.
+II. COMPUTATIONAL DETAILS
+We perform classical MD simulations for water droplets on
+a graphene surface. The water droplets are modeled using the
+TIP4P/2005 rigid water model, which is known to correctly repro-
+duce the structural and dynamical properties of liquid water.40 Ini-
+tially, a cube of one thousand water molecules is placed in the middle
+of the graphene surface to model a water droplet. After a few steps of
+MD simulation, this water cube takes the form of a droplet, as shown
+in Fig. 1.
+The flat solid surface is modeled using the bilayer (AA stack-
+ing) of graphene sheets with an interlayer spacing of 3.4 Å and a
+C–C bond length of 1.42 Å. The graphene sheets are considered
+to be representative of a flat solid surface with different interaction
+strengths. The carbon atoms of the graphene sheets are modeled
+using the AMBER96 force field.41 A single graphene sheet is very
+flexible, and thus, ripples on the graphene surface are found to have
+some effect on the wettability of a water droplet.42 However, the
+effect is negligible in the current case as the number of layers con-
+sidered in this work does not cause ripples and can be considered as
+a rigid substrate as also considered by earlier workers.43 The interac-
+tion potential between a carbon atom of the graphene surface and
+a water molecule is taken from the work of Werder et al.43 The
+potential parameters are listed in Table I. The Lennard-Jones (LJ)
+potential depth between a carbon atom and the water droplet (εC–O
+in kcal/mol) is increased by 20%, 40%, and 60% to examine the effect
+of enhanced interaction strength with the graphene surface. The
+droplet size on the surface depends on the strength of interaction
+with the surface and reaches a radius of 1–3 nm. The simulations are
+performed using the LAMMPS software44 in the NVT ensemble at
+300 K with periodic boundary conditions and the particle–particle–
+particle–mesh (PPPM) treatment of long-range electrostatic inter-
+actions. A cutoff of 14 Å is used for nonbonded interaction, and the
+SHAKE algorithm is used to constrain the bonds between the hydro-
+gen and oxygen atoms of water molecules. Although the periodic
+boundary conditions and PPPM are used in this study, the interac-
+tions between water droplets are effectively removed by considering
+a large simulation cell compared to the droplet size. The length of
+the simulation is 30 ns with a time step of 1 fs. We confirmed that
+FIG. 1. Top (a) and side (b) views of the graphene surface and water droplet at
+300 K. For clarity, the full extent of the system is not shown. The carbon atoms of
+the graphene sheet are shown in gray and the hydrogen and oxygen atoms of the
+water droplet in white and red, respectively.
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-2
+Published under license by AIP Publishing
+
+--- PAGE 4 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+TABLE I. Lennard-Jones force field parameters for graphene–water interaction.
+Atom pair ε (kcal/mol) σ (Å)
+C–C 0.086 3.4
+C–O 0.094 3.19
+the system is equilibrated within 20 ns by analyzing the fluctuation
+in the total energy of the system. For the data analysis, the trajec-
+tories from the last 10 ns run are stored at an interval of 10 fs. In
+addition, we perform an independent simulation of the liquid water
+in the NVT ensemble to compare the results of the water droplets.
+The simulation is carried out in a cubic box containing 1000 water
+molecules of a density of 1 g/cc at 300 K. The other simulation details
+are the same as the water droplets.
+III. RESULTS AND DISCUSSION
+A. Structural analysis of water droplet
+Figure 2 shows the distribution of water molecules in the direc-
+tion perpendicular to the graphene surface with different graphene–
+water LJ interactions. The shape of the water droplet depends on
+the strength of its interaction with the graphene surface. In the
+case of usual interaction (εC–O = 0.094 kcal/mol) with the graphene
+surface (red line), the water droplet does not spread much on the
+surface, resulting in a broad distribution of molecules in the direc-
+tion perpendicular to the surface. Water droplets with stronger
+interactions with the graphene surface show a larger peak in the
+distribution of atoms near the surface (at low z), indicating the
+spreading of molecules on the surface. As the interaction with the
+surface increases, the intensity of the peak increases. The snapshots
+in Fig. 3 indeed show changes in the shape of the droplet in var-
+ious graphene–droplet systems. We examine the contact angle of
+the water droplets by using a graphical binning approach.45,46 As
+shown in Table II, the contact angle decreases with increasing water–
+graphene interaction. The present result is in good agreement with
+previous results.43,47
+FIG. 2. Number distribution of oxygen atoms in surface–droplet systems. εC–O
+represents the LJ cross-interaction potential. The red line shows the result with
+the usual interaction, and the green, blue, and brown lines correspond to 20%,
+40%, and 60% enhancement in the LJ potential (in kcal/mol), respectively.
+We now examine preferred orientations of water molecules in
+the first layer of the droplet on the graphene surface. Here, we ana-
+lyze the orientation of water molecules based on two angles: One is
+the angle α between the H–H vector (the line joining the two hydro-
+gen atoms) and the normal to the graphene surface, and the other
+is the angle β between the dipole moment and the normal to the
+graphene surface. Figures 4(a) and 4(b) show the two-dimensional
+probability distributions of α and β in the systems having the usual
+and 60% enhanced graphene–water interactions, respectively. The
+result shows that water molecules orient themselves preferentially in
+three different orientations: The most preferable orientation is (α, β)
+= (∼90○, ∼100○), and the others are (α, β) = (∼40○, ∼55○) and (α, β)
+= (∼140○, ∼55○), respectively. The present result on the preferred ori-
+entation distribution of water droplets on a graphene surface is con-
+sistent with previous studies.48,49 Figure 4(c) shows that the distri-
+bution of the H–H vector parallel to the graphene surface increases
+with increasing water–graphene interaction. Figure 4(d) shows that
+FIG. 3. Snapshots of the water droplet
+having (a) the usual interaction and (b)
+20%, (c) 40%, and (d) 60% enhanced
+interactions. For clarity, the full extent of
+the system is not shown.
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-3
+Published under license by AIP Publishing
+
+--- PAGE 5 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+TABLE II. Contact angle of the water droplet for different water–graphene
+interactions.
+εC–O (kcal/mol) 0.094 0.113 0.131 0.150
+Contact angle (deg) 95 ± 3 76 ± 2 53 ± 1 34 ± 1
+the bimodality of the distribution of the angle between the dipole
+moment and the surface normal becomes more intense with increas-
+ing water–surface interaction. Furthermore, it is found that the total
+dipole moment of water molecules in the first layer points upward
+with respect to the normal to the graphene surface. In addition,
+the distributions of orientation do not change much by changing
+the interaction strength between the water droplet and graphene
+surface.
+Next, we examine the distribution of the number of HBs
+per molecule in the water droplets and liquid water. Two criteria
+are used for identifying an HB between any two water molecules:
+The distance rO⋯O between the oxygen atoms of both molecules
+should be ≤3.4 Å, and the angle θH⋯O should be ≤30○ (here, a
+dotted line denotes an intermolecular vector, whereas a solid line
+denotes an intramolecular vector).50 Figure 5(a) presents the frac-
+tion of water molecules forming a particular number of HBs in
+the water droplets and liquid water. It shows that ∼55% are four-
+coordinated water molecules in liquid water, whereas ∼45% of water
+molecules are involved in forming four HBs in the water droplets.
+The fraction of water molecules forming a higher coordination num-
+ber, i.e., ≥4, decreases as the interaction between water and the
+graphene surface increases, while the fraction forming a lower coor-
+dination number, i.e., ≤3, increases with increasing water–graphene
+interaction. Thus, the nature of the graphene–water interaction
+affects the coordination number of water molecules in the droplet
+in comparison to that of liquid water. However, the change in
+the distributions of the fraction of HBs is not much by changing
+the interaction strength between the water droplet and graphene
+surface.
+FIG. 4. Probability distributions of angles α and β of water molecules in the first layer of the droplet having (a) the usual interaction and (b) the 60% enhanced LJ interaction.
+The probability distributions of α and β in the water droplets are shown in (c) and (d), respectively.
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-4
+Published under license by AIP Publishing
+
+--- PAGE 6 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+FIG. 5. (a) Fraction of the number of HBs in water droplets and liquid water. The red bars correspond to the usual graphene–water interaction, and the green, blue, and
+brown bars correspond to the graphene–water systems with 20%, 40%, and 60% enhanced LJ interaction potentials, respectively. (b) Fraction of the number of HBs formed
+by water molecules in the interface, core, and surface regions of the water droplet having the usual interaction with the graphene surface. The result for liquid water is also
+shown.
+Unlike molecules in liquid water, water molecules in a droplet
+exist in a heterogeneous environment because of the presence of
+the graphene/water interface and the droplet surface. Therefore, we
+examine here the HB coordination of water molecules in a water
+droplet by dividing the water molecules into three regions: interface,
+surface, and core regions. The interface region is defined by the first
+layer of the water droplet on the graphene surface, i.e., z < 8.2 Å as in
+Fig. 2. The outermost layer of water molecules above the first layer
+on the graphene surface is considered as a surface region, while the
+rest between the interface and surface regions is considered as a core
+region. The number fractions of water molecules in the three regions
+of the water droplets with the different surface–water interactions
+are shown in Table III.
+Figure 5(b) shows the fraction of the number of HBs in the
+three regions of the water droplet having the usual graphene–
+water interaction (εC–O = 0.094 kcal/mol). For water molecules
+in the core region, the distribution of the fraction of HBs is
+similar to that of liquid water. On the other hand, in the sur-
+face and interface regions, the local HB structure is greatly dis-
+torted, i.e., the fraction of three-coordinated water molecules (∼40%)
+is higher than that of four-coordinated water molecules, and
+the fraction of two-coordinated water molecules in these regions
+(∼20%) is much higher than that in the core region and in liquid
+water (∼7%).
+To elucidate the local structure of the water droplets, it is
+further analyzed in terms of the tetrahedral order parameter q
+TABLE III. Number fraction of water molecules in different regions inside the water
+droplets.
+Water droplet LJ Number fraction of water
+potential (kcal/mol) Interface region Core region Surface region
+εC–O = 0.094 0.163 0.505 0.331
+εC–O = 0.113 0.215 0.468 0.318
+εC–O = 0.131 0.278 0.398 0.323
+εC–O = 0.150 0.351 0.313 0.336
+defined as51
+qi = 1 − 3 8
+3
+∑
+j=1
+4
+∑
+k=j+1
+(cos ψj,i,k + 1 3 ) 2 , (1)
+where ψj,i,k is the angle formed by lines joining the oxygen atom
+of water molecule i and its four nearest-neighbor oxygen atoms of
+molecules j and k. This is an index quantifying the similarity of the
+water structure to the perfect tetrahedral structure: A perfect tetra-
+hedral structure yields q = 1, while the value of q decreases as the
+local structure is distorted from tetrahedral.
+Figure 6(a) shows the tetrahedral order parameter of
+water molecules in water droplets and liquid water. The large
+q values (q > 0.7) for liquid water indicate a locally tetrahedral
+arrangement of water molecules. In addition, the shoulder at q ∼ 0.5
+arises from a disordered local structure due to HB defects in the sys-
+tem. By contrast, in the water droplet, the fraction of water molecules
+with a locally distorted tetrahedral structure increases remarkably,
+i.e., the distribution is small (large) for q > 0.6 (q < 0.6) and has a
+long tail even for q < 0. Figure 6(a) also shows that the peak of the
+distribution at q ∼ 0.7 decreases and shifts to ∼0.5 with increasing
+water–graphene interaction.
+To investigate the origin of the distortions of the local structure
+in the water droplets, we examine the local tetrahedral structure of
+water molecules in three regions. Figure 6(b) shows the distribution
+of q in a water droplet having the usual graphene–water interaction.
+The distribution of q in the core region is almost identical to that
+of liquid water, as shown by the fraction of the number of HBs in
+Fig. 5(b). In contrast to the local structure in the core region, the local
+tetrahedral structure is found to be greatly distorted in the surface
+region: The distribution for q > 0.5 is weakened and has a long tail
+for q < 0 owing to the increase in the number of HB defect molecules
+with less than four-coordination compared with the distribution in
+the core region. The present result shows that the distribution for
+q > 0.7 in the interface region is less than that in the surface region,
+indicating that the local tetrahedral structure is further distorted.
+B. Vibrational density of states of water droplet
+Next, we investigate the dynamics of the water droplets. First,
+we examine the intermolecular vibrational density of states (vDOS)
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-5
+Published under license by AIP Publishing
+
+--- PAGE 7 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+FIG. 6. (a) Probability distributions of the tetrahedral order parameter in a water droplet with different graphene–water interactions and liquid water. The color coding represents
+the increment in the LJ potential between the surface and water droplet, with red corresponding to the case of usual interaction with the surface. (b) Region-wise tetrahedral
+order parameter of water molecules in a water droplet with the usual interaction with the graphene surface. The tetrahedral order parameter of liquid water is also shown.
+calculated from the Fourier transform of the velocity time correla-
+tion function (TCF). Intermolecular vibration motions have inten-
+sively been studied by far-IR, Raman, and neutron scattering exper-
+iments.1,52,53 Below 400 cm−1, two peaks are observed at ∼60 and
+∼200 cm−1. These peaks at ∼60 and ∼200 cm−1 have been assigned
+to the O–O–O HB bending and O–O HB stretching motion, respec-
+tively.1,52,53 There is a general consensus about the origin of the band
+at ∼200 cm−1, whereas there is some debate about the origin of
+the band at ∼60 cm−1.54,55 On the other hand, above ∼400 cm−1,
+a broad band extending to ∼1000 cm−1 is observed.1,52,53 Note that
+three bands are found in Raman spectroscopy.1,52,56 The band from
+∼400 to ∼1000 cm−1 is assigned to the libration motion. Figure 7(a)
+shows the vDOS of the oxygen and hydrogen atoms in the water
+droplets and liquid water. It is known that in liquid water, the vDOS
+of the oxygen atom has two characteristic peaks at ∼60 and ∼230
+cm−1 and the vDOS of the hydrogen atom has a main peak at
+∼520 cm−1 and a weak shoulder at ∼900 cm−1, as shown in a pre-
+vious study.57 In the water droplets, the three main intermolecular
+motions are redshifted to ∼50, ∼200, and ∼500 cm−1 in the vDOS of
+the oxygen and hydrogen atoms, respectively, and the vDOS intensi-
+ties at ∼200 and ∼50 cm−1 are, respectively, weakened and enhanced
+compared with the vDOS of liquid water. In contrast to the differ-
+ence between the vDOS of liquid water and water droplets, those
+between the vDOS of water droplets with different interactions are
+small.
+To elucidate the difference between the vDOS of the water
+droplets and liquid water, we examine the vDOS of water molecules
+in the three regions of the water droplet having the usual graphene–
+water interaction. As can be seen from Fig. 7(b), the vDOSs of the
+oxygen and hydrogen atoms of water molecules in the core region
+are almost identical to those in liquid water. On the other hand, those
+in the interface and surface regions are very different from those in
+liquid water. In the interface region, the peak of the HB stretching
+motion is shifted to ∼200 cm−1, and the vDOS intensity from ∼70
+to ∼150 cm−1 increases. In the surface region, the HB stretching
+peak is shifted to ∼200 cm−1, and an increase in the vDOS inten-
+sity is found at lower frequencies, i.e., below ∼50 cm−1. The vDOS
+of the hydrogen atoms in the interface and surface regions shows a
+redshift in the librational motion, except for the core region. Fur-
+thermore, the shoulder peak at ∼900 cm−1 becomes very weak in
+these regions. The larger redshift of the HB stretching in the surface
+region is attributed to the absence of water molecules outside the
+region.
+As we have observed that the fraction of HB defects increases
+in the interface and surface regions, we investigate the HB number
+dependence of the vDOS in three regions of the water droplet hav-
+ing the usual water–graphene interaction. Figures 8(a)–8(c) show
+the vDOS of the two-, three-, and four-coordinated water molecules
+in three regions of the water droplet. Water molecules in the core
+region are almost the same as those in liquid water regardless of the
+number of HBs. It is found that the vDOS intensity at ∼200 cm−1 is
+weakened and that at ∼50 cm−1 it is enhanced with decreasing HB
+number from four in all the regions. Furthermore, the peak posi-
+tion of the vDOS at ∼50 cm−1 is found to exhibit a redshift with
+FIG. 7. (a) vDOS of the oxygen (solid
+lines) and hydrogen (dashed lines)
+atoms in the water droplets and liquid
+water. (b) Region-wise vibrational vDOS
+of the oxygen (solid lines) and hydrogen
+(dashed lines) atoms of water molecules
+in the liquid water and water droplets
+having the usual interaction with the
+graphene surface. The vDOSs of the
+oxygen and hydrogen atoms in liquid
+water are also shown.
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-6
+Published under license by AIP Publishing
+
+--- PAGE 8 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+FIG. 8. vDOS of the oxygen (solid lines) and hydrogen (dashed lines) atoms of (a) two-, (b) three-, and (c) four-coordinated water molecules in different regions of the water
+droplet. The black, yellow, green, and violet lines are the vDOSs of the liquid water, interface, core, and surface regions, respectively. The vDOSs of the libration motion are
+expanded in the inset.
+decreasing HB number. The changes in the intensity of the vDOS
+at ∼50 and ∼200 cm−1 and the redshift of the band at ∼50 cm−1 are
+larger in the interface region and especially in the surface region.
+In the case of hydrogen atoms, the vDOS of those in the core
+region of the water droplet is almost identical to that of liquid water
+irrespective of the HB number. It should be noted that the vDOSs
+of hydrogen atoms, even those of the water molecules with four HBs
+in the interface and surface regions, are distorted toward low fre-
+quencies, i.e., the vDOSs in the interface and surface regions are
+weakened on the high-frequency side and strengthened on the low-
+frequency side of the main peak of the librational motion. With
+decreasing HB number, the peak position of the librational motion
+in each region is shifted to a lower frequency, e.g., ∼400 cm−1,
+and the shoulder peak at ∼50 cm−1 almost disappears for water
+molecules with two HBs. It is also worth noting the emergence of
+a peak at ∼250 cm−1 in the vDOS of the hydrogen atoms of water
+molecules with fewer than four HBs is in the interface and surface
+region. The present results show that the difference between the
+vDOS of the water droplets and liquid water can be attributed to
+the presence of the interfaces, particularly the surface region cor-
+responding to the air/water interface, with water molecules having
+fewer HBs.
+To understand the generality of this result, we simulate a water
+slab system consisting of 1000 water molecules, which is a two-
+dimensional periodic water structure with the air/water interface in
+the z dimension. A preliminary result presented in Fig. 9 shows that
+the vDOS of water molecules at the air/water interface in the water
+slab system exhibits the same behavior as observed in the vDOS of
+water molecules in the surface region of the water droplets, whereas
+the behavior of water molecules in the core region of the water slab
+system is the same as that in liquid water. A detailed analysis of
+the water slab system is currently underway and will be published
+separately.
+The present study reveals the redshift of the vDOS of all the
+intermolecular motions due to the lower numbers of HBs of water
+molecules in the surface and interface regions of the water droplets.
+It has been revealed that the energy relaxation dynamics of the O–
+H stretching and H–O–H bending of a water molecule depend on
+the number of HBs of the molecule in liquid water, for example,
+the energy relaxation time of these intramolecular motions of a
+three-coordinated water molecule is slower (by ∼10% to 40%) than
+that of a four-coordinated water molecule.58,59 In addition, energy
+relaxation dynamics can be investigated using pump–probe spec-
+troscopy and by examining the transient changes in vDOS under
+the application of external fields.57,59–61 The present study finds that
+the vDOSs of water molecules in the surface and interface regions
+are different from those in liquid water. Thus, it is expected that the
+intermolecular vibrational energy relaxation dynamics at the surface
+or interface region of a droplet and at a water/air interface will be
+found to be different from those in liquid water.
+C. Orientation relaxation of water droplet
+We now investigate single-molecule and collective orientation
+relaxation in water droplets. The SMOR of a water molecule, ϕ(t), is
+defined as
+ϕ(t) = ⟨⃗μ(t) ⋅ ⃗μ(0)⟩ ⟨μ2⟩ . (2)
+Here, we calculate the SMOR as the average of all the water
+molecules in the system. The SMORs in the water droplets and
+liquid water are shown in Fig. 10(a), and the relaxation times are
+FIG. 9. vDOS of water molecules in different regions of the water slab system. The
+vDOS of liquid water is also shown.
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-7
+Published under license by AIP Publishing
+
+--- PAGE 9 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+FIG. 10. (a) SMORs in water droplets
+and liquid water and (b) region-wise
+SMORs in a water droplet having the
+usual interaction with the graphene inter-
+face. The SMOR in liquid water is also
+shown.
+summarized in Table IV. The present result shows that SMOR in
+liquid water with a relaxation time of 5.4 ps is slightly faster than
+in water droplets with a relaxation time of 5.4–6.4 ps. The dynam-
+ics of SMOR in a water droplet slows down slightly with increasing
+water–graphene interaction.
+Figure 10(b) shows the SMORs in the three regions of the water
+droplet having the usual interaction with the graphene surface. It
+is found that the SMOR in the surface region is the fastest because
+there are fewer HBs per water molecule and a free boundary is
+present. On the other hand, the SMOR in the interface region is the
+slowest because the rotational motion is hindered by the presence
+of the graphene surface. As mentioned above, the number of water
+molecules in the interface region increases with increasing water–
+graphene interaction, and the average SMOR becomes slower with
+increasing water–graphene interaction.
+Next, we investigate the COR of water molecules. The COR
+Φ(t) is defined as the normalized TCF of the total dipole moment
+⃗M of the system,
+Φ(t) = ⟨δ ⃗M(t) ⋅ δ ⃗M(0)⟩
+⟨δM2⟩ , (3)
+where δ ⃗M(t) is the fluctuation of the total dipole moment of the
+system, ⃗M, from its mean value ⟨ ⃗M⟩, i.e., δ ⃗M(t) = ⃗M(t) − ⟨ ⃗M⟩. In
+this study, we approximate the total dipole moment ⃗M as the sum of
+the dipole moments of individual water molecules ⃗μi(t),
+⃗M(t) =
+N
+∑
+i=1
+⃗μi(t). (4)
+Figure 11(a) shows the CORs in the water droplets and liquid
+water. Compared with SMOR, COR shows a significant difference
+TABLE IV. Orientation relaxation times, Kirkwood and dynamic Kirkwood factors, and
+parallel and perpendicular components of the Kirkwood factor of water droplets and
+liquid water.
+τCOR (ps) τSMOR (ps) GK ˆGD K (0) GK ∥ GK /⊙◇⊞
+Liquid water 11.86 5.37 3.23 1.46 3.23 3.23
+εC–O = 0.094 0.90 5.43 0.24 1.45 0.28 0.15
+εC–O = 0.113 1.28 5.63 0.26 1.14 0.32 0.14
+εC–O = 0.131 1.43 5.84 0.30 1.23 0.38 0.13
+εC–O = 0.150 2.25 6.34 0.40 1.13 0.53 0.15
+between water droplets and liquid water. It is known that in liq-
+uid water, COR is approximately two times slower than SMOR.62
+In the present results, the relaxation times of COR and SMOR
+in liquid water are ∼11.9 and ∼5.4 ps, respectively. By contrast,
+the present study reveals that in a water droplet, COR becomes
+∼2.5–5 times faster than SMOR. Furthermore, the COR of a water
+droplet having the usual graphene–water interaction is about 11
+times faster than that in liquid water. A similar behavior is observed
+for water confined in spherical nanocavities.63 In the case of spher-
+ical nanocavities, the effect of different interactions and cavity size
+on COR is almost negligible, whereas in water droplets on graphene,
+COR becomes sluggish with an increase in interaction with the
+surface.
+In addition to the significant acceleration of COR in the water
+droplets, it also shows a large initial decay compared with COR in
+liquid water. Figure 11(b) shows the absorption spectra of liquid
+water and water droplets, given by
+α(ω) =ω2 ∫ ∞ 0 Φ(t) cos(ωt) dt. (5)
+The absorption spectrum of the water droplets shows a consider-
+able blueshift of the librational motion compared with liquid water,
+which is attributed to the large initial decay of the COR of the
+droplets.
+To understand the difference between the dynamics of the total
+dipole moment in the water droplets and in liquid water, the COR is
+divided into two terms,
+Φ(t) = Φself(t) + Φcross(t), (6)
+where
+Φself(t) =
+⟨
+N
+∑
+i=1
+(⃗μi(t) − ⟨ ⃗M⟩) ⋅ (⃗μi(0) − ⟨ ⃗M⟩)⟩
+⟨δM2⟩ , (7)
+Φcross(t) =
+⟨
+N
+∑
+i≠j
+(⃗μi(t) − ⟨ ⃗M⟩) ⋅ (⃗μj(0) − ⟨ ⃗M⟩)⟩
+⟨δM2⟩ . (8)
+Here, Φself(t) is proportional to the SMOR given in Eq. (2).
+Figure 12(a) shows that in liquid water, Φcross(t) is positive
+and slower than Φself(t), and thus, COR is slower than SMOR.
+On the other hand, as shown in Fig. 12(b), in the water droplets,
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-8
+Published under license by AIP Publishing
+
+--- PAGE 10 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+FIG. 11. (a) COR and (b) far-infrared
+absorption spectra of water droplets and
+liquid water. The absorption spectra are
+normalized based on their respective
+librational peaks.
+Φcross(t) and Φself(t) have opposite signs, which leads to cancellation
+of these terms. As a result, in the water droplets, COR is faster than
+SMOR.
+Figure 13 shows the absorption spectra corresponding to the
+self- and cross-terms of liquid water and a water droplet having the
+usual water–graphene interaction. The absorption spectrum of the
+self-term of the water droplet is very similar to that of liquid water.
+However, we find large differences between the spectra of the cross-
+term of the water droplet and liquid water, for instance, in the water
+droplet, a positive and a negative peak are found at ∼750 and at
+∼480 cm−1, respectively, whereas in liquid water, a positive peak and
+two negative peaks are found at ∼650 and at ∼480 and ∼900 cm−1,
+respectively. Consequently, the differences between the distinct cor-
+relation of the dipole moments in the water droplets and liquid water
+give rise to significant differences between the TCFs and spectra of
+these systems. It is noted that the blueshift in the libration motion
+of the water droplets is due to the dipole cross correlations, not the
+stiffness of the water interaction.
+A difference between the correlations of dipole moments is
+found in a static quantity, namely, the Kirkwood g-factor, GK . Since
+it is known that the convergence of dielectric properties is slow,64
+we have ensured that the reported GK values in this work are con-
+verged in the time limit of our simulation (see Fig. S1 of the supple-
+mentary material). As summarized in Table IV, in liquid water, GK
+is greater than three, which indicates a constructive correlation of
+dipole moments of water molecules (⟨δM2⟩ > N⟨μ2⟩, i.e., there is a
+positive correlation between distinct dipole moments). On the other
+hand, in water droplets, GK is found to be less than unity owing to
+a destructive correlation of dipole moments (⟨δM2⟩ < N⟨μ2⟩, i.e.,
+there is a negative correlation between distinct dipole moments).
+Because the magnitude of the total dipole moment is smaller than the
+sum of individual dipole moments in a water droplet, the collective
+dipole moment is sensitive to the fluctuation of an individual dipole
+moment, as found in an isolated water cluster.62 The small value of
+GK in the presence of an interface is responsible for a low value of
+static dielectric constant ε0.65–67 Thus, we also expect small ε0 for the
+water droplets, although ε0 for water droplet is not unambiguously
+determined owing to its irregular shape.
+Furthermore, a relation between the relaxation time of the
+COR, τCOR, and that of the SMOR, τSMOR, can be derived using
+GK , based on the Mori–Zwanzig equation for the dipole moment
+correlation matrix,68
+τCOR = GK ˆGD K (0) τSMOR, (9)
+where
+GK = ⟨δM2⟩ N⟨μ2⟩ , (10)
+ˆGD K (ω) = ∫
+∞
+0 dt e−iωt ⟨δ ˙⃗M(t) ⋅ δ ˙⃗M(0)⟩ Q
+∫
+∞
+0 dt e−iωt ∑N i=1⟨˙⃗μi(t) ⋅ ˙⃗μi(0)⟩Q . (11)
+Here, ˆGD K (0) is a dynamical analog of GK , expressing the correlation
+in the memory function of the collective orientation relative to that
+of individual orientations, and the subscript Q in ˆGD K denotes the
+time evolution in projected space. It is expected that ˆgD K (0) is close
+to unity because of the ratio of fast dynamics of the memory func-
+tion. As mentioned above, a constructive correlation between dipole
+moments is found in liquid water, GK > 1, and thus, the relaxation
+time of COR is much longer than that of SMOR in liquid water. On
+the other hand, a destructive correlation, GK < 1, is found in water
+FIG. 12. Self-correlations (dotted line)
+and cross correlations (dashed line) of
+the CORs in (a) liquid water and (b) a
+water droplet having the usual interaction
+with the graphene surface.
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-9
+Published under license by AIP Publishing
+
+--- PAGE 11 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+FIG. 13. Self- and cross-terms of the far-
+infrared spectrum of (a) liquid water and
+(b) a water droplet having the usual inter-
+action with the graphene surface. The
+absorption spectra are normalized based
+on their respective librational peaks.
+FIG. 14. (a) Parallel (dashed line) and
+perpendicular (solid line) components of
+the COR of water droplets having the
+usual and 60% interactions with the
+graphene surface. (b) The corresponding
+far-infrared absorption spectra of liquid
+water and water droplets. The absorption
+spectra are normalized based on their
+respective librational peaks.
+droplets. As a result, in water droplets, COR becomes faster than
+SMOR. A similar acceleration mechanism of COR is found in water
+clusters and confined water molecules.62,69
+Table IV shows that the Kirkwood factor gradually increases
+with increasing water–graphene interaction. To understand the
+effect of the water–solid and water–air interactions, we analyze
+the parallel and perpendicular components, GK ,∥ and GK ,/⊙◇⊞, of the
+Kirkwood factor with respect to the graphene surface,
+GK = 1 3 (2GK∥ + GK⊥), (12)
+where
+GK∥ =
+3⟨M2 ∥⟩
+N⟨μ2⟩ , (13)
+GK⊥ = 3⟨M2 ⊥⟩ N⟨μ2⟩ (14)
+with ⟨M2 ∥⟩ = 1 2 ⟨M2 x + M2 y ⟩ and ⟨M2 ⊥⟩ = ⟨M2 z ⟩. The perpendicular
+component of the dipole moment is in the direction of the surface
+normal vector.
+We find that the total dipole moments along the z axis in
+the interface and surface regions are largely canceled, and GK /⊙◇⊞ is
+almost independent of the water–graphene interaction. On the other
+hand, we also find that GK ∥ gradually increases with increasing
+water–graphene interaction. As a result, GK increases with increas-
+ing water–graphene interaction. A small fluctuation in the perpen-
+dicular component of the total dipole moment is also found in the
+nanoconfined water between graphene sheets.66
+We now examine the TCFs of the parallel and perpendicular
+components of the total dipole moment in water droplets. It should
+be noted that these TCFs are similar within statistical error in liquid
+water. Figure 14(a) shows that the TCF of the perpendicular compo-
+nent, Φ/⊙◇⊞(t), is faster than that of the parallel component, Φ∥(t), in
+water droplets, for example, τ/⊙◇⊞ ∼ 0.68 ps (0.64 ps) and τ∥ ∼ 1.00 ps
+(2.17 ps) in a water droplet having the usual (60% enhanced) inter-
+action. It is noted that an increase in the water–graphene interac-
+tion does not significantly change τ/⊙◇⊞, whereas it largely changes
+τ∥. The interaction dependency of τ/⊙◇⊞ and τ∥ is attributed to the
+change in GK /⊙◇⊞ and GK ∥ with a change in water–graphene inter-
+action. Furthermore, Φ/⊙◇⊞(t) exhibits more pronounced oscillations
+than Φ∥(t). This is also due to the negative correlation between
+distinct dipole moments, i.e., a small GK makes the total dipole
+moment more susceptible to the fluctuations of individual dipole
+moments. Similar rapid and pronounced oscillations are found in
+the perpendicular component of a nanoconfined water system.66
+As a result, the libration peak in the absorption spectrum of the
+perpendicular component in a water droplet is shifted to a higher
+frequency than those in the parallel component and in liquid water
+[Fig. 14(b)].
+IV. CONCLUSIONS
+In this study, we investigated the structural and dynamic prop-
+erties of water droplets on a graphene surface by performing MD
+simulations. First, we studied the local structure of the water droplets
+in terms of HB number per molecule and the tetrahedral order
+parameter. In particular, we examined these properties of water
+droplets by dividing the system into three regions: a (water/solid)
+interface region, a core region, and a surface (water/air interface)
+region. We found that the local structure of water molecules in the
+core region is very similar to that in liquid water. However, the
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-10
+Published under license by AIP Publishing
+
+--- PAGE 12 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+present study has revealed that the local structure is greatly dis-
+torted in the interface and surface regions owing to the presence
+of the water/solid and water/air interfaces: three-coordinated water
+molecules are the most abundant, and thus, the local structure is dis-
+torted from tetrahedral. Furthermore, we found the change in the
+structure of the water droplets on the graphene surface as the inter-
+action with the surface increases, i.e., the decrease in contact angle
+corresponding to the spreading of water molecules on the surface.
+In addition, we found that the local structure becomes less ordered
+with increasing water–graphene interaction.
+We investigated the dynamics of water droplets by calculat-
+ing the intermolecular vibrational vDOS. It was revealed that the
+vDOS at ∼50 cm−1 increased and that at ∼200 cm−1 decreased in
+the surface and interface regions. We also found that the librational
+motion of the hydrogen atoms in the surface and interface regions
+was redshifted compared with that of liquid water. We found that
+the changes in the vDOS of the droplets compared with that of
+liquid water are due to there being fewer hydrogen-bonded water
+molecules, such as three- and two-coordinated water molecules, in
+the interface and surface regions of the water droplets. These results
+suggest that the energy relaxation dynamics in a water droplet, espe-
+cially in the surface and interface regions, can be different from
+those in liquid water. In addition, we found that the vDOS of the
+intermolecular translational and librational motions of molecules
+in the surface region of a water slab system is very similar to
+that of water molecules in the surface region of a water droplet.
+Thus, the present results imply slower intermolecular energy relax-
+ation dynamics at the water/air interface compared with the
+bulk.
+We also studied both single-molecule and collective orienta-
+tion relaxations of water droplets. We found that SMOR of water
+droplets is slightly slower than that of liquid water. We also found
+that COR is faster than SMOR in water droplets and that it is more
+than 11 times faster in droplets than in liquid water. This is due to
+the negative correlation between different dipole moments in water
+droplets, as shown by the Mori–Zwanzig equation. The present anal-
+ysis also showed that the negative correlation of the distinct dipole
+moments yields a blueshift of the librational motion in the far-
+infrared spectrum of water droplets, compared with that of liquid
+water. It is of great importance to recognize that this blueshift of
+the librational motion is due to the negative correlation between
+dipole moments, not to a stiffer intermolecular interaction. Further-
+more, the present study showed that SMOR slows down slightly with
+increasing water–graphene interaction. In addition, we found that
+with increasing interaction, the Kirkwood g-factor, i.e., the correla-
+tion between dipole moment, increases, although still less than one,
+and COR slows down.
+We examined the parallel and perpendicular components of the
+total dipole moments, and we observed pronounced oscillations of
+the perpendicular component due to the large cancellation of the
+total dipole moment. A similar behavior is found in nanoconfined
+systems. It is therefore expected that the differences in dynamical
+behavior between water molecules in liquid water and in the sur-
+face regions of water droplets will also be observed in other systems
+in which air/water interfaces are present. Furthermore, we found
+that with the increase in water graphene interaction, oscillations in
+the perpendicular component become apparent and the increase in
+blueshift in the spectrum of the perpendicular component as well
+as the slowdown of relaxation time of the parallel component is
+observed.
+The intermolecular dynamics of water molecules at interfaces
+are not well understood. Therefore, it is of interest to investigate
+the intermolecular translational and orientational dynamics of water
+molecules in these systems both experimentally and theoretically.
+SUPPLEMENTARY MATERIAL
+We have provided a figure in the supplementary material to
+show the convergence of the GK factor in our simulation.
+ACKNOWLEDGMENTS
+This work was supported by the Grant-in-Aid for Scientific
+Research (Grant Nos. JP16H02254 and JP21H04676 to S.S.) from
+JSPS. M.M. would like to thank Dr. Inagaki and Ms. Prerna for
+valuable discussion. Computational facilities are provided by the
+Research Center for Computational Sciences in Okazaki.
+DATA AVAILABILITY
+The data that support the findings of this study are available
+from the corresponding author upon reasonable request.
+REFERENCES
+1D. Eisenberg and W. Kauzmann, The Structure and Properties of Water (Oxford
+University Press, 2005).
+2B. Bagchi, Water in Biological and Chemical Processes: From Structure and
+Dynamics to Function, Cambridge Molecular Science (Cambridge University
+Press, 2013).
+3C. A. Angell, W. J. Sichina, and M. Oguni, J. Phys. Chem. 86, 998 (1982).
+4P. H. Poole, F. Sciortino, U. Essmann, and H. E. Stanley, J. Phys. Chem. B 360,
+324 (1992).
+5O. Mishima and H. E. Stanley, J. Phys. Chem. 396, 329 (1998).
+6J. C. Palmer, F. Martelli, Y. Liu, R. Car, A. Z. Panagiotopoulos, and P. G.
+Debenedetti, Nature 510, 385 (2014).
+7P. Gallo, K. Amann-Winkel, C. A. Angell, M. A. Anisimov, F. Caupin,
+C. Chakravarty, E. Lascaris, T. Loerting, A. Z. Panagiotopoulos, J. Russo, J. A.
+Sellberg, H. E. Stanley, H. Tanaka, C. Vega, L. Xu, and L. G. M. Pettersson, Chem.
+Rev. 116, 7463 (2016).
+8S. Saito, B. Bagchi, and I. Ohmine, J. Chem. Phys. 149, 124504 (2018).
+9E. B. Moore and V. Molinero, J. Chem. Phys. 130, 244505 (2009).
+10J. Russo and H. Tanaka, Nat. Commun. 5, 3556 (2014).
+11A. Nilsson and L. G. M. Pettersson, Nat. Commun. 6, 8998 (2015).
+12J. C. Palmer, P. H. Poole, F. Sciortino, and P. G. Debenedetti, Chem. Rev. 118,
+9129 (2018).
+13J. W. Biddle, R. S. Singh, E. M. Sparano, F. Ricci, M. A. González, C. Valeriani,
+J. L. F. Abascal, P. G. Debenedetti, M. A. Anisimov, and F. Caupin, J. Chem. Phys.
+146, 034502 (2017).
+14N. Moritsugu, T. Nara, S.-i. Koda, K. Tominaga, and S. Saito, J. Phys. Chem. B
+124, 11730 (2020).
+15U. Heugen, G. Schwaab, E. Bründermann, M. Heyden, X. Yu, D. M. Leitner, and
+M. Havenith, Proc. Natl. Acad. Sci. U. S. A. 103, 12301 (2006).
+16S. Park and M. D. Fayer, Proc. Natl. Acad. Sci. U. S. A. 104, 16731 (2007).
+17A. P. Gaiduk and G. Galli, J. Phys. Chem. Lett. 8, 1496 (2017).
+18P. Schienbein, G. Schwaab, H. Forbert, M. Havenith, and D. Marx, J. Phys.
+Chem. Lett. 8, 2373 (2017).
+19F. Merzel and J. C. Smith, Proc. Natl. Acad. Sci. U. S. A. 99, 5378 (2002).
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-11
+Published under license by AIP Publishing
+
+--- PAGE 13 ---
+The Journal
+of Chemical Physics ARTICLE scitation.org/journal/jcp
+20S. K. Pal and A. H. Zewail, Chem. Rev. 104, 2099 (2004).
+21Y. R. Shen and V. Ostroverkhov, Chem. Rev. 106, 1140 (2006).
+22M. Bonn, Y. Nagata, and E. H. G. Backus, Angew. Chem., Int. Ed. 54, 5560
+(2015).
+23S. Nihonyanagi, S. Yamaguchi, and T. Tahara, Chem. Rev. 117, 10665 (2017).
+24T. Ishiyama and A. Morita, Annu. Rev. Phys. Chem. 68, 355 (2017).
+25Y. Nagata, C.-S. Hsieh, T. Hasegawa, J. Voll, E. H. G. Backus, and M. Bonn,
+J. Phys. Chem. Lett. 4, 1872 (2013).
+26Y. Tong, T. Kampfrath, and R. K. Campen, Phys. Chem. Chem. Phys. 18, 18424
+(2016).
+27F. H. Song, B. Q. Li, and C. Liu, Langmuir 29, 4266 (2013).
+28C. D. Daub, D. Bratko, K. Leung, and A. Luzar, J. Phys. Chem. C 111, 505 (2007).
+29F. Cyriac, P. M. Lugt, and R. Bosman, Tribol. Trans. 59, 679 (2016).
+30T. Kajiya, F. Schellenberger, P. Papadopoulos, D. Vollmer, and H.-J. Butt, Sci.
+Rep. 6, 23687 (2016).
+31J. Jang, G. C. Schatz, and M. A. Ratner, Phys. Rev. Lett. 90, 156104 (2003).
+32C. E. Cansoy, RSC Adv. 4, 1197 (2014).
+33J. Drelich, J. D. Miller, and R. J. Good, J. Colloid Interface Sci. 179, 37 (1996).
+34J. D. Bernardin, I. Mudawar, C. B. Walsh, and E. I. Franses, Int. J. Heat Mass
+Transfer 40, 1017 (1997).
+35K.-Y. Yeh, L.-J. Chen, and J.-Y. Chang, Langmuir 24, 245 (2008).
+36T. G. Twardeck, IBM J. Res. Dev. 21, 31 (1977).
+37M. Barletta and A. Gisario, Prog. Org. Coat. 64, 339 (2009).
+38E. Schäffer, T. Thurn-Albrecht, T. P. Russell, and U. Steiner, Nature 403, 874
+(2000).
+39W. D. Luedtke, J. Gao, and U. Landman, J. Phys. Chem. C 115, 20343 (2011).
+40J. L. F. Abascal and C. Vega, J. Chem. Phys. 123, 234505 (2005).
+41W. D. Cornell, P. Cieplak, C. I. Bayly, I. R. Gould, K. M. Merz, D. M. Ferguson,
+D. C. Spellmeyer, T. Fox, J. W. Caldwell, and P. A. Kollman, J. Am. Chem. Soc.
+117, 5179 (1995).
+42W. Wang, H. Zhang, S. Li, and Y. Zhan, Nanotechnology 27, 075707 (2016).
+43T. Werder, J. H. Walther, R. L. Jaffe, T. Halicioglu, and P. Koumoutsakos,
+J. Phys. Chem. B 107, 1345 (2003).
+44S. Plimpton, J. Comput. Phys. 117, 1 (1995).
+45M. J. de Ruijter, T. D. Blake, and J. De Coninck, Langmuir 15, 7836 (1999).
+46R. C. Dutta, S. Khan, and J. K. Singh, Fluid Phase Equilib. 302, 310 (2011).
+47J. Włoch, A. P. Terzyk, and P. Kowalczyk, Chem. Phys. Lett. 674, 98
+(2017).
+48A. Pertsin and M. Grunze, J. Phys. Chem. B 108, 1357 (2004).
+49J. Marti, G. Nagy, M. C. Gordillo, and E. Guàrdia, J. Chem. Phys. 124, 094703
+(2006).
+50A. Luzar and D. Chandler, J. Chem. Phys. 98, 8160 (1993).
+51J. R. Errington and P. G. Debenedetti, Nature 409, 318 (2001).
+52G. E. Walrafen, in Water: Comprehensive Treatise, edited by F. Franks (Plenum,
+New York, 1972), Chap. 1, p. 151.
+53D. I. Page, in Water: Comprehensive Treatise, edited by F. Franks (Plenum,
+New York, 1972), Chap. 1, p. 333.
+54J. A. Padró and J. Martí, J. Chem. Phys. 118, 452 (2003).
+55J. Martí, J. A. Padró, and E. Guàrdia, J. Chem. Phys. 105, 639 (1996).
+56M. Moskovits and K. H. Michaelian, J. Chem. Phys. 69, 2306 (1978).
+57T. Yagasaki and S. Saito, J. Chem. Phys. 134, 184503 (2011).
+58B. Miguel, J. Zúñiga, A. Requena, and A. Bastida, J. Phys. Chem. B 118, 9427
+(2014).
+59S. Imoto, S. S. Xantheas, and S. Saito, J. Phys. Chem. B 119, 11068 (2015).
+60T. Yagasaki and S. Saito, Annu. Rev. Phys. Chem. 64, 55 (2013).
+61J. Jeon and M. Cho, J. Chem. Phys. 135, 214504 (2011).
+62S. Saito and I. Ohmine, J. Chem. Phys. 101, 6063 (1994).
+63S. Mondal, S. Acharya, and B. Bagchi, Phys. Rev. Res. 1, 033145 (2019).
+64M. Neumann, J. Chem. Phys. 85, 1567 (1986).
+65S. Senapati and A. Chandra, J. Phys. Chem. B 105, 5106 (2001).
+66S. Mondal and B. Bagchi, J. Chem. Phys. 154, 044501 (2021).
+67L. Fumagalli, A. Esfandiar, R. Fabregas, S. Hu, P. Ares, A. Janardanan, Q. Yang,
+B. Radha, T. Taniguchi, K. Watanabe, G. Gomila, K. S. Novoselov, and A. K. Geim,
+Science 360, 1339 (2018).
+68D. Kivelson and P. Madden, Mol. Phys. 30, 1749 (1975).
+69R. Biswas and B. Bagchi, J. Chem. Phys. 133, 084509 (2010).
+J. Chem. Phys. 154, 164704 (2021); doi: 10.1063/5.0046817 154, 164704-12
+Published under license by AIP Publishing

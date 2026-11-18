@@ -1,0 +1,55 @@
+{
+  "supplied_pdf_count": 7,
+  "supplied_pdfs": [
+    {
+      "path": "Papers/Papers/1996_Simulations of the methane hydrate methane gas interface near hydrate formingconditions.pdf",
+      "size_bytes": 528973,
+      "mtime_ns": 1794668313888953400,
+      "sha256": "5b2d0a15908d766e60f22584d737f5cb153fb7b5c78cebcb817d12a71a0ad208"
+    },
+    {
+      "path": "Papers/Papers/2019_MD_properties and local structures.pdf",
+      "size_bytes": 3231062,
+      "mtime_ns": 1794668313829357400,
+      "sha256": "7978564a7111b3908e3a3e8b6b581d24c81d25354640060f030131c2825d76be"
+    },
+    {
+      "path": "Papers/Papers/2020_Determination of Binary Diffusivities in Concentrated Lithium Battery Electrolytes.pdf",
+      "size_bytes": 828399,
+      "mtime_ns": 1794668313978585600,
+      "sha256": "e2ae0ace47c04c8377adb054fec3be339d28adaaf7700b7700158483c9c64a36"
+    },
+    {
+      "path": "Papers/Papers/2020_Molecular dynamics results on the pressure tensor of polymer films.pdf",
+      "size_bytes": 634839,
+      "mtime_ns": 1794668313860435000,
+      "sha256": "252fd78f0bace15caaf0d0db3e473ab2d173cfda2b6fda1e894021df1c871abd"
+    },
+    {
+      "path": "Papers/Papers/2021_Effects of interfaces on structure and dynamics of water droplets on a graphene surface.pdf",
+      "size_bytes": 4021903,
+      "mtime_ns": 1794668313697630400,
+      "sha256": "4585f010d06d15a0254fae386316425418e6ceaa7e4887379c8fb1185eeb4127"
+    },
+    {
+      "path": "Papers/Papers/2022_HTR_algorithm cagerecognition.pdf",
+      "size_bytes": 10180325,
+      "mtime_ns": 1794668314075910600,
+      "sha256": "bf184768309ec3d560e88ca3963a2f3ac3e9262d3e24b8c206448a5706eca3d4"
+    },
+    {
+      "path": "Papers/Papers/2024_ HTR+ algorithm.pdf",
+      "size_bytes": 3322028,
+      "mtime_ns": 1794668313945654500,
+      "sha256": "137c67f2457d353f5d098c4b1005613b54eb7d104f373eae98807ab615036f60"
+    }
+  ],
+  "trajectory": {
+    "path": "F:\\Sem 7\\CB4103\\PROJECT\\dumpr.lammpstrj",
+    "size_bytes": 7817235449,
+    "mtime_ns": 1794652714326446300
+  },
+  "trajectory_fingerprint": "77e78879e761fad07649afba2b04f73f238c5158e6523c49194f81dccfae9888",
+  "fingerprint_convention": "SHA256 of concatenated 64-byte ASCII SHA256 hashes of each complete raw frame in order; frame_sha256.npy stores individual hashes",
+  "note": "Original inputs are retained in place; no raw trajectory or PDFs are copied into the compact submission ZIP."
+}
