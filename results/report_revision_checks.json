@@ -1,0 +1,18 @@
+{
+  "report_pages": 4,
+  "all_expected_numbers_present": true,
+  "missing_numbers": [],
+  "clipped_spans": [],
+  "embedded_fonts": [
+    "AAAAAA+DejaVuSans",
+    "AAAAAA+DejaVuSans-Bold",
+    "AAAAAA+STIXGeneral-Bold",
+    "AAAAAA+STIXGeneral-Italic",
+    "AAAAAA+STIXGeneral-Regular",
+    "AAAAAA+STIXSizeThreeSym-Regular",
+    "Helvetica"
+  ],
+  "presentation_builder_preserved": true,
+  "input_measurements_unchanged": true,
+  "test_environment": "PYTEST_ADDOPTS disables cacheprovider and uses a fresh project-local --basetemp to avoid Windows temp/cache ACL errors"
+}

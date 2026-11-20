@@ -4,7 +4,7 @@ from .trajectory import load_config,convert
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('stage',choices=['convert','analyze','figures','documents','validate','package','all'])
+    p.add_argument('stage',choices=['convert','analyze','figures','report','documents','validate','package','all'])
     p.add_argument('--config',default='config/analysis.json')
     a=p.parse_args(); c=load_config(a.config)
     if a.stage in ['convert','all']: convert(c)
@@ -14,6 +14,9 @@ def main():
     if a.stage in ['figures','all']:
         from .plotting import make_figures
         make_figures(c)
+    if a.stage == 'report':
+        from .report import build_report
+        build_report(c)
     if a.stage in ['documents','all']:
         from .documents import build_documents
         build_documents(c)

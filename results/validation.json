@@ -25,6 +25,7 @@
     "eight_real_figure_families": true,
     "figures_readable_dimensions": true,
     "report_pages_nonempty": true,
+    "report_typeset_equations": true,
     "editable_powerpoint_with_notes": true,
     "slide_layout_no_text_overflow": true,
     "report_measured_factor_matches_summary": true,
@@ -40,11 +41,11 @@
       },
       "command": "\"F:\\Sem 7\\CB4103\\PROJECT\\.venv\\Scripts\\python.exe\" -m pytest -q -ra --junitxml=results/pytest.xml",
       "exit_code": 0,
-      "elapsed_seconds": 1.1111363999953028,
-      "summary": "24 passed in 0.72s",
-      "source_digest": "011d7fc14a38801b347de5e29397b75997654f28128d6f5a8432e0eb4582b08d",
+      "elapsed_seconds": 2.1374147000005905,
+      "summary": "24 passed in 1.39s",
+      "source_digest": "1e9b58a3f037ec4e6925248febf05650fa0dbf12243047bfb94e6ca35a479a97",
       "output_file": "results/pytest.log",
-      "completed_utc": "2026-11-15T02:35:16.289448+00:00"
+      "completed_utc": "2026-11-20T10:07:42.518306+00:00"
     },
     {
       "command": "\"F:\\Sem 7\\CB4103\\PROJECT\\.venv\\Scripts\\python.exe\" -m compileall -q src tests",
@@ -81,8 +82,8 @@
     "tolerance": 1e-10,
     "overall_pass": true
   },
-  "test_summary": "24 passed in 0.72s",
-  "source_digest": "011d7fc14a38801b347de5e29397b75997654f28128d6f5a8432e0eb4582b08d",
+  "test_summary": "24 passed in 1.39s",
+  "source_digest": "1e9b58a3f037ec4e6925248febf05650fa0dbf12243047bfb94e6ca35a479a97",
   "physical_metadata_established": false,
   "physical_full_relaxation_converged": false,
   "material_scientific_limitations": [
@@ -97,25 +98,19 @@
     "Trajectory may be a selected atom group; no bulk-water, droplet, substrate or hydrate identity is established."
   ],
   "artifact_inspection": {
-    "report_pages": 9,
-    "planned_content_pages": 9,
+    "report_pages": 4,
+    "planned_content_pages": 4,
     "report_page_text_lengths": [
-      2148,
-      1853,
-      2343,
-      1363,
-      1329,
-      1736,
-      1432,
-      2945,
-      2813
+      1517,
+      1220,
+      1151,
+      2079
     ],
     "representative_report_previews": [
-      "reports\\previews\\report_page_01.png",
-      "reports\\previews\\report_page_03.png",
-      "reports\\previews\\report_page_05.png",
-      "reports\\previews\\report_page_06.png",
-      "reports\\previews\\report_page_09.png"
+      "reports/previews/report_page_01.png",
+      "reports/previews/report_page_02.png",
+      "reports/previews/report_page_03.png",
+      "reports/previews/report_page_04.png"
     ],
     "slides": 14,
     "slide_text_overflows": [],
@@ -123,8 +118,17 @@
     "slide_layout_preview_pages": 14,
     "slide_preview_file": "reports/presentation_layout_preview.pdf",
     "native_powerpoint_render_available": false,
-    "presentation_preview_note": "Companion PDF renders the same editable slide text/image geometry; it is a layout preview, not a native PowerPoint rendering."
+    "presentation_preview_note": "Companion PDF renders the same editable slide text/image geometry; it is a layout preview, not a native PowerPoint rendering.",
+    "report_math_blocks": 9,
+    "report_math_format": "LaTeX-style vector text with embedded STIX fonts",
+    "report_figures": [
+      "01_geometry",
+      "04_smor_cor",
+      "05_decomposition",
+      "02_spatial_profiles",
+      "06_running_integrals"
+    ]
   },
   "validation_meaning": "Numerical implementation, complete input audit and required artifacts passed; physical provenance and relaxation convergence are independently unresolved.",
-  "completed_utc": "2026-11-15T02:35:16.441994+00:00"
+  "completed_utc": "2026-11-20T10:07:42.784835+00:00"
 }

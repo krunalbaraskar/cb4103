@@ -56,3 +56,11 @@
 - Original raw source and seven supplied PDFs are retained in place. No other agents, purchases, cloud resources, uploads, publication, email or teammate messages were used.
 - Repackaging after this log entry freezes the final log and reproduction output into the manifest. The final archive will be checked with ZIP CRC validation and every listed file checksum checked against the workspace.
 - **Required implementation and deliverables are complete. Remaining required work: none.** Scientific follow-up would require original simulation metadata and longer independent records; no optional question or user action is needed to use these deliverables.
+
+## Concise report revision — 20 November 2026
+
+- Shortened the requested report from nine pages to four, retaining dataset information, bond lengths and internal angles, orientation correlations, exact collective self/cross results, spatial profiles and finite-cutoff integrals. Removed the extended literature comparison, fit discussion and presentation/viva allocation from the report.
+- Replaced the plain-text equation block with nine LaTeX-style display equations. The PDF embeds STIX font glyphs and vector fraction rules; the matching Markdown contains editable LaTeX equations. Added a `report` CLI stage so this format can be regenerated independently of the presentation.
+- Checked all four rendered pages. Verified the displayed numerical values against metadata, correlation CSV and saved integral results; no clipped PDF text was detected. Raw inputs, measured results and the existing presentation are unchanged.
+- Validation passed with **24 tests passed**, zero skipped/failures/errors, and all artifact checks passing. The first test invocation encountered Windows permissions on the existing system temporary/cache directories; the successful rerun disabled pytest's cache provider and used a fresh project-local temporary directory. Details are in `results/report_revision_checks.json` and `results/visual_review.json`.
+- Updated the README and report-length validation to match the compact report. Refreshed the submission archive and manifest with the revised report and regeneration source.

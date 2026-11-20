@@ -1,208 +1,41 @@
-"""Result-grounded Markdown/PDF report and editable PowerPoint with layout preview."""
+"""Build the concise report and the editable presentation with a layout preview."""
 from pathlib import Path
-import json, html, textwrap
-import numpy as np
+import html
+import json
 
-ANCHOR='Maurya, Metya, Singh and Saito (2021), J. Chem. Phys. 154, 164704. https://doi.org/10.1063/5.0046817'
 
 def build_documents(c):
-    from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Table,TableStyle,Image,PageBreak,KeepTogether
-    from reportlab.lib import colors
-    from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
-    from reportlab.lib.enums import TA_LEFT
-    from reportlab.lib.pagesizes import A4
-    from reportlab.pdfbase import pdfmetrics
-    from reportlab.pdfbase.ttfonts import TTFont
-    import matplotlib.font_manager as fm
-    import pymupdf
-    from PIL import Image as PILImage
-    out=Path('reports');out.mkdir(exist_ok=True)
-    s=json.loads(Path('results/summary.json').read_text());m=json.loads(Path('results/metadata.json').read_text())
-    n=json.loads(Path('results/numerical_checks.json').read_text())
-    test=json.loads(Path('results/test_results.json').read_text()) if Path('results/test_results.json').exists() else {}
-    f=s['full'];g=m['geometry'];data=np.genfromtxt('results/correlations.csv',delimiter=',',names=True)
-    captions=json.loads(Path('figures/captions.json').read_text())
-    fmt=lambda x:f'{x:.4g}'
-    at=lambda key,t:float(np.interp(t,data['lag_steps'],data[key]))
-    latest=f['truncated_integrals_steps']['10000']
-    measured=(f'The complete record contains {m["frames"]:,} frames and {m["molecules"]:,} water-like molecular groups over '
-        f'{m["first_step"]:,}-{m["last_step"]:,} simulation steps. The centered finite-cell factor is G_cell = {f["G_cell"]:.4f}; '
-        f'quarter estimates range from {s["quarter_G_range"][0]:.4f} to {s["quarter_G_range"][1]:.4f}. '
-        f'At lag 2,500 steps, ordinary SMOR is {at("smor",2500):.4f} and centered COR is {at("cor",2500):.4f}. '
-        f'Integrals through 10,000 steps are {latest["smor"]:.2f} steps for SMOR and {latest["cor"]:.2f} steps for COR; these are finite-cutoff measures, not converged full relaxation times.')
-    pages=[]
-    def page(title,*elements):pages.append((title,elements))
-    def P(text):return ('p',text)
-    def H(text):return ('h',text)
-    def T(head,rows,widths=None):return ('table',head,rows,widths)
-    def F(name,width=174):return ('figure',name,width)
-    def C(text):return ('code',text)
-    published=[['Bulk reference','5.37','11.86','3.23'],['Graphene droplet, usual interaction','5.43','0.90','0.24'],['Droplet, strongest listed interaction','6.34','2.25','0.40']]
-    page('Collective versus single-molecule orientational relaxation',
-      P('CB4103 course project | Analysis of the supplied trajectory | 15 November 2026'),
-      H('Abstract'),P('We compare individual molecular orientation memory with fluctuations of the summed molecular orientation. Molecule-resolved periodic reconstruction, a complete frame audit, and independent correlation checks precede interpretation. '+measured),
-      H('Scientific question and literature'),
-      P('Collective relaxation can differ from individual rotation because distinct molecules contribute cross correlations. Expanding the correlation of a sum gives an exact self/cross identity. A static correlation factor controls initial amplitudes but does not alone determine relaxation-time ordering.'),
-      P('Maurya et al. (2021), Section III.C, Eqs. (2)-(11), Figs. 10-12 and Table IV, is the methodological anchor. Their TIP4P/2005 simulations use graphene droplets and a bulk reference, with known 300 K conditions and physical time. The supplied dataset has unknown provenance. We adapt the definitions rather than reproduce their numerical results.'),
-      T(['Published system ONLY','SMOR / ps','COR / ps','Reported G_K'],published,[.46,.18,.18,.18]),
-      P('Published benchmark values above are transcribed from Table IV; none are measurements from dumpr.lammpstrj. The paper retains a dynamic correction in its time-scale relation, so tau_COR = G_cell * tau_SMOR is not imposed here.'),
-      P('Deliverables include reusable source/configuration, full-data caches and diagnostics, numerical validation, figures, this report, and an editable presentation.'))
-    page('1. Dataset, provenance and reconstructed geometry',
-      T(['Property','Verified value or limitation'],[
-       ['Raw source','dumpr.lammpstrj; 7,817,235,449 bytes; original preserved'],
-       ['Integrity scope',f'All {m["frames"]:,} complete frames; clean end of file'],
-       ['Composition',f'{m["atoms"]:,} atoms; {m["molecules"]:,} stable groups; each type pattern (1,1,2)'],
-       ['Step sequence',f'{m["first_step"]} to {m["last_step"]}; every interval {m["cadence"]} steps'],
-       ['Coordinates / box','Wrapped x,y,z; fully periodic orthorhombic; box read every frame'],
-       ['Side lengths',', '.join(f'{v:.8f}' for v in m['box_lengths_min'])+' dump units'],
-       ['Unavailable','Model, units, timestep, charges, temperature, ensemble, full dump group'],
-       ['Retained record','All frames; initial-10%-removed result supplied as sensitivity only']],[.25,.75]),
-      F('01_geometry'),
-      P(f'Across all frames and molecules, reconstructed bond lengths span {g["bond_min"]:.8f}-{g["bond_max"]:.8f} dump units; mean {g["bond_mean"]:.8f}. Angles span {g["angle_min_degrees"]:.6f}-{g["angle_max_degrees"]:.6f} degrees; mean {g["angle_mean_degrees"]:.6f}. On average {100*g["mean_mic_molecule_fraction"]:.2f}% of molecular groups require an intramolecular periodic correction.'),
-      P(f'The unnormalized bond-sum magnitude spans {g["bisector_magnitude_min"]:.8f}-{g["bisector_magnitude_max"]:.8f} dump units. Near-constant geometry supports a constant-magnitude geometric proxy, conditional on equal symmetric charge sites. It does not identify the charge model. SPC and SPC/E share this geometry but differ in charge assignments; virtual sites and polarization would require model-specific treatment.'),
-      P('Atom IDs, molecule IDs and types are validated in stable ID order in every frame. Frame hashes and explicit molecule ordering allow independent provenance checks. The trajectory may omit a substrate or other groups; water-like composition does not prove a homogeneous full-system simulation.'))
-    equations='''b_ia = r_Ha - r_O - L round((r_Ha-r_O)/L)
-u_i = (b_i1 + b_i2) / |b_i1 + b_i2|; U = sum_i u_i
-v_i = u_i - mean_t(u_i); delta U = U - mean_t(U)
-R(k) = sum_i <u_i(t) dot u_i(t+k)>; SMOR = R(k)/N
-A(k) = sum_i <v_i(t) dot v_i(t+k)>; connected self = A(k)/A(0)
-B(k) = <delta U(t) dot delta U(t+k)>; COR = B(k)/B(0)
-collective self = A(k)/B(0)
-collective cross = [B(k)-A(k)]/B(0)
-G_cell = B(0)/A(0); self(0) = 1/G_cell
-running integral(T) = trapezoidal integral from 0 to T of C(t) dt'''
-    page('2. Estimators, centering and independent validation',
-      C(equations),
-      P('Angle brackets average all F-k valid origins at lag k. Each molecular mean and the total mean are estimated once over the same retained segment. This ensures delta U = sum_i v_i. Ordinary SMOR is computed separately; it retains persistent or finite-record molecular means. Both collective contributions share B(0), and cross values may be negative.'),
-      P('The FFT estimator zero-pads to at least 2F-1, sums autocorrelation channel powers in float64, inverse transforms, and divides by F-k. Molecules are processed in batches of 64 from a float32 memory map. No all-pairs loop is needed for production cross terms. Direct time-domain and explicit ordered-pair sums are independent small-system checks.'),
-      T(['Check','Actual result'],[
-       ['Scientific pytest suite',test.get('summary','See results/pytest.log and results/test_results.json')],
-       ['Actual-data FFT vs direct',f'Max error {max(n["fft_direct_max_abs_error"].values()):.3e}; 128 frames x 24 molecules'],
-       ['Actual-data ordered-pair cross',f'Max error {n["explicit_ordered_cross_pair_max_abs_error"]:.3e}; 32 frames x 8 molecules'],
-       ['Full-record decomposition',f'Max error {f["decomposition_max_abs_error"]:.3e}'],
-       ['Cached unit-vector norms',f'Max absolute error {f["max_unit_norm_error"]:.3e}'],
-       ['Frame/cadence audit',f'{m["frames"]:,} frames; all {m["frames"]-1:,} intervals validated']],[.35,.65]),
-      P('Analytic tests include a rotating unit vector, a persistent orientation component, an exponential with known integral/scale, negative cross terms, and noncircular endpoint normalization. Reader tests include split molecules, unsorted and nonconsecutive IDs, multiple molecule orders, reordered columns, nonfinite data, malformed rows, changing membership, wrong cadence and truncation.'),
-      P('Centering creates a finite-record constraint: F A(0) + 2 sum_(k>0) (F-k) A(k) = 0 when all lags are included. Long negative tails can therefore arise from mean estimation. Segment sensitivity is essential; an integral to the final saved lag is not a valid convergence certificate.'))
-    page('3. Spatial and collective sampling diagnostics',
-      F('02_spatial_profiles'),F('03_collective_stationarity'),
-      P('Fractional-coordinate profiles use the inferred central sites and wrap only for binning. The maximum full-record deviation from the uniform-bin expectation is '+', '.join(f'{"xyz"[j]}: {100*v:.2f}%' for j,v in enumerate(s['spatial_diagnostics']['max_abs_deviation_from_uniform_by_axis']))+'. These are projected number profiles, not mass density or a structural phase identification.'),
-      P('Collective traces and the prefix-centered factor show how much the estimate depends on the available record. Each prefix reestimates its means; early values use little information. The quarter means of U_y are '+', '.join(f'{b["mean_U"][1]:.2f}' for b in s['stationarity_blocks'])+'. Full-record component variances (x,y,z) are '+', '.join(f'{v:.2f}' for v in f['total_variance_components'])+'. This variation flags sampling of slow collective modes; it does not distinguish equilibration, persistent order or finite-record fluctuations. No thermal or energetic equilibration claim is possible without logs.'))
-    page('4. Observed orientation correlations and cross terms',
-      F('04_smor_cor'),F('05_decomposition'),
-      P(f'At zero lag, A(0) = {f["A0"]:.5f} and B(0) = {f["B0"]:.5f}. Thus G_cell = {f["G_cell"]:.5f}, collective self(0) = {1/f["G_cell"]:.5f}, and collective cross(0) = {1-1/f["G_cell"]:.5f}. For comparison, B(0)/N = {f["G_centered_over_N"]:.5f}, while the uncentered raw factor is {f["G_raw"]:.5f}. These distinct conventions must not be interchanged.'),
-      P(f'At lag 2,500 steps, ordinary SMOR = {at("smor",2500):.5f}, connected self = {at("connected_self",2500):.5f}, and COR = {at("cor",2500):.5f}. The collective self and cross contributions there are {at("collective_self",2500):.5f} and {at("collective_cross",2500):.5f}. At 10,000 steps, ordinary SMOR = {at("smor",10000):.5f} and COR = {at("cor",10000):.5f}.'),
-      P('These comparisons describe this full-record estimator at declared lags. Intermolecular terms alter the collective signal, but the curves do not identify a unique microscopic hydrogen-bond mechanism. A static factor alone cannot establish a full-time relaxation ordering.'))
-    rows=[]
-    for cutoff,vals in f['truncated_integrals_steps'].items():rows.append([cutoff]+[f'{vals[k]:.3f}' for k in ['smor','connected_self','cor']])
-    fitrows=[]
-    for key in ['smor','connected_self','cor']:
-        fit=f['fits'][key];fitrows.append([key,fmt(fit['tau_steps']) if 'tau_steps' in fit else 'unresolved',
-          fmt(fit['rmse']) if 'rmse' in fit else '-', 'supported window' if fit['supported'] else 'rejected / unresolved'])
-    page('5. Running integrals, fit scales and convergence limits',
-      F('06_running_integrals'),
-      T(['Cutoff / steps','Ordinary SMOR','Connected self','Centered COR'],rows,[.22,.26,.26,.26]),
-      P('All table entries are truncated integrals in simulation steps. The cutoff dependence is part of the result. They are not full relaxation times, and their ratio is not reported as a converged time-scale ratio.'),
-      T(['Fit curve','tau_fit / steps','RMSE','Adequacy'],fitrows,[.24,.23,.18,.35]),
-      P('The secondary fit uses a * exp(-lag/tau_fit) over the fixed 100-2,500 step window. Adequacy requires positive data across the window, at least 0.05 decay span, RMSE below 0.03, R-squared above 0.95, and tau no larger than twice the window width. A supported window fit is descriptive; correlated residuals are not treated as IID errors and no confidence interval or full-time tail is inferred.'),
-      P('In the final 20% of the reporting window, the SMOR running integral changes by '+fmt(f['tail_diagnostics']['smor']['last_20_percent_integral_drift_steps'])+' steps, and the COR integral changes by '+fmt(f['tail_diagnostics']['cor']['last_20_percent_integral_drift_steps'])+' steps. The first zero crossings are '+str(f['tail_diagnostics']['smor']['first_zero_crossing_steps'])+' and '+str(f['tail_diagnostics']['cor']['first_zero_crossing_steps'])+' steps respectively (None means absent in this window).'),
-      P('The full integral times remain unresolved. Longer records with independent replicas, stable centering and stable late cutoffs are needed before a physical ordering or uncertainty interval can be claimed.'))
-    page('6. Segment, centering and sampling sensitivity',
-      F('07_block_variation'),F('08_sensitivity'),
-      P(f'Quarter G_cell values range from {s["quarter_G_range"][0]:.5f} to {s["quarter_G_range"][1]:.5f}. Quarters contain roughly 2,500 frames each, so their lags stop near 2,500 steps. Halves stop near 5,000 steps. These records do not create four fully independent realizations; block variation is shown without confidence bands.'),
-      P(f'The maximum ordinary-minus-connected self difference is {s["centering_sensitivity"]["max_abs_ordinary_minus_connected"]:.5f}; centered-versus-uncentered collective difference is {s["centering_sensitivity"]["max_abs_centered_minus_uncentered_collective"]:.5f}. The squared total mean divided by centered total variance is {s["centering_sensitivity"]["relative_total_mean_square"]:.5f}. Molecular mean-square orientation per molecule is {f["molecular_mean_square_per_molecule"]:.5f}.'),
-      P(f'Every-second-frame analysis changes SMOR by at most {s["downsample_max_abs_difference"]["smor"]:.3e} and COR by at most {s["downsample_max_abs_difference"]["cor"]:.3e} at common lags. This tests cadence sensitivity but cannot recover unsaved motion faster than 10 steps. Removing the first 10% is a sensitivity analysis, not proof of an equilibration boundary.'))
+    from .report import build_report
+
+    build_report(c)
+    s = json.loads(Path('results/summary.json').read_text())
+    m = json.loads(Path('results/metadata.json').read_text())
+    n = json.loads(Path('results/numerical_checks.json').read_text())
+    test_path = Path('results/test_results.json')
+    test = json.loads(test_path.read_text()) if test_path.exists() else {}
     allocation=[['1','Question, literature, provenance','Opening, published benchmarks, unknown metadata'],['2','Reader and molecular reconstruction','Full integrity, MIC geometry, cache provenance'],['3','SMOR and connected self','Orientation choice, centering, running integrals'],['4','COR and intermolecular terms','Common denominator, factor, negative cross'],['5','Validation and sampling','FFT/direct, pair sums, blocks, convergence limits'],['6','Figures and reproducibility','Artifact navigation, commands, closing interpretation']]
-    page('7. Interpretation, limitations and six-person delivery',
-      P(measured),
-      P('The defensible contribution is a fully audited orientation-proxy analysis and exact dynamic self/cross decomposition, accompanied by finite-record sensitivity diagnostics. The supplied data support numerical statements at specified lags and cutoffs. They do not by themselves establish a force field, physical dielectric response, temperature trend, or converged full relaxation ordering.'),
-      H('Material limitations'),
-      *[P(str(i+1)+'. '+text) for i,text in enumerate(s['limitations'])],
-      H('Presentation ownership (organizational roles)'),
-      T(['Person','Ownership','Speaking responsibility'],allocation,[.1,.38,.52]),
-      P('Every student should explain the same central identity and the largest limitation. One implementation was completed for the project; these six roles allocate review and presentation responsibility, not separate claims of software authorship.'))
-    refs=[
-      '[1] '+ANCHOR+' Supplied full PDF: primary methods and Table IV.',
-      '[2] LAMMPS dump documentation. https://docs.lammps.org/dump.html (accessed 15 November 2026). Coordinate semantics, grouping and box formats.',
-      '[3] LAMMPS SPC/SPC/E documentation. https://docs.lammps.org/Howto_spc.html (accessed 15 November 2026). Shared geometry does not identify charges.',
-      '[4] Liu et al. (2022), HTR. https://doi.org/10.1515/ntrev-2022-0044; Shi et al. (2024), HTR+. https://doi.org/10.1088/1361-648X/ad52df. Supplied structural-classification papers; optional future context.',
-      '[5] Rodger, Forester and Smith (1996), Fluid Phase Equilibria 116, 326-332. Supplied hydrate-interface context, not a COR benchmark.',
-      '[6] Du et al. (2019). https://doi.org/10.1016/j.ijheatmasstransfer.2018.11.044; Krachkovskiy et al. (2020). https://doi.org/10.1021/acs.jpcc.0c07383. General structure/transport context only.',
-      '[7] Varnik, Baschnagel and Binder (2000). https://doi.org/10.1063/1.1288390. Supplied pressure-tensor background; filename year 2020 is incorrect.']
     viva=[
-      ('Why can COR differ from SMOR?','The correlation of a sum includes distinct-molecule cross terms.'),
-      ('Why is each contribution not normalized to one?','Both use B(0), so self(0)=1/G_cell and cross(0)=1-1/G_cell.'),
-      ('Can a cross term be negative?','Yes. Anticorrelated orientations can cancel self contributions.'),
-      ('Why no picoseconds or model name?','The integration timestep, units and charge model are unavailable; geometry is not provenance.'),
-      ('Why subtract molecular means?','It gives an exact connected decomposition, but finite-record means can bias the long tail; ordinary SMOR is also shown.'),
-      ('Why zero-pad and divide by F-k?','To avoid circular wraparound and account for fewer origins at larger lag.'),
-      ('Does G_cell determine time ordering?','No. Dynamic cross terms and convergence are also needed.'),
-      ('Why is full tau unresolved?','Finite cutoffs, mean estimation and segment variation do not establish a stable full-time integral or tail.'),
-      ('Are 2,744 molecules independent COR samples?','No. COR has one summed vector per saved frame and temporally overlapping origins.')]
-    page('References, viva preparation and reproducibility',
-      *[P(ref) for ref in refs],H('Likely viva questions'),
-      *[P(question+' '+answer) for question,answer in viva],
-      H('Reproduce and inspect'),
-      C('.venv/Scripts/python.exe -m pytest -q\n.venv/Scripts/python.exe -m corsmor.cli all --config config/analysis.json'),
-      P('See README.md for clean environment setup and exact stage commands. results/metadata.json records source identity, complete audit and geometry; summary.json records estimators and limitations; validation.json separates numerical success from physical unknowns. All figures have PNG/SVG/PDF versions. submission/manifest.json lists artifacts without copying the raw trajectory.'))
-    # One content model emits both readable Markdown and the typeset PDF.
-    regular=fm.findfont('DejaVu Sans');bold=fm.findfont(fm.FontProperties(family='DejaVu Sans',weight='bold'))
-    mono=fm.findfont('DejaVu Sans Mono')
-    for name,path in [('Report',regular),('ReportBold',bold),('ReportMono',mono)]:
-        if name not in pdfmetrics.getRegisteredFontNames():pdfmetrics.registerFont(TTFont(name,path))
-    styles=getSampleStyleSheet()
-    styles.add(ParagraphStyle(name='BodyR',fontName='Report',fontSize=9,leading=12.4,spaceAfter=6,textColor=colors.HexColor('#243449')))
-    styles.add(ParagraphStyle(name='HeadR',fontName='ReportBold',fontSize=18,leading=22,spaceAfter=12,textColor=colors.HexColor('#12344a')))
-    styles.add(ParagraphStyle(name='SubR',fontName='ReportBold',fontSize=11,leading=14,spaceBefore=6,spaceAfter=6,textColor=colors.HexColor('#007c91')))
-    styles.add(ParagraphStyle(name='CaptionR',fontName='Report',fontSize=7.3,leading=9.5,spaceAfter=7,textColor=colors.HexColor('#59697a')))
-    styles.add(ParagraphStyle(name='CellR',fontName='Report',fontSize=7.6,leading=10))
-    styles.add(ParagraphStyle(name='CodeR',fontName='ReportMono',fontSize=7.1,leading=10.5,spaceAfter=8,backColor=colors.HexColor('#eef4f6'),borderPadding=5))
-    def para(text,sty='BodyR'):return Paragraph(html.escape(text).replace('\n','<br/>'),styles[sty])
-    story=[];md=[]
-    for page_idx,(title,elements) in enumerate(pages):
-        if page_idx:story.append(PageBreak())
-        story.append(para(title,'HeadR'));md+=['# '+title,'']
-        for el in elements:
-            kind=el[0]
-            if kind in ['p','h','code']:
-                sty={'p':'BodyR','h':'SubR','code':'CodeR'}[kind]
-                story.append(para(el[1],sty))
-                md += ([('## ' if kind=='h' else '')+el[1],''] if kind!='code' else ['```text',el[1],'```',''])
-            elif kind=='table':
-                head,rows,widths=el[1:]
-                widths=widths or [1/len(head)]*len(head)
-                cells=[[para(str(cell),'CellR') for cell in row] for row in [head]+rows]
-                t=Table(cells,colWidths=[v*493.2 for v in widths],repeatRows=1,hAlign='LEFT')
-                t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#dceaf0')),('VALIGN',(0,0),(-1,-1),'TOP'),
-                 ('ROWBACKGROUNDS',(0,1),(-1,-1),[colors.white,colors.HexColor('#f4f7f9')]),('LEFTPADDING',(0,0),(-1,-1),6),
-                 ('RIGHTPADDING',(0,0),(-1,-1),6),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),
-                 ('LINEBELOW',(0,0),(-1,0),.6,colors.HexColor('#9cb5c2'))]))
-                story.extend([t,Spacer(1,8)])
-                md+=['| '+' | '.join(head)+' |','| '+' | '.join(['---']*len(head))+' |']
-                md+=['| '+' | '.join(str(v) for v in row)+' |' for row in rows]+['']
-            elif kind=='figure':
-                name,width=el[1:];path=Path('figures')/(name+'.png');wpx,hpx=PILImage.open(path).size
-                w=width*72/25.4;story.extend([Image(str(path),width=w,height=w*hpx/wpx),para(captions[name],'CaptionR')])
-                md += [f'![{name}](../figures/{name}.png)',captions[name],'']
-    (out/'final_report.md').write_text('\n'.join(md),encoding='utf-8')
-    def footer(canvas,doc):
-        canvas.saveState();canvas.setStrokeColor(colors.HexColor('#c1d2dc'));canvas.line(51,37,544,37)
-        canvas.setFont('Report',7);canvas.setFillColor(colors.HexColor('#647588'))
-        canvas.drawString(51,25,'CB4103 | COR/SMOR | Geometric orientation proxy | Simulation-step units')
-        canvas.drawRightString(544,25,str(doc.page));canvas.restoreState()
-    doc=SimpleDocTemplate(str(out/'final_report.pdf'),pagesize=A4,rightMargin=51,leftMargin=51,topMargin=45,bottomMargin=48,
-                          title='Collective versus single-molecule orientational relaxation',author='CB4103 project team')
-    doc.build(story,onFirstPage=footer,onLaterPages=footer)
-    (out/'previews').mkdir(exist_ok=True)
-    presentation_info=build_presentation(s,m,n,test,allocation,viva)
-    pdf=pymupdf.open(out/'final_report.pdf');renderdir=out/'previews';renderdir.mkdir(exist_ok=True)
-    representative=sorted(set([0, min(2,len(pdf)-1), min(4,len(pdf)-1),min(5,len(pdf)-1),len(pdf)-1]))
-    for i in representative:pdf[i].get_pixmap(matrix=pymupdf.Matrix(1.25,1.25)).save(renderdir/f'report_page_{i+1:02}.png')
-    info=dict(report_pages=len(pdf),planned_content_pages=len(pages),report_page_text_lengths=[len(p.get_text()) for p in pdf],
-      representative_report_previews=[str(renderdir/f'report_page_{i+1:02}.png') for i in representative],**presentation_info,
-      native_powerpoint_render_available=False,presentation_preview_note='Companion PDF renders the same editable slide text/image geometry; it is a layout preview, not a native PowerPoint rendering.')
-    Path('results/document_inspection.json').write_text(json.dumps(info,indent=2),encoding='utf-8')
-    print('Documents built:',json.dumps(info),flush=True)
+          ('Why can COR differ from SMOR?','The correlation of a sum includes distinct-molecule cross terms.'),
+          ('Why is each contribution not normalized to one?','Both use B(0), so self(0)=1/G_cell and cross(0)=1-1/G_cell.'),
+          ('Can a cross term be negative?','Yes. Anticorrelated orientations can cancel self contributions.'),
+          ('Why no picoseconds or model name?','The integration timestep, units and charge model are unavailable; geometry is not provenance.'),
+          ('Why subtract molecular means?','It gives an exact connected decomposition, but finite-record means can bias the long tail; ordinary SMOR is also shown.'),
+          ('Why zero-pad and divide by F-k?','To avoid circular wraparound and account for fewer origins at larger lag.'),
+          ('Does G_cell determine time ordering?','No. Dynamic cross terms and convergence are also needed.'),
+          ('Why is full tau unresolved?','Finite cutoffs, mean estimation and segment variation do not establish a stable full-time integral or tail.'),
+          ('Are 2,744 molecules independent COR samples?','No. COR has one summed vector per saved frame and temporally overlapping origins.')]
+    presentation_info = build_presentation(s, m, n, test, allocation, viva)
+    inspection_path = Path('results/document_inspection.json')
+    inspection = json.loads(inspection_path.read_text())
+    inspection.update(presentation_info)
+    inspection.update(
+        native_powerpoint_render_available=False,
+        presentation_preview_note='Companion PDF renders the same editable slide text/image geometry; '
+                                  'it is a layout preview, not a native PowerPoint rendering.',
+    )
+    inspection_path.write_text(json.dumps(inspection, indent=2), encoding='utf-8')
+    print('Documents built:', json.dumps(inspection), flush=True)
+
 
 def build_presentation(s,m,n,test,allocation,viva):
     """Editable text and vector elements with embedded result plots; 16:9 deck."""

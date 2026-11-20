@@ -66,7 +66,10 @@ def validate(c):
     check('eight_real_figure_families',len(figs)==8 and all(p.with_suffix('.svg').exists() and p.with_suffix('.pdf').exists() for p in figs))
     check('figures_readable_dimensions',all(Image.open(p).width>=1000 and Image.open(p).height>=500 for p in figs))
     pdf=pymupdf.open('reports/final_report.pdf');ppt=Presentation('reports/presentation.pptx')
-    check('report_pages_nonempty',9<=len(pdf)<=12 and all(len(p.get_text())>100 for p in pdf))
+    check('report_pages_nonempty',len(pdf)==inspection['planned_content_pages'] and 3<=len(pdf)<=6
+          and all(len(p.get_text())>100 for p in pdf))
+    check('report_typeset_equations',inspection.get('report_math_blocks',0)>=8
+          and '```text' not in Path('reports/final_report.md').read_text(encoding='utf-8'))
     check('editable_powerpoint_with_notes',len(ppt.slides)==14 and all(sl.notes_slide.notes_text_frame.text.strip() for sl in ppt.slides)
         and sum(1 for sl in ppt.slides for sh in sl.shapes if sh.has_text_frame)>60)
     check('slide_layout_no_text_overflow',not inspection['slide_text_overflows'])

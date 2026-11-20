@@ -1,0 +1,59 @@
+{
+  "source": {
+    "path": "F:\\Sem 7\\CB4103\\PROJECT\\.test-runs\\report-revision-9217b690d7204b0c96001ee4b8caac63\\test_converter_cadence_members0\\input.dump",
+    "size_bytes": 373,
+    "mtime_ns": 1795169262151894300
+  },
+  "config": {
+    "trajectory": "input.dump",
+    "cache": "smallcache",
+    "expected_frames": 2,
+    "expected_atoms": 3,
+    "expected_molecules": 1,
+    "expected_first_step": 0,
+    "expected_last_step": 10,
+    "expected_cadence": 10,
+    "hydrogen_type": 1,
+    "central_type": 2,
+    "bond_range": [
+      0.8,
+      1.2
+    ],
+    "angle_range_degrees": [
+      95,
+      120
+    ],
+    "spatial_bins": 24,
+    "molecule_batch": 64,
+    "max_lag_frames": 1000,
+    "blocks": 4,
+    "cutoff_steps": [
+      1000,
+      2500,
+      5000,
+      7500,
+      10000
+    ],
+    "fit_window_steps": [
+      100,
+      2500
+    ],
+    "discard_frames": 0,
+    "assumption": "type-2 center and two type-1 satellites form water-like molecules; identical constant dipoles follow normalized MIC bond-vector sum",
+    "integration_timestep": null,
+    "unit_style": null,
+    "temperature": null,
+    "water_model": null,
+    "dump_group_is_full_system": null
+  },
+  "frames": 2,
+  "offset": 373,
+  "columns": [
+    "id",
+    "mol",
+    "type",
+    "x",
+    "y",
+    "z"
+  ]
+}

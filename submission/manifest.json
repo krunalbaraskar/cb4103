@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-15T02:37:05.574208+00:00",
+  "created_utc": "2026-11-20T10:08:11.257270+00:00",
   "overall_validation_pass": true,
   "files": [
     {
@@ -149,18 +149,18 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 11392,
-      "sha256": "13066ab215621f7d4be83a9d23d6c9831c1e47f72f67648b935a6365889aaf41"
+      "size_bytes": 11495,
+      "sha256": "4c8c680aae9d5c7b0a0c0a6398129b8d70d9ce94c38bd24558bfae4edc0b61cc"
     },
     {
       "path": "reports/final_report.md",
-      "size_bytes": 18524,
-      "sha256": "28f832fde498bbc6365e620942bdc61c093b6c4dd6e009dec394673f5e7f510d"
+      "size_bytes": 8033,
+      "sha256": "a0af87968f63e67889c27c6590c50215566d8d69c93734c3810e8fa5339a5b2e"
     },
     {
       "path": "reports/final_report.pdf",
-      "size_bytes": 2228689,
-      "sha256": "49bdf4e13066bc5d3a6557fb9e2782c84dddee255f6f414c0bf7d13041c52e6e"
+      "size_bytes": 1411532,
+      "sha256": "4d641eb7b50d76ec57d07a103745df0758e721658c9ace38564415035c00220f"
     },
     {
       "path": "reports/presentation.pptx",
@@ -179,28 +179,23 @@
     },
     {
       "path": "reports/previews/report_page_01.png",
-      "size_bytes": 108211,
-      "sha256": "f1c17c3e8c0802385088a661afc70960f1965e734a406313201c4dd410ee6a22"
+      "size_bytes": 148398,
+      "sha256": "cd2e49e011cf6a053777e4d2b3c01f02c2bbb537c6c2f07e6f4cd4fe540fa0db"
+    },
+    {
+      "path": "reports/previews/report_page_02.png",
+      "size_bytes": 128671,
+      "sha256": "e70e7e5fec613e027bb78e45df45dba3a987bf954ee29dee5870a33d5b94c16d"
     },
     {
       "path": "reports/previews/report_page_03.png",
-      "size_bytes": 105705,
-      "sha256": "b4d634d4e8c73b1714f3123fba30b3e863f616cef5df649a303d9617965c760c"
+      "size_bytes": 215330,
+      "sha256": "ddb21b03c90fd7803815beb8dde86c6cfe06a09aa6025d48f64a1a846152fb8a"
     },
     {
-      "path": "reports/previews/report_page_05.png",
-      "size_bytes": 145682,
-      "sha256": "0817fbab53a0e47db51b51365587298715fd34949120551e42f15e870dc1cd38"
-    },
-    {
-      "path": "reports/previews/report_page_06.png",
-      "size_bytes": 133855,
-      "sha256": "a389729818cb405d95202c871f3d65d27fef6e27435c52c9d562c99b96a338a7"
-    },
-    {
-      "path": "reports/previews/report_page_09.png",
-      "size_bytes": 147475,
-      "sha256": "295b3eae39049f1058d75f45b4869fd82df5ccb9ba0f8573b3809a66c08c889c"
+      "path": "reports/previews/report_page_04.png",
+      "size_bytes": 174623,
+      "sha256": "5ad8b6154ebe4c27dfba3f70e610981d66e997e4e6a86243ffa3d4dfb1eaee1e"
     },
     {
       "path": "reports/previews/slide_01.png",
@@ -319,8 +314,8 @@
     },
     {
       "path": "results/document_inspection.json",
-      "size_bytes": 861,
-      "sha256": "86d6d984ec40be182cba7bede1e5404dd2bc41bef07387c13b1e737a1003fb1f"
+      "size_bytes": 1007,
+      "sha256": "6124e4fb092f955c690096190ed76d855f457079ae98db557163c59ae45e5a0a"
     },
     {
       "path": "results/documents.log",
@@ -365,12 +360,12 @@
     {
       "path": "results/pytest.log",
       "size_bytes": 101,
-      "sha256": "41c223f3b99d45e8e666dda849b211392e1c984a4bc97d176b2e50c9bf69c398"
+      "sha256": "309dbd14a48cb31c0e02fcef64aad06af4a25a07acbc2d1bf434a09f356db4ed"
     },
     {
       "path": "results/pytest.xml",
       "size_bytes": 2628,
-      "sha256": "c26dc22b938c1ce44209404c587f05daa660c01e73916c682f29f75c043a4f88"
+      "sha256": "4f15ca1ba13fdec70a66c6799ccc2d92d114f46047f3cd44bab2ece19b06b7d9"
     },
     {
       "path": "results/quarter_1.csv",
@@ -393,6 +388,11 @@
       "sha256": "2a941ed07fa67397f1b11b8671bb6c5e7bb7d9f5ba612b16f26c909802033297"
     },
     {
+      "path": "results/report_revision_checks.json",
+      "size_bytes": 589,
+      "sha256": "3561a416361b9b997ea4b82fdbb19c97c8e766c9290f6178f643e8d3d875cd8e"
+    },
+    {
       "path": "results/reproduce.log",
       "size_bytes": 5574,
       "sha256": "f01fb11d6432d3e87877fd65bfd27243cb8cf757c0368c88d4fe58d4f02f594c"
@@ -410,7 +410,7 @@
     {
       "path": "results/test_results.json",
       "size_bytes": 502,
-      "sha256": "bc11898bdf56dbb6e65c1041e401bed2b9ac62fa69937721ec507526753ef931"
+      "sha256": "cf6457e11d19f10b07aaa9c55203d5804275a89182033e9e60b15834e70e68d9"
     },
     {
       "path": "results/total_orientation.npy",
@@ -419,13 +419,13 @@
     },
     {
       "path": "results/validation.json",
-      "size_bytes": 5726,
-      "sha256": "25fe2042fe3b9f8f8dc58c581bcb1670381cbb8b8941b1593c697c49e9f7c9d6"
+      "size_bytes": 5917,
+      "sha256": "6321e09d511965abc7df1afc6ee36b4c5fbfea466155de010e0cb069bbdafc40"
     },
     {
       "path": "results/visual_review.json",
-      "size_bytes": 1864,
-      "sha256": "e6770bc2ba80e5b06736c4c528224caacbf21cf669ee85913897c4ea89cf2d95"
+      "size_bytes": 2190,
+      "sha256": "155b614549fb611b701c941411305e96891a979f7ec0d16820135cc0a2fa8df1"
     },
     {
       "path": "src/corsmor/__init__.py",
@@ -439,8 +439,8 @@
     },
     {
       "path": "src/corsmor/cli.py",
-      "size_bytes": 996,
-      "sha256": "3db3db8247adb1e0f85f5e45e7add3ad9fa2e99c6fac84487f7e85fbf23800ac"
+      "size_bytes": 1098,
+      "sha256": "9b7b6af238df854b36d4e8b378b1cdbcd9b2cacdf21475b09459951a8d28c8e6"
     },
     {
       "path": "src/corsmor/correlation.py",
@@ -449,13 +449,23 @@
     },
     {
       "path": "src/corsmor/documents.py",
-      "size_bytes": 38960,
-      "sha256": "a1a0532f325f43cd27920e62da894db6784155f027ff9670176e9a285c1708c9"
+      "size_bytes": 17518,
+      "sha256": "5434d4726a232bbdf511c1066b0ff88983a8f2105da13c9c5da390d41aade104"
     },
     {
       "path": "src/corsmor/plotting.py",
       "size_bytes": 10229,
       "sha256": "1cf5ad24db5ce1ec08018ec37b8c442a59a842275b04d887c1b7ac52c994f193"
+    },
+    {
+      "path": "src/corsmor/report.py",
+      "size_bytes": 16922,
+      "sha256": "f0bdaba8b8aaada782f2a49b7c40a61a7e186a7e881147d84ccff526b1394add"
+    },
+    {
+      "path": "src/corsmor/report_math.py",
+      "size_bytes": 2422,
+      "sha256": "5271cc554b81e08a3af1ef57054a361aa552ecab792b57167fafcc42c5a58d01"
     },
     {
       "path": "src/corsmor/trajectory.py",
@@ -464,8 +474,8 @@
     },
     {
       "path": "src/corsmor/validation.py",
-      "size_bytes": 9871,
-      "sha256": "28be8937d00da0a992b1696084cb79864971d9466bf598e9eedfbba092ec77a1"
+      "size_bytes": 10104,
+      "sha256": "ba8477d3543ecec08149d5a88a8f6dea17803f2cb44d6060f19e4dea17d65103"
     },
     {
       "path": "tests/test_science.py",
@@ -474,8 +484,8 @@
     },
     {
       "path": "WORK_LOG.md",
-      "size_bytes": 9803,
-      "sha256": "57dab93fbac2142795e6125d34f4edcbf3bf0f0b1c84e56f719e1924091e6bf9"
+      "size_bytes": 11319,
+      "sha256": "2dfe3b20fb759a3d34414ef366caacd09f7ae448e54fb259cada27f33531897f"
     }
   ],
   "raw_trajectory_included": false,

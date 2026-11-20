@@ -1,23 +1,6 @@
 {
-  "reviewed_utc": "2026-11-15T02:37:05.320237+00:00",
-  "method": "Opened rendered PNGs with view_image and visually inspected equations, tables, plot axes/captions, body text and representative slide layouts.",
+  "method": "Inspected all four current report-page PNGs with view_image, including the enlarged display fractions, mathematical symbols, tables, geometry and correlation graphs. Previously reviewed slide and original figure entries are retained unchanged.",
   "files": [
-    {
-      "path": "reports/previews/report_page_03.png",
-      "sha256": "b4d634d4e8c73b1714f3123fba30b3e863f616cef5df649a303d9617965c760c"
-    },
-    {
-      "path": "reports/previews/report_page_05.png",
-      "sha256": "0817fbab53a0e47db51b51365587298715fd34949120551e42f15e870dc1cd38"
-    },
-    {
-      "path": "reports/previews/report_page_06.png",
-      "sha256": "a389729818cb405d95202c871f3d65d27fef6e27435c52c9d562c99b96a338a7"
-    },
-    {
-      "path": "reports/previews/report_page_09.png",
-      "sha256": "295b3eae39049f1058d75f45b4869fd82df5ccb9ba0f8573b3809a66c08c889c"
-    },
     {
       "path": "reports/previews/slide_01.png",
       "sha256": "2864e483419374f244e7cfe0a438d9ad65132b0623027405e80ca7c88a10a60a"
@@ -33,8 +16,26 @@
     {
       "path": "figures/04_smor_cor.png",
       "sha256": "4b23995f4de9e169ef32d75cc2ab1ad3aa0937edf3e650f2673c8f62a8b539bf"
+    },
+    {
+      "path": "reports/previews/report_page_01.png",
+      "sha256": "cd2e49e011cf6a053777e4d2b3c01f02c2bbb537c6c2f07e6f4cd4fe540fa0db"
+    },
+    {
+      "path": "reports/previews/report_page_02.png",
+      "sha256": "e70e7e5fec613e027bb78e45df45dba3a987bf954ee29dee5870a33d5b94c16d"
+    },
+    {
+      "path": "reports/previews/report_page_03.png",
+      "sha256": "ddb21b03c90fd7803815beb8dde86c6cfe06a09aa6025d48f64a1a846152fb8a"
+    },
+    {
+      "path": "reports/previews/report_page_04.png",
+      "sha256": "5ad8b6154ebe4c27dfba3f70e610981d66e997e4e6a86243ffa3d4dfb1eaee1e"
     }
   ],
-  "findings": "Readable axes and captions; report tables/equations intact; allocation and viva slides fit their rows; no visible clipping in inspected artifacts. The full report is 9 pages and deck is 14 slides.",
-  "limitation": "PowerPoint/LibreOffice native renderer unavailable. Slide PNGs come from the explicitly labeled shared-layout PDF; editable PPTX was independently opened and structurally inspected with python-pptx."
+  "findings": "The concise report has four pages, nine typeset equation blocks and five result figures. All inspected equations, tables, plot axes and captions are readable without visible clipping. Programmatic checks confirm every displayed numerical result against the unchanged result files and find no text outside the page bounds. The existing 14-slide deck was not regenerated.",
+  "limitation": "PowerPoint/LibreOffice native renderer unavailable. Slide PNGs come from the explicitly labeled shared-layout PDF; editable PPTX was independently opened and structurally inspected with python-pptx.",
+  "previous_slide_review_utc": "2026-11-15T02:37:05.320237+00:00",
+  "report_review_date": "2026-11-20"
 }

@@ -44,7 +44,7 @@ Exact versions, rather than a floating package resolver, reproduce this run. Boo
 & .venv/Scripts/python.exe -m corsmor.cli package --config config/analysis.json
 ```
 
-`all` executes these stages in order and fails if final validation fails. `validate` reruns scientific tests and writes `results/validation.json`; numerical success is distinct from physical metadata/convergence. `package` requires passing validation for current source/configuration. For a fresh report with a test-count line, first run `& .venv/Scripts/python.exe -c "from corsmor.validation import run_tests; run_tests()"`; the report otherwise points to the saved test log.
+`all` executes these stages in order and fails if final validation fails. To rebuild only the concise PDF/Markdown report from saved results, run `& .venv/Scripts/python.exe -m corsmor.cli report --config config/analysis.json`. Equations use LaTeX syntax in Markdown and embedded vector mathematics in PDF. `validate` reruns scientific tests and writes `results/validation.json`; numerical success is distinct from physical metadata/convergence. `package` requires passing validation for current source/configuration.
 
 Conversion streams the raw binary file once and checkpoints every 250 complete frames to `cache/checkpoint.json`. An interruption resumes at the saved byte offset after matching source size/mtime and reconstruction configuration. Incomplete trailing cache rows are overwritten on resume. `cache/complete.json` is written only after every expected frame and clean EOF pass. Repeated `convert` calls reuse the complete cache; analysis-only settings (batch, lag, fits) do not force another raw scan. If changing source/reconstruction assumptions, use a **new cache directory** in a copied config. There is no cleanup command against the raw input.
 
@@ -67,7 +67,7 @@ Primary lag: 0-10000 steps, at most one tenth of retained duration. Half/quarter
 
 The water model, units, integration timestep, temperature, charge sites, electrostatics and dump-group completeness are unknown. **Do not convert axes to ps, identify SPC/E from geometry, assign the anchor paper's 300 K conditions, or interpret G_cell as a macroscopic dielectric constant.** Molecular means may reflect finite sampling, orientational order, or an unknown environment. Spatial projections and collective traces cannot establish thermal equilibration without logs.
 
-Methods follow the supplied [Maurya et al. 2021 paper](https://doi.org/10.1063/5.0046817), especially Section III.C and Eqs. 2-11. Its TIP4P/2005 graphene droplets are a published comparison, not this dataset's identity. The [LAMMPS dump reference](https://docs.lammps.org/dump.html) establishes coordinate/box semantics; [SPC/SPC/E documentation](https://docs.lammps.org/Howto_spc.html) explains their shared geometry. All seven supplied papers are contextualized in the report and `research/LITERATURE_REVIEW.md`.
+Methods follow the supplied [Maurya et al. 2021 paper](https://doi.org/10.1063/5.0046817), especially Section III.C and Eqs. 2-11. Its TIP4P/2005 graphene droplets are a published comparison, not this dataset's identity. The [LAMMPS dump reference](https://docs.lammps.org/dump.html) establishes coordinate/box semantics; [SPC/SPC/E documentation](https://docs.lammps.org/Howto_spc.html) explains their shared geometry. The concise report cites the methods anchor; all seven supplied papers are contextualized in `research/LITERATURE_REVIEW.md`.
 
 ## Artifact map
 
@@ -93,7 +93,7 @@ Methods follow the supplied [Maurya et al. 2021 paper](https://doi.org/10.1063/5
 | `results/pytest.log`, `pytest.xml`, `test_results.json` | Actual test output, JUnit results and command/return status |
 | `results/validation.json` | Boolean `overall_pass`, actual commands/checks and independent scientific limits |
 | `figures/01_...` through `08_...` | Geometry, spatial profiles, stationarity, SMOR/COR, decomposition, integrals, blocks, sensitivities; PNG/SVG/PDF |
-| `reports/final_report.md`, `.pdf` | Complete actual-results report with tables, citations and limitations |
+| `reports/final_report.md`, `.pdf` | Four-page dataset and main-results report with LaTeX equations, five figures and essential limitations |
 | `reports/presentation.pptx` | Editable 14-slide deck: 12-slide narrative + team/viva appendices; speaker notes |
 | `reports/presentation_layout_preview.pdf` | Companion layout rendering; native Office renderer unavailable |
 | `reports/previews/`, `results/document_inspection.json` | Representative actual PDF renders and slide layout inspection |
