@@ -4,6 +4,9 @@ from scipy.fft import rfft, irfft, next_fast_len
 from scipy.integrate import cumulative_trapezoid
 from scipy.optimize import curve_fit
 
+# Compute the autocorrelation summed over channels. Zero-pad to avoid pairing the end of the
+# record with its beginning, invert the summed FFT power, and divide each lag by its number of
+# valid frame pairs.
 def autocorrelation_fft(x, max_lag):
     """Sum channel autocovariances (input already centered if desired)."""
     x=np.asarray(x,dtype=np.float64)
@@ -15,10 +18,15 @@ def autocorrelation_fft(x, max_lag):
     power=(z.real*z.real+z.imag*z.imag).sum(axis=tuple(range(1,z.ndim)))
     return irfft(power,n=p)[:max_lag+1]/np.arange(F,F-max_lag-1,-1,dtype=np.float64)
 
+# Compute the same autocorrelation by multiplying overlapping slices at each lag, summing across
+# all channels and frame pairs, and dividing by the number of frame pairs.
 def autocorrelation_direct(x,max_lag):
     x=np.asarray(x,dtype=np.float64)
     return np.array([np.sum(x[:len(x)-k]*x[k:],dtype=np.float64)/(len(x)-k) for k in range(max_lag+1)])
 
+# Compute molecular and collective orientation correlations in batches. Correlate the raw and
+# centered molecular vectors, then correlate the summed orientation and subtract the centered
+# self term to isolate different-molecule contributions.
 def correlations(u,max_lag,batch=64,method='fft'):
     """Global means over retained segment; all F-k origins at lag k.
 
@@ -58,9 +66,14 @@ def correlations(u,max_lag,batch=64,method='fft'):
                 G_centered_over_N=float(B[0]/N),max_unit_norm_error=norm_error,
                 decomposition_max_abs_error=float(np.max(np.abs(B/B[0]-(A/B[0]+(B-A)/B[0]))))))
 
+# Accumulate the area under the correlation curve by adding a trapezoid between each pair of
+# neighboring lag samples. Return one area per lag, starting at zero.
 def running_integral(c,lag):
     return cumulative_trapezoid(c,lag,initial=0.)
 
+# Fit an exponential with a free amplitude and decay time over the requested lag window. Check
+# for enough positive, decaying points and screen the fit using residuals and how far its
+# timescale extends beyond the window.
 def fit_decay(lag,c,window):
     """Descriptive unweighted exponential fit with explicit adequacy checks.
 
@@ -74,6 +87,7 @@ def fit_decay(lag,c,window):
     if len(x)<10 or np.min(y)<=0 or np.max(y)-np.min(y)<0.05:
         return output|dict(supported=False,reason='Window includes nonpositive values or insufficient resolved decay')
     try:
+        # The fit model predicts the correlation at lag t from amplitude a and decay time tau.
         par,_=curve_fit(lambda t,a,tau:a*np.exp(-t/tau),x,y,p0=(1.,max(float(x[-1])/2,1)),
                         bounds=([0.,float(np.min(np.diff(lag)))/10],[2.,100*float(lag[-1])]),maxfev=5000)
         pred=par[0]*np.exp(-x/par[1])

@@ -2,6 +2,8 @@
 import argparse
 from .trajectory import load_config,convert
 
+# Read the stage and configuration from the command line. Run the selected step, or run
+# conversion, analysis, figures, documents, validation, and packaging in order for 'all'.
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('stage',choices=['convert','analyze','figures','report','documents','validate','package','all'])

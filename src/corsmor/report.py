@@ -20,6 +20,8 @@ from reportlab.platypus import (
 from .report_math import MathEquation
 
 
+# Find the regular and bold DejaVu Sans fonts and register them with ReportLab if they are
+# missing from its font registry.
 def register_report_fonts():
     for name, prop in [
         ('Report', fm.FontProperties(family='DejaVu Sans')),
@@ -29,6 +31,8 @@ def register_report_fonts():
             pdfmetrics.registerFont(TTFont(name, fm.findfont(prop)))
 
 
+# Read the saved measurements and build a shared set of pages, equations, tables, and figures.
+# Export the PDF and Markdown versions, render page previews, and record inspection details.
 def build_report(c):
     """Build only the report; use the saved measurements without rerunning MD analysis."""
     out = Path('reports')
@@ -37,11 +41,17 @@ def build_report(c):
     m = json.loads(Path('results/metadata.json').read_text())
     data = np.genfromtxt('results/correlations.csv', delimiter=',', names=True)
     full, geometry = s['full'], m['geometry']
+    # Interpolate the requested correlation column at the given simulation-step lag.
     at = lambda key, lag: float(np.interp(lag, data['lag_steps'], data[key]))
+    # Store plain body text in the shared report content.
     P = lambda text: ('paragraph', text)
+    # Store a subsection heading in the shared report content.
     H = lambda text: ('heading', text)
+    # Mark an equation for display and use full-size fractions.
     M = lambda text: ('math', text.replace(r'\frac', r'\dfrac'))
+    # Store a table with its headings, rows, and relative column widths.
     T = lambda head, rows, widths: ('table', head, rows, widths)
+    # Record which figure to include and the caption to show beneath it.
     F = lambda name, caption: ('figure', name, caption)
 
     pages = [
@@ -180,6 +190,7 @@ def build_report(c):
         options = dict(fontName='Report', fontSize=size, leading=leading, textColor=colors.HexColor(color))
         options.update(extra)
         styles.add(ParagraphStyle(name=name, **options))
+    # Escape plain text before applying a ReportLab paragraph style.
     para = lambda text, style='BodyR': Paragraph(html.escape(str(text)), styles[style])
     story, markdown, figure_names, math_count = [], [
         '# Collective versus single-molecule orientational relaxation', '',
@@ -234,6 +245,8 @@ def build_report(c):
                 markdown.extend([f'![{caption}](../figures/{name}.png)', '', caption, ''])
                 figure_names.append(name)
 
+    # Draw the report footer separator, course and units label, and current page number on the
+    # PDF canvas.
     def footer(canvas, document):
         canvas.saveState()
         canvas.setStrokeColor(colors.HexColor('#c1d2dc'))

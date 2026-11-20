@@ -11,8 +11,11 @@ from .correlation import running_integral
 COLORS=dict(smor='#007c91',connected_self='#e69f00',cor='#963b79',collective_self='#007c91',collective_cross='#d35e35',uncentered_collective='#697887')
 LABELS=dict(smor='Ordinary rank-one SMOR',connected_self='Connected molecular self',cor='Centered COR',collective_self='Collective self',collective_cross='Collective cross',uncentered_collective='Uncentered collective')
 
+# Read a results CSV as a NumPy array whose fields are named after the column headers.
 def load_csv(name):return np.genfromtxt(Path('results')/name,delimiter=',',names=True)
 
+# Load the cached geometry, positions, and orientation results. Draw the diagnostic plots and
+# save each as PNG, SVG, and PDF with a recorded caption.
 def make_figures(c):
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'axes.titlesize':11,'axes.labelsize':10,
         'legend.fontsize':8,'axes.spines.top':False,'axes.spines.right':False,'figure.dpi':130,'savefig.dpi':200,
@@ -23,11 +26,17 @@ def make_figures(c):
     u=np.load(cache/'orientations.npy',mmap_mode='r');U=np.load('results/total_orientation.npy')
     full=load_csv('correlations.csv');lag=full['lag_steps']
     captions={}
+    # Adjust the figure layout, export the plot in all three formats, close it, and store its
+    # caption.
     def save(fig,name,caption):
         fig.tight_layout(pad=1.4)
         for ext in ['png','svg','pdf']:fig.savefig(out/(name+'.'+ext),bbox_inches='tight')
         plt.close(fig);captions[name]=caption
+    # Label the lag axis in simulation steps and draw a horizontal zero reference for the
+    # correlation.
     def xlag(ax):ax.set_xlabel('Lag (simulation steps)');ax.axhline(0,color='#9aa3ad',lw=.65)
+    # Plot the requested correlation columns with their shared colors and labels, then add axis
+    # labels and a legend.
     def curves(ax,rows,keys):
         for k in keys:ax.plot(rows['lag_steps'],rows[k],label=LABELS[k],color=COLORS[k])
         xlag(ax);ax.set_ylabel('Normalized correlation');ax.legend(frameon=False)

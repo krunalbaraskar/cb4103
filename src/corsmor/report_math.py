@@ -12,6 +12,8 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Flowable
 
 
+# Register a math font under a name based on its file and cache that name for reuse when laying
+# out other glyphs.
 @lru_cache(maxsize=None)
 def _math_font(filename):
     name = 'ReportMath_' + Path(filename).stem
@@ -23,6 +25,8 @@ def _math_font(filename):
 class MathEquation(Flowable):
     """Render a math expression as sharp, selectable vector text and rules."""
 
+    # Parse a LaTeX-style expression with Matplotlib and build a ReportLab drawing from
+    # positioned STIX glyphs and rules such as fraction bars.
     def __init__(self, expression, size=12):
         super().__init__()
         layout = MathTextParser('path').parse(
@@ -50,12 +54,16 @@ class MathEquation(Flowable):
         self.spaceAfter = 2
         self.scale = 1
 
+    # Measure the equation at its current size and scale it down if it is wider than the
+    # available layout space. Return the size ReportLab should reserve.
     def wrap(self, available_width, available_height):
         self.scale = min(1, available_width / max(self.drawing.width, 1))
         self.width = self.drawing.width * self.scale
         self.height = self.drawing.height * self.scale
         return self.width, self.height
 
+    # Render the equation at the scale chosen during layout. Save and restore the canvas state
+    # so the scale applies only to this equation.
     def draw(self):
         self.canv.saveState()
         self.canv.scale(self.scale, self.scale)

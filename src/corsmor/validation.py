@@ -5,12 +5,16 @@ from datetime import datetime,timezone
 import numpy as np
 from .trajectory import write_json
 
+# Hash the ordered paths and contents of the maintained Python files, tests, and configuration
+# to identify the version being validated.
 def source_digest():
     paths=sorted(list(Path('src/corsmor').glob('*.py'))+list(Path('tests').glob('*.py'))+[Path('config/analysis.json'),Path('pyproject.toml')])
     h=hashlib.sha256()
     for p in paths:h.update(str(p).encode());h.update(p.read_bytes())
     return h.hexdigest()
 
+# Run pytest in a subprocess, capture the console output, and parse the JUnit XML. Save counts,
+# exit status, timing, and the source fingerprint for the run.
 def run_tests():
     cmd=[sys.executable,'-m','pytest','-q','-ra','--junitxml=results/pytest.xml'];t0=time.perf_counter()
     run=subprocess.run(cmd,text=True,capture_output=True,encoding='utf-8',errors='replace')
@@ -25,6 +29,8 @@ def run_tests():
     write_json('results/test_results.json',result);print(output,flush=True)
     return result
 
+# Run the test suite and check trajectory provenance, numerical identities, and expected output
+# files. Save a validation report and raise an error if a check fails.
 def validate(c):
     from pptx import Presentation
     import pymupdf
@@ -38,6 +44,8 @@ def validate(c):
     hashes=np.load(Path(c['cache'])/'frame_sha256.npy')
     src=Path(c['trajectory']).stat()
     checks={}
+    # Record a named validation condition as a plain Python Boolean so NumPy comparisons can
+    # also be serialized to JSON.
     def check(name,value):checks[name]=bool(value)
     check('pytest_passed_no_skips',tests['exit_code']==0 and tests['counts']['tests']>=24 and tests['counts']['skipped']==0 and tests['counts']['errors']==0 and tests['counts']['failures']==0)
     check('full_data_integrity_and_eof',m['complete_eof'] and m['all_frames_headers_membership_finite_geometry_cadence_validated'])
@@ -93,6 +101,8 @@ def validate(c):
     if not result['overall_pass']:raise RuntimeError('Validation failed; inspect results/validation.json')
     return result
 
+# Require passing validation for the current source, then inventory and hash the submission
+# files. Write the manifest and ZIP archive and verify the ZIP entries.
 def package(c):
     result=json.loads(Path('results/validation.json').read_text())
     if not result['overall_pass'] or result['source_digest']!=source_digest():

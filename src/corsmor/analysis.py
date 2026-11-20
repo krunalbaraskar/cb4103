@@ -18,12 +18,16 @@ LIMITATIONS=[
  'Trajectory may be a selected atom group; no bulk-water, droplet, substrate or hydrate identity is established.'
 ]
 
+# Write the correlation curves, valid starting-frame counts, and running integrals to a CSV.
+# Convert frame lags to simulation steps using the saved-frame interval.
 def write_curves(path,r,cadence):
     lag=r['lag_index']*cadence
     data=np.column_stack([lag]+[r[k] for k in CURVES]+[r['origins']]+[running_integral(r[k],lag) for k in CURVES[:5]])
     header=','.join(['lag_steps']+CURVES+['origins']+['integral_'+k+'_steps' for k in CURVES[:5]])
     np.savetxt(path,data,delimiter=',',header=header,comments='',fmt='%.12g')
 
+# Summarize one analyzed segment by reading the running integrals at configured cutoffs,
+# measuring changes near the end of each curve, and fitting decay within the chosen window.
 def record(r,cadence,c):
     lag=r['lag_index']*cadence
     cutoff={}
@@ -42,6 +46,9 @@ def record(r,cadence,c):
                 truncated_integrals_steps=cutoff,tail_diagnostics=tail,
                 fits={k:fit_decay(lag,r[k],c['fit_window_steps']) for k in ['smor','connected_self','cor']})
 
+# Load the cached orientations and compare the full trajectory with shorter segments and a
+# downsampled record. Save the correlation curves, geometry and spatial summaries, and numerical
+# checks.
 def analyze(c):
     t0=time.perf_counter();cache=Path(c['cache']);out=Path('results');out.mkdir(exist_ok=True)
     meta=json.loads((cache/'complete.json').read_text())
@@ -117,6 +124,8 @@ def analyze(c):
     print('Analysis complete:',json.dumps(dict(G_cell=summary['full']['G_cell'],tail=summary['full']['tail_diagnostics'],checks=checks)),flush=True)
     return summary
 
+# Check two small subsets of the real trajectory. Compare the FFT with direct lag products, then
+# explicitly sum all ordered pairs of different molecules to verify the collective cross term.
 def empirical_checks(u,c):
     tiny=np.asarray(u[:128,:24],dtype=np.float64)
     fft=correlations(tiny,35,batch=7)

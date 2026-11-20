@@ -4,6 +4,8 @@ import html
 import json
 
 
+# Generate the report and slide deck from saved analysis results, then merge the slide
+# inspection details into the document inspection log.
 def build_documents(c):
     from .report import build_report
 
@@ -37,6 +39,8 @@ def build_documents(c):
     print('Documents built:', json.dumps(inspection), flush=True)
 
 
+# Build the editable PowerPoint with text, figures, and speaker notes. Draw matching elements
+# into a PDF preview and record any text that exceeds its slide box.
 def build_presentation(s,m,n,test,allocation,viva):
     """Editable text and vector elements with embedded result plots; 16:9 deck."""
     from pptx import Presentation
@@ -58,6 +62,8 @@ def build_presentation(s,m,n,test,allocation,viva):
     preview=canvas.Canvas('reports/presentation_layout_preview.pdf',pagesize=(960,540))
     overflow=[];slide_text=[];slide_no=0
     ink='#173247';teal='#007c91';purple='#963b79';gray='#576d7e'
+    # Add a styled, editable text box in PowerPoint. Draw the same lines in the PDF preview and
+    # compare their wrapped height with the box height.
     def textbox(slide,text,x,y,w,h,size=22,color=ink,bold=False):
         box=slide.shapes.add_textbox(Inches(x),Inches(y),Inches(w),Inches(h))
         tf=box.text_frame;tf.clear();tf.word_wrap=True;tf.margin_left=0;tf.margin_right=0;tf.margin_top=0;tf.margin_bottom=0
@@ -74,9 +80,13 @@ def build_presentation(s,m,n,test,allocation,viva):
         used=(540-y*72-top)/72
         if used>h+.08:overflow.append(dict(slide=slide_no,text=text[:80],used_height_inches=used,box_height_inches=h))
         return box
+    # Draw the same filled rectangle in PowerPoint and the PDF preview, converting slide inches
+    # to PDF points.
     def rect(slide,x,y,w,h,color):
         sh=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE,Inches(x),Inches(y),Inches(w),Inches(h));sh.fill.solid();sh.fill.fore_color.rgb=RGBColor.from_string(color[1:]);sh.line.fill.background()
         preview.setFillColor(colors.HexColor(color));preview.rect(x*72,540-(y+h)*72,w*72,h*72,fill=1,stroke=0)
+    # Start a PowerPoint slide and the corresponding PDF preview page. Add the title, label,
+    # footer, and slide number, and store the speaker notes.
     def new(title,kicker,notes):
         nonlocal slide_no
         slide_no+=1;slide=prs.slides.add_slide(prs.slide_layouts[6])
@@ -92,11 +102,14 @@ def build_presentation(s,m,n,test,allocation,viva):
         slide.notes_slide.notes_text_frame.text=notes
         slide_text.append(dict(slide=slide_no,title=title,notes=notes))
         return slide
+    # Scale the plot to fit the specified box while preserving its aspect ratio. Center it in
+    # the box and place it in both the slide and the PDF preview.
     def pic(slide,name,x=.55,y=1.7,w=12.2,h=4.6):
         path=Path('figures')/(name+'.png');px,py=Image.open(path).size
         ratio=min(w/px,h/py);iw,ih=px*ratio,py*ratio;xx=x+(w-iw)/2;yy=y+(h-ih)/2
         slide.shapes.add_picture(str(path),Inches(xx),Inches(yy),width=Inches(iw),height=Inches(ih))
         preview.drawImage(str(path),xx*72,540-(yy+ih)*72,iw*72,ih*72)
+    # Finalize the current PDF preview page and prepare the canvas to draw the next slide.
     def finish():preview.showPage()
     f=s['full'];cut=f['truncated_integrals_steps']['10000']
     slide=new('How does a molecular sum forget its orientation?','Collective versus single-molecule orientational relaxation',

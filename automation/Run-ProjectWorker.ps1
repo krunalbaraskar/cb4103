@@ -29,6 +29,8 @@ $activeProcess = $null
 $startedAt = [DateTimeOffset]::Now
 $pass = 0
 
+# Write the latest worker state, timing, and process ID to a temporary JSON file, then replace
+# the status file.
 function Write-WorkerStatus([string]$State, [string]$Message, [int]$PassNumber, [object]$ProcessId = $null) {
     $stateData = [ordered]@{
         state = $State
@@ -45,6 +47,8 @@ function Write-WorkerStatus([string]$State, [string]$Message, [int]$PassNumber, 
     Move-Item -LiteralPath $temporaryPath -Destination $statusPath -Force
 }
 
+# Wrap a controlled argument in double quotes for the native process. Reject embedded quotes and
+# trailing backslashes that would require additional escaping.
 function Quote-NativeArgument([string]$Value) {
     # These arguments are generated from controlled paths/options; prompts use stdin.
     if ($Value.Contains('"') -or $Value.EndsWith('\')) {
@@ -53,6 +57,8 @@ function Quote-NativeArgument([string]$Value) {
     return '"' + $Value + '"'
 }
 
+# Report missing or empty output files, too few PNG figures, and invalid or failing validation
+# results.
 function Get-MissingDeliverables {
     $required = @(
         'README.md', 'results/metadata.json', 'results/correlations.csv',

@@ -9,6 +9,8 @@ import psutil
 class TrajectoryError(ValueError):
     pass
 
+# Write strict JSON to a temporary file beside the destination and replace the destination after
+# writing completes, so readers see a complete file.
 def write_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -16,12 +18,17 @@ def write_json(path, value):
     temp.write_text(json.dumps(value, indent=2, allow_nan=False), encoding='utf-8')
     os.replace(temp, path)
 
+# Load the analysis configuration as JSON and accept a UTF-8 byte order mark when present.
 def load_config(path='config/analysis.json'):
     return json.loads(Path(path).read_text(encoding='utf-8-sig'))
 
+# Read one LAMMPS snapshot from a binary stream. Validate its header and atom rows, sort by atom
+# ID, and return the parsed data with a fingerprint of the original frame.
 def read_frame(stream):
     """Read exactly one frame; return None only at clean EOF. Check every row."""
     raw = []
+    # Read and retain the next raw line for the frame fingerprint. Raise an error if the stream
+    # ends before the frame is complete and otherwise return the stripped line.
     def line():
         b = stream.readline()
         if not b:
@@ -80,6 +87,8 @@ def read_frame(stream):
             raise
         raise TrajectoryError(str(exc)) from exc
 
+# Group rows by molecule ID. Check that each group has one central atom and two satellites of
+# the configured types, and return their row indices.
 def molecule_mapping(frame, central_type=2, hydrogen_type=1):
     cols, data = frame['columns'], frame['data']
     membership = data[:, [cols.index(c) for c in ['id','mol','type']]].astype(np.int64)
@@ -95,6 +104,9 @@ def molecule_mapping(frame, central_type=2, hydrogen_type=1):
         groups.append([c[0], h[0], h[1]])
     return membership, molecules, np.array(groups, dtype=np.int64)
 
+# Apply the minimum-image correction to both bonds, measure their lengths and included angle,
+# and normalize their sum to get the molecular direction. Also return fractional center
+# positions and frame geometry statistics.
 def reconstruct(frame, groups, config):
     d, cols = frame['data'], frame['columns']
     xyz = d[:, [cols.index(c) for c in ['x','y','z']]]
@@ -119,12 +131,17 @@ def reconstruct(frame, groups, config):
     frac = np.mod((center-frame['bounds'][:,0]) / lengths, 1.)
     return total / mag[:, None], frac, np.array(diag)
 
+# Select the settings that affect the contents and interpretation of the trajectory cache so
+# reuse can be checked independently of later analysis settings.
 def conversion_settings(config):
     keys=['trajectory','cache','expected_frames','expected_atoms','expected_molecules',
           'expected_first_step','expected_last_step','expected_cadence','hydrogen_type',
           'central_type','bond_range','angle_range_degrees','spatial_bins','assumption']
     return {k:config[k] for k in keys}
 
+# Scan the dump one frame at a time and store reconstructed orientations, box geometry,
+# diagnostics, and spatial counts in arrays on disk. Check input identity and settings before
+# resuming a checkpoint or reusing a complete cache.
 def convert(config):
     source, cache = Path(config['trajectory']), Path(config['cache'])
     cache.mkdir(exist_ok=True)
